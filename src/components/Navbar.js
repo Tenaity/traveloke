@@ -12,6 +12,7 @@ import {
   useColorMode,
   Heading,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
 const Navbar = () => {
@@ -155,21 +156,25 @@ const Navbar = () => {
           </Flex>
           <Flex>
             <HStack>
-              <Button
-                variant="ghost"
-                _focus={{ boxShadow: "none" }}
-                _hover={{ bg: { bg } }}
-              >
-                Sign in
-              </Button>
-              <Button
-                color={useColorModeValue("white")}
-                _focus={{ boxShadow: "none" }}
-                bg={useColorModeValue("blue.500", "blue.700")}
-                _hover={{ bg: useColorModeValue("blue.300", "blue.500") }}
-              >
-                Sign up
-              </Button>
+              <Link to="/signin">
+                <Button
+                  variant="ghost"
+                  _focus={{ boxShadow: "none" }}
+                  _hover={{ bg: { bg } }}
+                >
+                  Sign in
+                </Button>
+              </Link>
+              <Link to="/signup">
+                <Button
+                  color={useColorModeValue("white")}
+                  _focus={{ boxShadow: "none" }}
+                  bg={useColorModeValue("blue.500", "blue.700")}
+                  _hover={{ bg: useColorModeValue("blue.300", "blue.500") }}
+                >
+                  Sign up
+                </Button>
+              </Link>
             </HStack>
             <IconButton
               size="md"

@@ -27,6 +27,7 @@ import {
   IoCaretDownOutline,
   IoManOutline,
   IoReceiptOutline,
+  IoTimeOutline,
 } from "react-icons/io5";
 const Hero = () => {
   const bg = useColorModeValue("white", "gray.800");
@@ -51,8 +52,8 @@ const Hero = () => {
           bg={bg}
           borderRadius="xl"
           w="800px"
-          h="400"
-          top="305"
+          // h="400"
+          top="250"
           boxShadow="2xl"
           overflow="hidden"
         >
@@ -179,7 +180,93 @@ const Hero = () => {
                   </Stack>
                 </TabPanel>
                 <TabPanel>Train</TabPanel>
-                <TabPanel>Car</TabPanel>
+                <TabPanel>
+                  <Box mb="10px">
+                    <Text mb="2">Địa điểm thuê xe của bạn</Text>
+                    <InputGroup>
+                      <InputLeftElement
+                        pointerEvents="none"
+                        children={<IoLocationOutline />}
+                      />
+                      <Input
+                        type="tel"
+                        placeholder="Điền thành phố, sân bay hoặc khách sạn"
+                        _focus={{ boxShadow: "1px none" }}
+                      />
+                    </InputGroup>
+                  </Box>
+                  <Box d="flex" mb="10px">
+                    <Box mr="25px">
+                      <Text mb="2">Ngày bắt đầu:</Text>
+                      <InputGroup>
+                        <InputLeftElement
+                          pointerEvents="none"
+                          children={<IoCalendarOutline />}
+                        />
+                        <Input
+                          type="tel"
+                          placeholder="Đặt phòng"
+                          _focus={{ boxShadow: "1px none" }}
+                        />
+                      </InputGroup>
+                    </Box>
+                    <Box mr="25px">
+                      <Text mb="2">Giờ bắt đầu:</Text>
+                      <InputGroup>
+                        <InputLeftElement
+                          pointerEvents="none"
+                          children={<IoTimeOutline />}
+                        />
+                        <Input
+                          type="tel"
+                          placeholder="Đặt phòng"
+                          _focus={{ boxShadow: "1px none" }}
+                        />
+                      </InputGroup>
+                    </Box>
+                    <Box mr="25px">
+                      <Text mb="2">Ngày kết thúc:</Text>
+                      <InputGroup>
+                        <InputLeftElement
+                          pointerEvents="none"
+                          children={<IoCalendarOutline />}
+                        />
+                        <Input
+                          type="tel"
+                          placeholder="Đặt phòng"
+                          _focus={{ boxShadow: "1px none" }}
+                        />
+                      </InputGroup>
+                    </Box>
+                    <Box mr="25px">
+                      <Text mb="2">Giờ kết thúc:</Text>
+                      <InputGroup>
+                        <InputLeftElement
+                          pointerEvents="none"
+                          children={<IoTimeOutline />}
+                        />
+                        <Input
+                          type="tel"
+                          placeholder="Đặt phòng"
+                          _focus={{ boxShadow: "1px none" }}
+                        />
+                      </InputGroup>
+                    </Box>
+                  </Box>
+                  <Box d="flex" justifyContent="center">
+                    <Button
+                      w="300px"
+                      color="white"
+                      bg={useColorModeValue("blue.500", "blue.700")}
+                      _hover={{
+                        bg: useColorModeValue("blue.300", "blue.500"),
+                      }}
+                      _focus={{ boxShadow: "none" }}
+                    >
+                      Tìm xe
+                    </Button>
+                  </Box>
+                </TabPanel>
                 <TabPanel>Plane</TabPanel>
                 <TabPanel>Bus</TabPanel>
               </TabPanels>
