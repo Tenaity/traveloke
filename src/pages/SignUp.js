@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react";
 import * as React from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-import * as Logos from "../components/loginComponent/Brand";
 import DividerWithText from "../components/loginComponent/DividerWithText";
 import SigupForm from "../components/loginComponent/SigupForm";
 import Testimonial from "../components/loginComponent/Testimonial";

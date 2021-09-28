@@ -1,7 +1,6 @@
 import {
   Divider,
   HStack,
-  StackProps,
   Text,
   useColorModeValue as mode,
 } from "@chakra-ui/react";

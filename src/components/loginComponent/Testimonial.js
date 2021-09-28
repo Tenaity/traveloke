@@ -2,7 +2,6 @@ import {
   Box,
   Flex,
   HStack,
-  Img,
   Text,
   useColorModeValue as mode,
 } from "@chakra-ui/react";

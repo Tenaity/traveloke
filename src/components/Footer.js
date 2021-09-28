@@ -8,7 +8,6 @@ import {
   Text,
   VisuallyHidden,
   useColorModeValue,
-  Flex,
   Heading,
 } from "@chakra-ui/react";
 import { FaInstagram, FaTwitter, FaFacebook } from "react-icons/fa";

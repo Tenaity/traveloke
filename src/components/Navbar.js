@@ -99,7 +99,7 @@ const Navbar = () => {
         >
           <Flex>
             <HStack>
-              <Heading>Tenaity</Heading>
+              <Heading>VieTravel</Heading>
             </HStack>
           </Flex>
           <Flex>
