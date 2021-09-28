@@ -8,9 +8,14 @@ import {
   Stack,
   useColorModeValue as mode,
 } from "@chakra-ui/react";
-import * as React from "react";
-
+import React, { useRef, useEffect } from "react";
+import PasswordField from "./PasswordField";
 const SigupForm = () => {
+  // const signupForm = useRef(null);
+  // useEffect(() => {
+  //   signupForm.current.focus();
+  // }, []);
+  // ref={signupForm}
   return (
     <form
       onSubmit={(e) => {
@@ -27,21 +32,13 @@ const SigupForm = () => {
           <FormLabel mb={1}>Email</FormLabel>
           <Input type="email" autoComplete="email" />
         </FormControl>
-        <FormControl>
+        {/* <FormControl>
           <Flex align="baseline" justify="space-between">
             <FormLabel mb={1}>Password</FormLabel>
-            <Box
-              as="a"
-              href="#"
-              fontWeight="semibold"
-              fontSize="sm"
-              color={mode("blue.600", "blue.200")}
-            >
-              Forgot Password?
-            </Box>
           </Flex>
           <Input type="password" autoComplete="current-password" />
-        </FormControl>
+        </FormControl> */}
+        <PasswordField />
         <Button type="submit" colorScheme="blue" size="lg" fontSize="md">
           Create my account
         </Button>
