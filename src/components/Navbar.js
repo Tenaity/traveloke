@@ -88,6 +88,7 @@ const Navbar = () => {
       bg={bg}
       boxShadow="md"
       zIndex="sticky"
+      w="100vw"
     >
       <Box h="4.5rem" maxW="1200px" mx="auto">
         <Flex
@@ -156,25 +157,21 @@ const Navbar = () => {
           </Flex>
           <Flex>
             <HStack>
-              <Link to="/signin">
-                <Button
-                  variant="ghost"
-                  _focus={{ boxShadow: "none" }}
-                  _hover={{ bg: { bg } }}
-                >
-                  Sign in
-                </Button>
-              </Link>
-              <Link to="/signup">
-                <Button
-                  color={useColorModeValue("white")}
-                  _focus={{ boxShadow: "none" }}
-                  bg={useColorModeValue("blue.500", "blue.700")}
-                  _hover={{ bg: useColorModeValue("blue.300", "blue.500") }}
-                >
-                  Sign up
-                </Button>
-              </Link>
+              <Button
+                variant="ghost"
+                _focus={{ boxShadow: "none" }}
+                _hover={{ bg: { bg } }}
+              >
+                <Link to="/signin">Sign in</Link>
+              </Button>
+              <Button
+                color={useColorModeValue("white")}
+                _focus={{ boxShadow: "none" }}
+                bg={useColorModeValue("blue.500", "blue.700")}
+                _hover={{ bg: useColorModeValue("blue.300", "blue.500") }}
+              >
+                <Link to="/signup">Sign up</Link>
+              </Button>
             </HStack>
             <IconButton
               size="md"

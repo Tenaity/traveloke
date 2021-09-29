@@ -18,11 +18,11 @@ const Blog = (props) => {
     <LinkBox
       as="article"
       bg={{ sm: mode("white", "gray.700") }}
-      shadow={{ sm: "base" }}
+      shadow={{ sm: "lg" }}
       rounded={{ sm: "md" }}
       overflow="hidden"
       transition="all 0.2s"
-      _hover={{ shadow: { sm: "lg" } }}
+      _hover={{ shadow: { sm: "md" } }}
     >
       <Flex direction="column">
         <Img height="60" objectFit="cover" alt={title} src={media} />
@@ -73,18 +73,17 @@ const Blog = (props) => {
 
 const Articles = () => {
   return (
-    <Box
-      as="section"
-      bg={mode("gray.50", "gray.800")}
-      py={{ base: "10", sm: "24" }}
-    >
+    <Box as="section" bg={mode("gray.50", "gray.800")} w="100vw">
       <Box
         maxW={{ base: "xl", md: "7xl" }}
         mx="auto"
         px={{ base: "6", md: "8" }}
+        py={{ base: "10", sm: "24" }}
+        borderBottom="1px solid"
+        borderColor={mode("gray.300", "gray.700")}
       >
         <Heading size="xl" mb="8" fontWeight="extrabold">
-          Featured Articles
+          Xem những bài blog mới nhất trên VieTravel
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing="12" mb="10">
           <Blog

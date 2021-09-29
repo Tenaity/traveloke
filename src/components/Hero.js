@@ -27,11 +27,12 @@ import {
   IoManOutline,
   IoReceiptOutline,
   IoTimeOutline,
+  IoRestaurantOutline,
 } from "react-icons/io5";
 const Hero = () => {
   const bg = useColorModeValue("white", "gray.800");
   return (
-    <Box w="100vw" h="100vh">
+    <Box h="2xl" bg={useColorModeValue("gray.50", "gray.800")} w="100vw">
       <Box
         w="100vw"
         h="50vh"
@@ -52,7 +53,7 @@ const Hero = () => {
           borderRadius="xl"
           w="800px"
           // h="400"
-          top="250"
+          top="300"
           boxShadow="2xl"
           overflow="hidden"
         >
@@ -66,6 +67,10 @@ const Hero = () => {
                 <Tab py={4} m={0} _focus={{ boxShadow: "none" }}>
                   <IoBusinessOutline />
                   <Text ml="5px">Hotel</Text>
+                </Tab>
+                <Tab py={4} m={0} _focus={{ boxShadow: "none" }}>
+                  <IoRestaurantOutline />
+                  <Text ml="5px">Restaurant</Text>
                 </Tab>
                 <Tab py={4} m={0} _focus={{ boxShadow: "none" }}>
                   <IoTrainOutline /> <Text ml="5px">Train</Text>
@@ -178,6 +183,7 @@ const Hero = () => {
                     </Box>
                   </Stack>
                 </TabPanel>
+                <TabPanel>Restaurant</TabPanel>
                 <TabPanel>Train</TabPanel>
                 <TabPanel>
                   <Box mb="10px">

@@ -11,11 +11,6 @@ import {
 import React, { useRef, useEffect } from "react";
 import PasswordField from "./PasswordField";
 const SigupForm = () => {
-  // const signupForm = useRef(null);
-  // useEffect(() => {
-  //   signupForm.current.focus();
-  // }, []);
-  // ref={signupForm}
   return (
     <form
       onSubmit={(e) => {
@@ -32,12 +27,6 @@ const SigupForm = () => {
           <FormLabel mb={1}>Email</FormLabel>
           <Input type="email" autoComplete="email" />
         </FormControl>
-        {/* <FormControl>
-          <Flex align="baseline" justify="space-between">
-            <FormLabel mb={1}>Password</FormLabel>
-          </Flex>
-          <Input type="password" autoComplete="current-password" />
-        </FormControl> */}
         <PasswordField />
         <Button type="submit" colorScheme="blue" size="lg" fontSize="md">
           Create my account

@@ -15,13 +15,6 @@ import React, { useRef, useEffect } from "react";
 import Testimonial from "../components/loginComponent/Testimonial";
 import PasswordField from "../components/loginComponent/PasswordField";
 const SignIn = () => {
-  const loginForm = useRef(null);
-  useEffect(() => {
-    if (loginForm && loginForm.current) {
-      loginForm.current.focus();
-      console.log("1");
-    }
-  });
   return (
     <Box minH="100vh" bg={{ md: mode("gray.100", "inherit") }}>
       <Box
@@ -67,14 +60,14 @@ const SignIn = () => {
                 </Text>
               </Box>
               <form
-              // onSubmit={(e) => {
-              //   e.preventDefault();
-              // }}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                }}
               >
                 <Stack spacing="4">
                   <FormControl id="email">
                     <FormLabel mb={1}>Email</FormLabel>
-                    <Input type="email" autoComplete="email" ref={loginForm} />
+                    <Input type="email" autoComplete="email" />
                   </FormControl>
                   <PasswordField />
                   <Button

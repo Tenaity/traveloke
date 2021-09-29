@@ -49,6 +49,7 @@ const ListHeader = ({ children }) => {
 const Footer = () => {
   return (
     <Box
+      w="100vw"
       bg={useColorModeValue("gray.50", "gray.900")}
       color={useColorModeValue("gray.700", "gray.200")}
       borderTop="1px solid"
@@ -105,6 +106,14 @@ const Footer = () => {
           </Stack>
         </SimpleGrid>
       </Container>
+      <Box
+        borderTop="1px solid"
+        borderColor={useColorModeValue("gray.300", "gray.700")}
+        textAlign="center"
+        py="2"
+      >
+        <Text>Copyright © 2021 Tenaity, Inc. All rights reserved.</Text>
+      </Box>
     </Box>
   );
 };
