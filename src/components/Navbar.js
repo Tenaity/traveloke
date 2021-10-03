@@ -50,7 +50,7 @@ const Navbar = () => {
         _hover={{ bg: { bg }, color: "blue.500" }}
         _focus={{ boxShadow: "none" }}
       >
-        About
+        Booking
       </Button>
       <Button
         w="100%"
@@ -115,7 +115,7 @@ const Navbar = () => {
                   scale: "1.2",
                 }}
               >
-                About
+                Booking
               </Button>
               <Button
                 variant="ghost"

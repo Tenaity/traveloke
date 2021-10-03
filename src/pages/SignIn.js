@@ -67,7 +67,7 @@ const SignIn = () => {
                 <Stack spacing="4">
                   <FormControl id="email">
                     <FormLabel mb={1}>Email</FormLabel>
-                    <Input type="email" autoComplete="email" />
+                    <Input type="email" autoComplete="email" autoFocus />
                   </FormControl>
                   <PasswordField />
                   <Button

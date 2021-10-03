@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import "./styles.css";
+import BookHotel from "./pages/BookHotel";
 const colors = {
   brand: {
     900: "#1a365d",
@@ -21,16 +22,19 @@ const App = () => {
   return (
     <ChakraProvider theme={theme}>
       <TransitionGroup>
-        <CSSTransition timeout={500} classNames="fade" key={location.key}>
+        <CSSTransition classNames="fade" key={location.key}>
           <Switch>
-            <Route exact path="/">
+            {/* <Route exact path="/">
               <Home />
-            </Route>
+            </Route> */}
             <Route path="/signin">
               <SignIn />
             </Route>
             <Route path="/signup">
               <SignUp />
+            </Route>
+            <Route exact path="/">
+              <BookHotel />
             </Route>
           </Switch>
         </CSSTransition>
