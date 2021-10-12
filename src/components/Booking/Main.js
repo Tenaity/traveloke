@@ -11,7 +11,6 @@ import {
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import CardHotel from "./CardHotel";
 import Navbar from "../Navbar";
-import Carousels from "../Carousels";
 import BreadcrumbMain from "../BreadcrumbMain";
 import {
   IoLocationOutline,
@@ -23,33 +22,19 @@ const Main = () => {
   return (
     <>
       <Navbar />
-      <Container d="flex" flexWrap="wrap" maxW="7xl">
+      <Box d="flex" flexWrap="wrap" maxW="7xl" mx="auto">
         <BreadcrumbMain />
-        <Carousels />
-        <Container maxW="7xl">
+        <Box w="7xl">
           <Flex
-            pt="10"
-            pb="10"
+            pt="3"
+            pb="5"
             justifyContent="space-between"
             alignItems="center"
           >
             <Box>
               <Heading size="md">2033 homestay tại Hà Nội</Heading>
             </Box>
-            <Box>
-              <InputGroup>
-                <InputLeftElement
-                  pointerEvents="none"
-                  children={<IoLocationOutline />}
-                />
-                <Input
-                  type="tel"
-                  placeholder="Đà Nẵng"
-                  _focus={{ boxShadow: "1px none" }}
-                  w="500px"
-                />
-              </InputGroup>
-            </Box>
+
             <Box>
               <InputGroup>
                 <InputLeftElement
@@ -73,7 +58,7 @@ const Main = () => {
               </InputGroup>
             </Box>
           </Flex>
-        </Container>
+        </Box>
 
         <Box mx="auto">
           <SimpleGrid columns={[2, null, 4]} spacing="40px">
@@ -90,7 +75,7 @@ const Main = () => {
             <CardHotel />
           </SimpleGrid>
         </Box>
-      </Container>
+      </Box>
       <PaginationMain />
     </>
   );

@@ -11,86 +11,30 @@ import {
   Button,
   useColorMode,
   Heading,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { AiOutlineMenu } from "react-icons/ai";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { SearchIcon, ChevronDownIcon } from "@chakra-ui/icons";
 const Navbar = () => {
-  const { toggleColorMode: toggleMode } = useColorMode();
-  // const text = useColorModeValue("dark", "light");
-  const SwitchIcon = useColorModeValue(FaMoon, FaSun);
   const bg = useColorModeValue("white", "gray.800");
-  const mobileNav = useDisclosure();
-  const MobileNavContent = (
-    <VStack
-      pos="absolute"
-      top={0}
-      left={0}
-      right={0}
-      display={mobileNav.isOpen ? "flex" : "none"}
-      flexDirection="column"
-      p={2}
-      pb={4}
-      m={2}
-      bg={bg}
-      spacing={3}
-      rounded="sm"
-      shadow="md"
-    >
-      <CloseButton
-        aria-label="Close menu"
-        justifySelf="self-start"
-        onClick={mobileNav.onClose}
-        _hover={{ bg: { bg }, color: "blue.500" }}
-        _focus={{ boxShadow: "none" }}
-      />
-      <Button
-        w="100%"
-        variant="ghost"
-        _hover={{ bg: { bg }, color: "blue.500" }}
-        _focus={{ boxShadow: "none" }}
-      >
-        Booking
-      </Button>
-      <Button
-        w="100%"
-        variant="ghost"
-        _hover={{ bg: { bg }, color: "blue.500" }}
-        _focus={{ boxShadow: "none" }}
-      >
-        Articles
-      </Button>
-      <Button
-        w="100%"
-        variant="ghost"
-        _hover={{ bg: { bg }, color: "blue.500" }}
-        _focus={{ boxShadow: "none" }}
-      >
-        Blog
-      </Button>
-      <Button
-        w="100%"
-        variant="ghost"
-        _hover={{ bg: { bg }, color: "blue.500" }}
-        _focus={{ boxShadow: "none" }}
-      >
-        Contact us
-      </Button>
-    </VStack>
-  );
 
   return (
     <Box
+      bg="white"
       borderTop="5px solid"
-      borderTopColor={!bg}
+      borderTopColor="blue.500"
       pos="sticky"
       top="0"
-      bg={bg}
       boxShadow="md"
       zIndex="sticky"
-      w="100vw"
     >
-      <Box h="4.5rem" maxW="1200px" mx="auto">
+      <Flex h="4.5rem" maxW="7xl" mx="auto">
         <Flex
           w="full"
           h="full"
@@ -99,12 +43,29 @@ const Navbar = () => {
           justifyContent="space-between"
         >
           <Flex>
-            <HStack>
-              <Heading>VieTravel</Heading>
+            <HStack spacing="5">
+              <Link to="/">
+                <Heading as="a">GoGo</Heading>
+              </Link>
+              <Box w="400px" mt="2">
+                <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"
+                    _focus={{ boxShadow: "none" }}
+                    children={<SearchIcon color="gray.300" />}
+                  />
+                  <Input
+                    type="text"
+                    placeholder="Search"
+                    borderColor="gray.800"
+                  />
+                </InputGroup>
+              </Box>
             </HStack>
           </Flex>
-          <Flex>
-            <HStack spacing="5" d={{ base: "none", md: "flex" }}>
+
+          <Box>
+            <HStack spacing="5">
               <Button
                 variant="ghost"
                 scale="1"
@@ -115,8 +76,25 @@ const Navbar = () => {
                   scale: "1.2",
                 }}
               >
-                Booking
+                <Link to="/booking">Booking</Link>
               </Button>
+              <Menu>
+                <MenuButton
+                  bg="white"
+                  as={Button}
+                  rightIcon={<ChevronDownIcon />}
+                >
+                  Services
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>Hotel</MenuItem>
+                  <MenuItem>Restaurant</MenuItem>
+                  <MenuItem>Plane</MenuItem>
+                  <MenuItem>Train</MenuItem>
+                  <MenuItem>Car</MenuItem>
+                </MenuList>
+              </Menu>
+
               <Button
                 variant="ghost"
                 scale="1"
@@ -126,76 +104,21 @@ const Navbar = () => {
                   color: "blue.500",
                   scale: "1.2",
                 }}
-              >
-                Articles
-              </Button>
-              <Button
-                variant="ghost"
-                scale="1"
-                transform="auto"
-                _hover={{
-                  bg: { bg },
-                  color: "blue.500",
-                  scale: "1.2",
-                }}
-              >
-                Blog
-              </Button>
-              <Button
-                variant="ghost"
-                scale="1"
-                transform="auto"
-                _hover={{
-                  bg: { bg },
-                  color: "blue.500",
-                  scale: "1.2",
-                }}
-              >
-                Contact us
-              </Button>
-            </HStack>
-          </Flex>
-          <Flex>
-            <HStack>
-              <Button
-                variant="ghost"
-                _focus={{ boxShadow: "none" }}
-                _hover={{ bg: { bg } }}
               >
                 <Link to="/signin">Sign in</Link>
               </Button>
               <Button
                 color={useColorModeValue("white")}
                 _focus={{ boxShadow: "none" }}
-                bg={useColorModeValue("blue.500", "blue.700")}
+                bg={"blue.500"}
                 _hover={{ bg: useColorModeValue("blue.300", "blue.500") }}
               >
                 <Link to="/signup">Sign up</Link>
               </Button>
             </HStack>
-            <IconButton
-              size="md"
-              fontSize="lg"
-              variant="ghost"
-              ml={{ base: "0", md: "3" }}
-              onClick={toggleMode}
-              icon={<SwitchIcon />}
-              _focus={{ boxShadow: "none" }}
-              _hover={{ bg: { bg } }}
-            />
-            <IconButton
-              display={{ base: "flex", md: "none" }}
-              aria-label="Open menu"
-              fontSize="20px"
-              color={useColorModeValue("gray.800", "inherit")}
-              variant="ghost"
-              icon={<AiOutlineMenu />}
-              onClick={mobileNav.onOpen}
-            />
-          </Flex>
+          </Box>
         </Flex>
-        {MobileNavContent}
-      </Box>
+      </Flex>
     </Box>
   );
 };

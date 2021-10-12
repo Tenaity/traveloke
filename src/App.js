@@ -7,6 +7,9 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import "./styles.css";
 import BookHotel from "./pages/BookHotel";
+import HotelDetail from "./pages/HotelDetail";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 const colors = {
   brand: {
     900: "#1a365d",
@@ -24,17 +27,20 @@ const App = () => {
       <TransitionGroup>
         <CSSTransition classNames="fade" key={location.key}>
           <Switch>
-            {/* <Route exact path="/">
-              <Home />
-            </Route> */}
+            <Route path="/booking">
+              <BookHotel />
+            </Route>
             <Route path="/signin">
               <SignIn />
             </Route>
             <Route path="/signup">
               <SignUp />
             </Route>
+            <Route path="/hoteldetail">
+              <HotelDetail />
+            </Route>
             <Route exact path="/">
-              <BookHotel />
+              <Home />
             </Route>
           </Switch>
         </CSSTransition>
