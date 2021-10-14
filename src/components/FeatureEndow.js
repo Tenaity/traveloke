@@ -21,8 +21,6 @@ const links = [
   { label: "Danh sách đã lưu", href: "#" },
   { label: "Easy Reschedule", href: "#" },
   { label: "Passenger Quick Pick", href: "#" },
-  //   { label: "Auto save plan", href: "#" },
-  //   { label: "401k retirement savings", href: "#" },
 ];
 
 const FeatureLink = (props) => {
@@ -51,7 +49,7 @@ const FeatureLink = (props) => {
 
 const FeatureEndow = () => {
   return (
-    <Box as="section" bg={useColorModeValue("gray.50", "gray.800")} w="100vw">
+    <Box as="section" w="100vw">
       <Box
         maxW={{ base: "xl", md: "7xl" }}
         mx="auto"

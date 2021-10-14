@@ -21,14 +21,6 @@ function Testimonial() {
           tiện lợi.
         </Text>
         <HStack spacing="4" mt="8">
-          {/* <Img
-            w="12"
-            h="12"
-            alt="Tenaity Vo"
-            rounded="full"
-            objectFit="cover"
-            src="../../../public/images/ava2.jpg"
-          /> */}
           <Box>
             <Text as="cite" fontStyle="normal" fontWeight="medium">
               Tenaity Võ

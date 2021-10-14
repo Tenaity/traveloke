@@ -1,6 +1,5 @@
 import {
   Box,
-  BoxProps,
   Flex,
   Heading,
   Img,
@@ -54,7 +53,7 @@ const FeatureItem = (props) => {
 
 const Feature = () => {
   return (
-    <Box as="section" bg={mode("gray.50", "gray.800")} py="24" w="100vw">
+    <Box as="section" py="24" w="100vw">
       <Box
         maxW={{ base: "xl", md: "7xl" }}
         mx="auto"

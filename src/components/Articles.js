@@ -73,7 +73,7 @@ const Blog = (props) => {
 
 const Articles = () => {
   return (
-    <Box as="section" bg={mode("gray.50", "gray.800")} w="100vw">
+    <Box as="section" w="100vw">
       <Box
         maxW={{ base: "xl", md: "7xl" }}
         mx="auto"

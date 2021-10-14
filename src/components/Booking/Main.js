@@ -1,22 +1,10 @@
 import React from "react";
-import {
-  Box,
-  Container,
-  SimpleGrid,
-  Heading,
-  HStack,
-  Stack,
-  Flex,
-} from "@chakra-ui/layout";
+import { Box, SimpleGrid, Heading, Flex } from "@chakra-ui/layout";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import CardHotel from "./CardHotel";
 import Navbar from "../Navbar";
 import BreadcrumbMain from "../BreadcrumbMain";
-import {
-  IoLocationOutline,
-  IoMoonOutline,
-  IoCaretDownOutline,
-} from "react-icons/io5";
+import { IoMoonOutline, IoCaretDownOutline } from "react-icons/io5";
 import PaginationMain from "./PaginationMain";
 const Main = () => {
   return (

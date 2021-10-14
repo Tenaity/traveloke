@@ -14,15 +14,15 @@ const BreadcrumbMain = () => {
         pt={5}
       >
         <BreadcrumbItem>
-          <BreadcrumbLink href="#">Home</BreadcrumbLink>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
 
         <BreadcrumbItem>
-          <BreadcrumbLink href="#">About</BreadcrumbLink>
+          <BreadcrumbLink href="/">About</BreadcrumbLink>
         </BreadcrumbItem>
 
         <BreadcrumbItem isCurrentPage>
-          <BreadcrumbLink href="#">Contact</BreadcrumbLink>
+          <BreadcrumbLink href="/">Contact</BreadcrumbLink>
         </BreadcrumbItem>
       </Breadcrumb>
     </>

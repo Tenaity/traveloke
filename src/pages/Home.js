@@ -6,7 +6,6 @@ import Feature from "../components/Feature";
 import FeatureEndow from "../components/FeatureEndow";
 import Discovery from "../components/Discovery";
 import Partner from "../components/Partner";
-import SmallGallery from "../components/SmallGallery";
 import CarouselBanner from "../components/CarouselBanner";
 import Carousels from "../components/Carousels";
 const Home = () => {

@@ -9,12 +9,61 @@ import {
   FormControl,
   FormLabel,
   Input,
+  IconButton,
+  InputGroup,
+  InputRightElement,
+  useDisclosure,
   useColorModeValue as mode,
 } from "@chakra-ui/react";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState, useContext } from "react";
 import Testimonial from "../components/loginComponent/Testimonial";
-import PasswordField from "../components/loginComponent/PasswordField";
+import { HiEye, HiEyeOff } from "react-icons/hi";
+import axios from "axios";
+import AppContext from "../components/AppContext";
+import { useHistory } from "react-router";
+
 const SignIn = () => {
+  const { dispatch } = useContext(AppContext);
+  const history = useHistory();
+  const [userInput, setUserInput] = useState({ email: "", password: "" });
+  const { isOpen, onToggle } = useDisclosure();
+  const inputRef = useRef(null);
+
+  const onChangeHandle = (e) => {
+    setUserInput({ ...userInput, [e.target.name]: e.target.value });
+  };
+
+  const onSubmitHandle = async (e) => {
+    try {
+      e.preventDefault();
+      const option = {
+        method: "post",
+        url: "https://pbl6-travelapp.herokuapp.com/auth/login",
+        data: userInput,
+      };
+      const response = await axios(option);
+      const { user, tokens } = response.data;
+      const userName = user.name;
+      localStorage.setItem("token", tokens.access.token);
+      dispatch({ type: "CURRENT_USER", payload: { userName } });
+      history.push("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const onClickReveal = () => {
+    onToggle();
+    const input = inputRef.current;
+    if (input) {
+      input.focus({ preventScroll: true });
+      const length = input.value.length * 2;
+      requestAnimationFrame(() => {
+        input.setSelectionRange(length, length);
+      });
+    }
+  };
+
   return (
     <Box minH="100vh" bg={{ md: mode("gray.100", "inherit") }}>
       <Box
@@ -59,17 +108,51 @@ const SignIn = () => {
                   Đặt chỗ ngay thôi nào !
                 </Text>
               </Box>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                }}
-              >
+              <form onSubmit={onSubmitHandle}>
                 <Stack spacing="4">
                   <FormControl id="email">
                     <FormLabel mb={1}>Email</FormLabel>
-                    <Input type="email" autoComplete="email" autoFocus />
+                    <Input
+                      type="email"
+                      name="email"
+                      value={userInput.email}
+                      onChange={onChangeHandle}
+                      required
+                    />
                   </FormControl>
-                  <PasswordField />
+                  <FormControl id="password">
+                    <Flex justify="space-between">
+                      <FormLabel>Password</FormLabel>
+                      <Box
+                        as="a"
+                        color={mode("blue.600", "blue.200")}
+                        fontWeight="semibold"
+                        fontSize="sm"
+                      >
+                        Forgot Password?
+                      </Box>
+                    </Flex>
+                    <InputGroup>
+                      <InputRightElement>
+                        <IconButton
+                          bg="transparent !important"
+                          variant="ghost"
+                          aria-label={
+                            isOpen ? "Mask password" : "Reveal password"
+                          }
+                          icon={isOpen ? <HiEyeOff /> : <HiEye />}
+                          onClick={onClickReveal}
+                        />
+                      </InputRightElement>
+                      <Input
+                        name="password"
+                        value={userInput.password}
+                        onChange={onChangeHandle}
+                        type={isOpen ? "text" : "password"}
+                        required
+                      />
+                    </InputGroup>
+                  </FormControl>
                   <Button
                     type="submit"
                     colorScheme="blue"

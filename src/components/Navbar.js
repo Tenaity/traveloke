@@ -1,15 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   HStack,
   Box,
   Flex,
-  IconButton,
-  useColorModeValue,
-  useDisclosure,
-  CloseButton,
-  VStack,
   Button,
-  useColorMode,
   Heading,
   Input,
   InputGroup,
@@ -21,9 +15,15 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { SearchIcon, ChevronDownIcon } from "@chakra-ui/icons";
+import AppContext from "./AppContext";
 const Navbar = () => {
-  const bg = useColorModeValue("white", "gray.800");
-
+  const { state, dispatch } = useContext(AppContext);
+  const user = state.user;
+  console.log(user);
+  const signOut = () => {
+    localStorage.removeItem("token");
+    dispatch({ type: "CURRENT_USER", payload: null });
+  };
   return (
     <Box
       bg="white"
@@ -44,9 +44,9 @@ const Navbar = () => {
         >
           <Flex>
             <HStack spacing="5">
-              <Link to="/">
-                <Heading as="a">GoGo</Heading>
-              </Link>
+              <Heading as="a">
+                <Link to="/">GoGo</Link>
+              </Heading>
               <Box w="400px" mt="2">
                 <InputGroup>
                   <InputLeftElement
@@ -71,7 +71,6 @@ const Navbar = () => {
                 scale="1"
                 transform="auto"
                 _hover={{
-                  bg: { bg },
                   color: "blue.500",
                   scale: "1.2",
                 }}
@@ -94,27 +93,52 @@ const Navbar = () => {
                   <MenuItem>Car</MenuItem>
                 </MenuList>
               </Menu>
-
-              <Button
-                variant="ghost"
-                scale="1"
-                transform="auto"
-                _hover={{
-                  bg: { bg },
-                  color: "blue.500",
-                  scale: "1.2",
-                }}
-              >
-                <Link to="/signin">Sign in</Link>
-              </Button>
-              <Button
-                color={useColorModeValue("white")}
-                _focus={{ boxShadow: "none" }}
-                bg={"blue.500"}
-                _hover={{ bg: useColorModeValue("blue.300", "blue.500") }}
-              >
-                <Link to="/signup">Sign up</Link>
-              </Button>
+              {user ? (
+                <>
+                  <Button
+                    variant="ghost"
+                    color="orange.500"
+                    scale="1"
+                    transform="auto"
+                    _hover={{
+                      scale: "1.2",
+                    }}
+                  >
+                    <Link to="/">{user.userName}</Link>
+                  </Button>
+                  <Button
+                    color="white"
+                    _focus={{ boxShadow: "none" }}
+                    bg={"blue.500"}
+                    _hover={{ bg: "blue.300" }}
+                    onClick={signOut}
+                  >
+                    <Link to="/">Sign Out</Link>
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button
+                    variant="ghost"
+                    scale="1"
+                    transform="auto"
+                    _hover={{
+                      color: "blue.500",
+                      scale: "1.2",
+                    }}
+                  >
+                    <Link to="/signin">Sign In</Link>
+                  </Button>
+                  <Button
+                    color="white"
+                    _focus={{ boxShadow: "none" }}
+                    bg={"blue.500"}
+                    _hover={{ bg: "blue.300" }}
+                  >
+                    <Link to="/signup">Sign up</Link>
+                  </Button>
+                </>
+              )}
             </HStack>
           </Box>
         </Flex>

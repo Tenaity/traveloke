@@ -6,20 +6,16 @@ import {
   IconButton,
   Input,
   InputGroup,
-  InputProps,
   InputRightElement,
   useDisclosure,
-  useMergeRefs,
   useColorModeValue as mode,
 } from "@chakra-ui/react";
-import * as React from "react";
+import React, { useRef } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 
 const PasswordField = () => {
   const { isOpen, onToggle } = useDisclosure();
-  const inputRef = React.useRef < HTMLInputElement > null;
-
-  //   const mergeRef = useMergeRefs(inputRef, ref);
+  const inputRef = useRef(null);
 
   const onClickReveal = () => {
     onToggle();

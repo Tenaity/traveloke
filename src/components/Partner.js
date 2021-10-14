@@ -92,12 +92,7 @@ export const Wakanda = (props) => (
 
 const Partner = () => {
   return (
-    <Box
-      as="section"
-      py="16"
-      bg={useColorModeValue("gray.50", "gray.800")}
-      w="100vw"
-    >
+    <Box as="section" py="16" w="100vw">
       <Box
         maxW={{ base: "xl", md: "7xl" }}
         mx="auto"
@@ -115,52 +110,22 @@ const Partner = () => {
           spacing="6"
           color={useColorModeValue("inherit", "white")}
         >
-          <Center
-            py="8"
-            px="8"
-            bg={useColorModeValue("white", "gray.600")}
-            rounded={{ md: "lg" }}
-          >
+          <Center py="8" px="8" bg="gray.50" rounded={{ md: "lg" }}>
             <ChatMonkey h="6" opacity={0.64} />
           </Center>
-          <Center
-            py="8"
-            px="8"
-            bg={useColorModeValue("white", "gray.600")}
-            rounded={{ md: "lg" }}
-          >
+          <Center py="8" px="8" bg="gray.50" rounded={{ md: "lg" }}>
             <Finnik h="4" opacity={0.64} />
           </Center>
-          <Center
-            py="8"
-            px="8"
-            bg={useColorModeValue("white", "gray.600")}
-            rounded={{ md: "lg" }}
-          >
+          <Center py="8" px="8" bg="gray.50" rounded={{ md: "lg" }}>
             <Lighthouse h="5" opacity={0.64} />
           </Center>
-          <Center
-            py="8"
-            px="8"
-            bg={useColorModeValue("white", "gray.600")}
-            rounded={{ md: "lg" }}
-          >
+          <Center py="8" px="8" bg="gray.50" rounded={{ md: "lg" }}>
             <Plumtic h="5" opacity={0.64} />
           </Center>
-          <Center
-            py="8"
-            px="8"
-            bg={useColorModeValue("white", "gray.600")}
-            rounded={{ md: "lg" }}
-          >
+          <Center py="8" px="8" bg="gray.50" rounded={{ md: "lg" }}>
             <Wakanda h="5" opacity={0.64} />
           </Center>
-          <Center
-            py="8"
-            px="8"
-            bg={useColorModeValue("white", "gray.600")}
-            rounded={{ md: "lg" }}
-          >
+          <Center py="8" px="8" bg="gray.50" rounded={{ md: "lg" }}>
             <WorkScout h="5" opacity={0.64} />
           </Center>
         </SimpleGrid>

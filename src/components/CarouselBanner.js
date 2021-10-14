@@ -38,18 +38,11 @@ const CarouselBanner = () => {
       ANIMATION_DIRECTION.toLowerCase() === "left" ? prevSlide() : nextSlide();
     }, SLIDES_INTERVAL_TIME);
     return () => clearInterval(automatedSlide);
-  }, []);
+  });
 
   return (
-    <Box bg="gray.50" py="10">
-      <Flex
-        w="7xl"
-        h="280px"
-        overflow="hidden"
-        mx="auto"
-        //   border="1px solid black"
-        borderRadius="10"
-      >
+    <Box py="10">
+      <Flex w="7xl" h="280px" overflow="hidden" mx="auto" borderRadius="10">
         <Flex w="full" overflow="hidden" pos="relative">
           <Flex h="400px" w="full" {...carouselStyle} borderRadius="5">
             {slides.map((slide, sid) => (
@@ -69,7 +62,7 @@ const CarouselBanner = () => {
               <Box
                 key={`dots-${slide}`}
                 cursor="pointer"
-                boxSize={["7px", , "10px"]}
+                boxSize={["7px", "10px"]}
                 m="0 2px"
                 bg={
                   currentSlide === slide ? "blackAlpha.800" : "blackAlpha.500"

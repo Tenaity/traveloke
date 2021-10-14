@@ -1,11 +1,10 @@
 import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/layout";
-import { useColorModeValue } from "@chakra-ui/color-mode";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import React from "react";
 
 const Discovery = () => {
   return (
-    <Box bg={useColorModeValue("gray.50", "gray.800")} w="100vw" py="10">
+    <Box w="100vw" py="10">
       <Box maxW="5xl" mx="auto">
         <Heading size="lg" textAlign="center" pb="5">
           Bạn muốn khám phá điều gì?

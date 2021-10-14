@@ -50,7 +50,6 @@ const Footer = () => {
   return (
     <Box
       w="100vw"
-      bg={useColorModeValue("gray.50", "gray.900")}
       color={useColorModeValue("gray.700", "gray.200")}
       borderTop="1px solid"
       borderColor={useColorModeValue("gray.300", "gray.700")}

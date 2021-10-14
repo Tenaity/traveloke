@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, useColorModeValue } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import Pagination from "@choc-ui/paginator";
 
 const PaginationMain = () => {

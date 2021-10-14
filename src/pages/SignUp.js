@@ -19,13 +19,7 @@ const SignUp = () => {
   return (
     <Center w="100vw" h="100vh" bg={{ md: mode("gray.100", "inherit") }}>
       <Box>
-        <Box
-          maxW="6xl"
-          mx="auto"
-          my="auto"
-          // py={{ base: "10", md: "10" }}
-          px={{ base: "4", md: "10" }}
-        >
+        <Box maxW="6xl" mx="auto" my="auto" px={{ base: "4", md: "10" }}>
           <SimpleGrid columns={{ base: 1, lg: 2 }} spacing="14">
             <Flex
               direction="column"

@@ -3,7 +3,7 @@ import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import { Box, Center, HStack } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/react";
 import { useState } from "react";
-export default function SmallGallery({ objectFit = "cover" }) {
+export default function SmallGallery() {
   const src = [
     {
       img: "/images/luxstay/luxstayHaNoi.png",
@@ -39,11 +39,10 @@ export default function SmallGallery({ objectFit = "cover" }) {
   return (
     <Box w="500px">
       <Image
-        src={current.img}
+        src={current.img || src[0].img}
         width="full"
         height="400"
         objectPosition="center"
-        objectFit={objectFit}
         layout="responsive"
         border="2px solid black"
         p="0.5"
@@ -101,14 +100,4 @@ export default function SmallGallery({ objectFit = "cover" }) {
       </Box>
     </Box>
   );
-}
-
-{
-  /* <SmallGallery
-          srcs={[
-            image?.publicUrl,
-            ...images.map((img) => img?.file?.publicUrl),
-          ]}
-          objectFit="contain"
-        /> */
 }

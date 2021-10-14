@@ -63,54 +63,48 @@ const Carousels = () => {
   };
 
   return (
-    <Box bg="gray.50">
-      <Box w="7xl" mx="auto" bg="gray.50" pt="10">
-        <Heading> Địa điểm nổi bật</Heading>
-        <Text pt="2" pb="3">
-          Cùng Luxstay bắt đầu chuyến hành trình chinh phục thế giới của bạn
-        </Text>
-        <Flex w="full" pos="relative">
-          <Flex w="full" overflow="hidden" pos="relative" borderRadius="5">
-            <Flex h="300px" w="250px" {...carouselStyle}>
-              {slides.map((slide, sid) => (
-                <Box
-                  key={`slide-${sid}`}
-                  boxSize="full"
-                  shadow="md"
-                  flex="none"
-                  mr="10"
-                  borderRadius="5"
-                  overflow="hidden"
-                >
-                  <Image
-                    src={slide.img}
-                    boxSize="full"
-                    backgroundSize="cover"
-                  />
-                </Box>
-              ))}
-            </Flex>
+    <Box w="7xl" mx="auto" pt="10">
+      <Heading> Địa điểm nổi bật</Heading>
+      <Text pt="2" pb="3">
+        Cùng Luxstay bắt đầu chuyến hành trình chinh phục thế giới của bạn
+      </Text>
+      <Flex w="full" pos="relative">
+        <Flex w="full" overflow="hidden" pos="relative" borderRadius="5">
+          <Flex h="300px" w="250px" {...carouselStyle}>
+            {slides.map((slide, sid) => (
+              <Box
+                key={`slide-${sid}`}
+                boxSize="full"
+                shadow="md"
+                flex="none"
+                mr="10"
+                borderRadius="5"
+                overflow="hidden"
+              >
+                <Image src={slide.img} boxSize="full" backgroundSize="cover" />
+              </Box>
+            ))}
           </Flex>
-          <Text
-            as="button"
-            {...arrowStyles}
-            left="-6"
-            onClick={prevSlide}
-            disabled={currentSlide === 0}
-          >
-            &#10094;
-          </Text>
-          <Text
-            as="button"
-            {...arrowStyles}
-            right="-6"
-            onClick={nextSlide}
-            disabled={currentSlide === slidesCount - 4}
-          >
-            &#10095;
-          </Text>
         </Flex>
-      </Box>
+        <Text
+          as="button"
+          {...arrowStyles}
+          left="-6"
+          onClick={prevSlide}
+          disabled={currentSlide === 0}
+        >
+          &#10094;
+        </Text>
+        <Text
+          as="button"
+          {...arrowStyles}
+          right="-6"
+          onClick={nextSlide}
+          disabled={currentSlide === slidesCount - 4}
+        >
+          &#10095;
+        </Text>
+      </Flex>
     </Box>
   );
 };
