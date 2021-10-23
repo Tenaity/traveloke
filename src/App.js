@@ -10,7 +10,7 @@ import HotelDetail from "./pages/HotelDetail";
 import AppReducer from "./reducers/AppReducer";
 import { useCallback, useEffect, useReducer } from "react";
 import AppContext from "./components/AppContext";
-// import axios from "axios";
+import axios from "axios";
 const theme = extendTheme();
 
 const App = () => {

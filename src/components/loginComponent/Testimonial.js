@@ -15,10 +15,9 @@ function Testimonial() {
       </Box>
       <Box>
         <Text fontSize="2xl" mt="4">
-          Chào mừng bạn đã đến với VieTravel nơi đưa bạn và người thân nhanh
-          chóng trải nghiệm những dịch vụ sang trọng, những trải nghiệm mang đến
-          nhiều niềm vui, sự mới lạ đến gia đình bạn một cách nhanh chóng và
-          tiện lợi.
+          Chào mừng bạn đã đến với GoGo nơi đưa bạn và người thân nhanh chóng
+          trải nghiệm những dịch vụ sang trọng, những trải nghiệm mang đến nhiều
+          niềm vui, sự mới lạ đến gia đình bạn một cách nhanh chóng và tiện lợi.
         </Text>
         <HStack spacing="4" mt="8">
           <Box>

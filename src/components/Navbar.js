@@ -16,13 +16,25 @@ import {
 import { Link } from "react-router-dom";
 import { SearchIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import AppContext from "./AppContext";
+import axios from "axios";
+import { useHistory } from "react-router";
 const Navbar = () => {
   const { state, dispatch } = useContext(AppContext);
+  const history = useHistory();
+
   const user = state.user;
   console.log(user);
   const signOut = () => {
+    const token = localStorage.getItem("token");
+    const option = {
+      method: "post",
+      url: "https://pbl6-travelapp.herokuapp.com/auth/logout",
+      data: { refreshToken: { token } },
+    };
+    axios(option);
     localStorage.removeItem("token");
     dispatch({ type: "CURRENT_USER", payload: null });
+    history.push("/");
   };
   return (
     <Box
@@ -113,7 +125,7 @@ const Navbar = () => {
                     _hover={{ bg: "blue.300" }}
                     onClick={signOut}
                   >
-                    <Link to="/">Sign Out</Link>
+                    Sign Out
                   </Button>
                 </>
               ) : (

@@ -13,7 +13,7 @@ import {
   InputGroup,
   InputRightElement,
   useDisclosure,
-  useColorModeValue as mode,
+  Center,
 } from "@chakra-ui/react";
 import React, { useRef, useState, useContext } from "react";
 import Testimonial from "../components/loginComponent/Testimonial";
@@ -21,10 +21,11 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import axios from "axios";
 import AppContext from "../components/AppContext";
 import { useHistory } from "react-router";
-
+import { Link } from "react-router-dom";
 const SignIn = () => {
   const { dispatch } = useContext(AppContext);
   const history = useHistory();
+  const [errorMessage, setErrorMessage] = useState("");
   const [userInput, setUserInput] = useState({ email: "", password: "" });
   const { isOpen, onToggle } = useDisclosure();
   const inputRef = useRef(null);
@@ -48,7 +49,7 @@ const SignIn = () => {
       dispatch({ type: "CURRENT_USER", payload: { userName } });
       history.push("/");
     } catch (err) {
-      console.log(err);
+      setErrorMessage(err.response.data.message);
     }
   };
 
@@ -65,7 +66,7 @@ const SignIn = () => {
   };
 
   return (
-    <Box minH="100vh" bg={{ md: mode("gray.100", "inherit") }}>
+    <Center w="100vw" h="100vh">
       <Box
         maxW="6xl"
         mx="auto"
@@ -89,22 +90,18 @@ const SignIn = () => {
           </Flex>
           <Box w="full" maxW="xl" mx="auto">
             <Box
-              bg={{ md: mode("white", "gray.700") }}
+              bg="white"
               rounded={{ md: "2xl" }}
               p={{ base: "4", md: "12" }}
               borderWidth={{ md: "1px" }}
-              borderColor={mode("gray.200", "transparent")}
-              shadow={{ md: "lg" }}
+              borderColor="gray.200"
+              shadow={{ md: "2xl" }}
             >
               <Box mb="8" textAlign={{ base: "center", md: "start" }}>
                 <Heading size="lg" mb="2" fontWeight="extrabold">
                   Chào mừng bạn trở lại với VieTravel
                 </Heading>
-                <Text
-                  fontSize="lg"
-                  color={mode("gray.600", "gray.400")}
-                  fontWeight="medium"
-                >
+                <Text fontSize="lg" color="gray.600" fontWeight="medium">
                   Đặt chỗ ngay thôi nào !
                 </Text>
               </Box>
@@ -125,7 +122,7 @@ const SignIn = () => {
                       <FormLabel>Password</FormLabel>
                       <Box
                         as="a"
-                        color={mode("blue.600", "blue.200")}
+                        color="blue.600"
                         fontWeight="semibold"
                         fontSize="sm"
                       >
@@ -161,13 +158,38 @@ const SignIn = () => {
                   >
                     Log In
                   </Button>
+                  {errorMessage ? (
+                    <Text
+                      fontSize="lg"
+                      color="red"
+                      fontWeight="medium"
+                      textAlign="center"
+                    >
+                      {errorMessage}
+                    </Text>
+                  ) : (
+                    ""
+                  )}
                 </Stack>
               </form>
             </Box>
+            <Text mt="8" align="center" fontWeight="medium">
+              Đăng ký ngay{" "}
+              <Link to="/signup">
+                <Box
+                  as="a"
+                  href="#"
+                  color="blue.600"
+                  display={{ base: "block", md: "inline-block" }}
+                >
+                  Sign up to GoGo
+                </Box>
+              </Link>
+            </Text>
           </Box>
         </SimpleGrid>
       </Box>
-    </Box>
+    </Center>
   );
 };
 
