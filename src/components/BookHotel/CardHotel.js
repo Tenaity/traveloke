@@ -2,32 +2,40 @@ import React from "react";
 import { Box, Flex, Image, Badge } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
-const CardHotel = () => {
+const CardHotel = ({ hotel }) => {
   const property = {
-    imageUrl: "https://bit.ly/2Z4KKcF",
+    imageUrl: hotel.imageCover,
     imageAlt: "Rear view of modern home with pool",
-    beds: 3,
-    baths: 2,
-    title: "Mường Thanh",
+    rooms: hotel.totalRooms,
+    available: hotel.availableRooms,
+    title: hotel.name,
     formattedPrice: "$1,900.00",
-    reviewCount: 34,
-    rating: 4,
+    reviewCount: hotel.feedbacks?.length || 0,
+    rating: hotel.vote,
   };
 
   return (
-    <Link to="/hoteldetail">
+    <Link to={`/hotel/${hotel.id}`}>
       <Flex>
-        <Box maxW="xs" rounded="lg" shadow="lg" cursor="pointer">
+        <Box
+          w="md"
+          rounded="lg"
+          shadow="lg"
+          cursor="pointer"
+          _hover={{ shadow: "xl" }}
+        >
           <Image
             src={property.imageUrl}
             alt={property.imageAlt}
             roundedTop="lg"
+            objectFit="cover"
+            h="220px"
           />
 
-          <Box p="6">
+          <Box p="5">
             <Box d="flex" alignItems="baseline">
-              <Badge rounded="full" px="2" colorScheme="teal">
-                New
+              <Badge rounded="full" colorScheme="teal">
+                {hotel.city}
               </Badge>
               <Box
                 color="gray.500"
@@ -37,7 +45,7 @@ const CardHotel = () => {
                 textTransform="uppercase"
                 ml="2"
               >
-                {property.beds} beds &bull; {property.baths} baths
+                {property.rooms} rooms &bull; {property.available} available
               </Box>
             </Box>
 
@@ -51,12 +59,12 @@ const CardHotel = () => {
               {property.title}
             </Box>
 
-            <Box>
+            {/* <Box>
               {property.formattedPrice}
               <Box as="span" color="gray.600" fontSize="sm">
                 / wk
               </Box>
-            </Box>
+            </Box> */}
 
             <Box d="flex" mt="2" alignItems="center">
               {Array(5)

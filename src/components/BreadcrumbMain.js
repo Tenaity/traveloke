@@ -4,28 +4,26 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
 } from "@chakra-ui/breadcrumb";
+import { Link } from "react-router-dom";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-const BreadcrumbMain = () => {
+const BreadcrumbMain = ({ urls = [] }) => {
   return (
-    <>
-      <Breadcrumb
-        spacing="8px"
-        separator={<ChevronRightIcon color="gray.500" />}
-        pt={5}
-      >
-        <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
-        </BreadcrumbItem>
-
-        <BreadcrumbItem>
-          <BreadcrumbLink href="/">About</BreadcrumbLink>
-        </BreadcrumbItem>
-
-        <BreadcrumbItem isCurrentPage>
-          <BreadcrumbLink href="/">Contact</BreadcrumbLink>
-        </BreadcrumbItem>
-      </Breadcrumb>
-    </>
+    <Breadcrumb
+      spacing="8px"
+      separator={<ChevronRightIcon color="gray.500" />}
+      pt={5}
+    >
+      {urls.map((item, index) => {
+        console.log(3);
+        return (
+          <BreadcrumbItem key={index}>
+            <BreadcrumbLink>
+              <Link to="/">{item}</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        );
+      })}
+    </Breadcrumb>
   );
 };
 

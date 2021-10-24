@@ -7,8 +7,9 @@ const PaginationMain = () => {
   return (
     <Flex w="full" p={50} alignItems="center" justifyContent="center">
       <Pagination
-        defaultCurrent={2}
+        defaultCurrent={1}
         total={50}
+        colorScheme={"blue"}
         paginationProps={{ display: "flex" }}
         current={current}
         onChange={(page) => setCurrent(page)}

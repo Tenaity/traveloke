@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
@@ -12,7 +12,24 @@ import { useCallback, useEffect, useReducer } from "react";
 import AppContext from "./components/AppContext";
 import axios from "axios";
 const theme = extendTheme();
-
+function Hotel() {
+  let { path, url } = useRouteMatch();
+  console.log(path);
+  return (
+    <Fragment>
+      {/*  */}
+      <Switch>
+        <Route exact path={path}>
+          <BookHotel />
+        </Route>
+        <Route path={`${path}/:id`}>
+          <HotelDetail />
+        </Route>
+      </Switch>
+      {/*  */}
+    </Fragment>
+  );
+}
 const App = () => {
   const initialState = { user: null, posts: [] };
   const [state, dispatch] = useReducer(AppReducer, initialState);
@@ -43,8 +60,8 @@ const App = () => {
     <ChakraProvider theme={theme}>
       <AppContext.Provider value={{ state, dispatch }}>
         <Switch>
-          <Route path="/booking">
-            <BookHotel />
+          <Route path="/hotel">
+            <Hotel />
           </Route>
           <Route path="/signin">
             <SignIn />
@@ -52,9 +69,7 @@ const App = () => {
           <Route path="/signup">
             <SignUp />
           </Route>
-          <Route path="/hoteldetail">
-            <HotelDetail />
-          </Route>
+
           <Route exact path="/">
             <Home />
           </Route>
