@@ -11,6 +11,7 @@ import AppReducer from "./reducers/AppReducer";
 import { useCallback, useEffect, useReducer } from "react";
 import AppContext from "./components/AppContext";
 import axios from "axios";
+import Settings from "./pages/Settings";
 const theme = extendTheme();
 function Hotel() {
   let { path, url } = useRouteMatch();
@@ -68,6 +69,9 @@ const App = () => {
           </Route>
           <Route path="/signup">
             <SignUp />
+          </Route>
+          <Route path="/settings">
+            <Settings />
           </Route>
 
           <Route exact path="/">

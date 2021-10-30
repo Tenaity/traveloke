@@ -16,6 +16,7 @@ import {
   Box,
   useDisclosure,
 } from "@chakra-ui/react";
+import SearchItem from "./SearchItem";
 import { Search2Icon, SearchIcon } from "@chakra-ui/icons";
 export default function SearchModal({
   //   isOpen,
@@ -54,18 +55,12 @@ export default function SearchModal({
               <Input colorScheme="brand" type="search" onChange={changeInput} />
             </InputGroup>
           </ModalHeader>
-          {/* <ModalCloseButton /> */}
-          {called && (
-            <ModalBody>
-              {/* <ProductListSearch allProducts={allProducts} />
-              <PostListSearch allPosts={allPosts} />
-              {!loading && !allProducts?.length && (
-                <Text color="gray.400">
-                  <Translate content="Không có kết quả" />
-                </Text>
-              )} */}
-            </ModalBody>
-          )}
+          <ModalBody>
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+          </ModalBody>
         </ModalContent>
       </Modal>
     </Box>

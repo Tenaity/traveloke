@@ -117,7 +117,7 @@ const Navbar = () => {
                       scale: "1.2",
                     }}
                   >
-                    <Link to="/">{user.userName}</Link>
+                    <Link to="/settings">{user.userName}</Link>
                   </Button>
                   <Button
                     color="white"
