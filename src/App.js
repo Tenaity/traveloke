@@ -12,6 +12,11 @@ import { useCallback, useEffect, useReducer } from "react";
 import AppContext from "./components/AppContext";
 import axios from "axios";
 import Settings from "./pages/Settings";
+import BookRestaurant from "./pages/BookRestaurant";
+import RestaurantDetail from "./pages/RestaurantDetail";
+import CarDetail from "./pages/CarDetail";
+import BookCar from "./pages/BookCar";
+
 const theme = extendTheme();
 function Hotel() {
   let { path, url } = useRouteMatch();
@@ -25,6 +30,42 @@ function Hotel() {
         </Route>
         <Route path={`${path}/:id`}>
           <HotelDetail />
+        </Route>
+      </Switch>
+      {/*  */}
+    </Fragment>
+  );
+}
+function Restaurant() {
+  let { path, url } = useRouteMatch();
+  console.log(path);
+  return (
+    <Fragment>
+      {/*  */}
+      <Switch>
+        <Route exact path={path}>
+          <BookRestaurant />
+        </Route>
+        <Route path={`${path}/:id`}>
+          <RestaurantDetail />
+        </Route>
+      </Switch>
+      {/*  */}
+    </Fragment>
+  );
+}
+function Car() {
+  let { path, url } = useRouteMatch();
+  console.log(path);
+  return (
+    <Fragment>
+      {/*  */}
+      <Switch>
+        <Route exact path={path}>
+          <BookCar />
+        </Route>
+        <Route path={`${path}/:id`}>
+          <CarDetail />
         </Route>
       </Switch>
       {/*  */}
@@ -61,6 +102,12 @@ const App = () => {
     <ChakraProvider theme={theme}>
       <AppContext.Provider value={{ state, dispatch }}>
         <Switch>
+          <Route path="/car">
+            <Car />
+          </Route>
+          <Route path="/restaurant">
+            <Restaurant />
+          </Route>
           <Route path="/hotel">
             <Hotel />
           </Route>
