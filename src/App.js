@@ -16,6 +16,7 @@ import BookRestaurant from "./pages/BookRestaurant";
 import RestaurantDetail from "./pages/RestaurantDetail";
 import CarDetail from "./pages/CarDetail";
 import BookCar from "./pages/BookCar";
+import Invoice from "./pages/Invoice";
 
 const theme = extendTheme();
 function Hotel() {
@@ -119,6 +120,9 @@ const App = () => {
           </Route>
           <Route path="/settings">
             <Settings />
+          </Route>
+          <Route path="/invoice">
+            <Invoice />
           </Route>
 
           <Route exact path="/">

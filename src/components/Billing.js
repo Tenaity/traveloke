@@ -1,4 +1,6 @@
 import React from "react";
+import { Flex, Card, Text, CardHeader, CardBody } from "@chakra-ui/react";
+import BillingRow from "./BillingRow";
 import {
   Drawer,
   DrawerBody,
@@ -10,12 +12,8 @@ import {
   Button,
   Input,
   useDisclosure,
-  Flex,
 } from "@chakra-ui/react";
-import ItemBill from "./ItemBill";
-import BillingRow from "./BillingRow";
-import { Link } from "react-router-dom";
-const Bill = () => {
+function Billing() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const billingData = [
@@ -63,24 +61,33 @@ const Bill = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Bill Information</DrawerHeader>
+          <DrawerHeader>List Bills</DrawerHeader>
 
           <DrawerBody>
-            <Flex direction="column" w="100%">
-              {billingData.map((row, index) => {
-                return (
-                  <Link to="/invoice">
-                    <BillingRow
-                      name={row.name}
-                      company={row.company}
-                      email={row.email}
-                      number={row.number}
-                      key={index}
-                    />
-                  </Link>
-                );
-              })}
-            </Flex>
+            <Card my={{ lg: "24px" }} me={{ lg: "24px" }}>
+              <Flex direction="column">
+                <CardHeader py="12px">
+                  <Text fontSize="lg" fontWeight="bold">
+                    Billing Information
+                  </Text>
+                </CardHeader>
+                <CardBody>
+                  <Flex direction="column" w="100%">
+                    {billingData.map((row, index) => {
+                      return (
+                        <BillingRow
+                          name={row.name}
+                          company={row.company}
+                          email={row.email}
+                          number={row.number}
+                          key={index}
+                        />
+                      );
+                    })}
+                  </Flex>
+                </CardBody>
+              </Flex>
+            </Card>
           </DrawerBody>
 
           <DrawerFooter></DrawerFooter>
@@ -88,6 +95,6 @@ const Bill = () => {
       </Drawer>
     </>
   );
-};
+}
 
-export default Bill;
+export default Billing;

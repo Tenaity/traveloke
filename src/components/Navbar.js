@@ -104,10 +104,10 @@ const Navbar = () => {
               >
                 <Link to="/car">Car</Link>
               </Button>
-
+              <Bill />
               {user ? (
                 <>
-                  <Bill />
+                  {/* <Bill /> */}
                   <Button
                     variant="ghost"
                     color="orange.500"

@@ -20,7 +20,19 @@ import {
   IoBusinessOutline,
   IoCalendarOutline,
   IoReceiptOutline,
+  IoTvOutline,
+  IoWifiOutline,
+  IoSunnyOutline, // may say
 } from "react-icons/io5";
+import { BiArea } from "react-icons/bi";
+import { FaToiletPaper, FaTemperatureHigh } from "react-icons/fa";
+import {
+  GiWashingMachine,
+  GiSnowflake1,
+  GiTooth,
+  GiTowel,
+  GiMedicinePills,
+} from "react-icons/gi";
 import Footer from "../components/Footer";
 import DateTimePicker from "../components/DateTimePicker/DateTimePicker";
 import useSWR from "swr";
@@ -63,7 +75,7 @@ const HotelDetail = () => {
                   <Text ml="5px">Cầu Giấy, Hà Nội, Việt Nam</Text>
                 </Flex>
                 <Flex alignItems="center" mb="4">
-                  <IoBusinessOutline />
+                  <BiArea />
                   <Text ml="5px">Căn hộ dịch vụ &bull; 55m</Text>
                 </Flex>
                 <Text mb="4">
@@ -72,48 +84,40 @@ const HotelDetail = () => {
                 </Text>
                 <SimpleGrid columns={{ base: 3 }}>
                   <Flex alignItems="center" mb="4">
-                    <IoBusinessOutline />
+                    <IoWifiOutline />
                     <Text ml="5px">Wifi</Text>
                   </Flex>
                   <Flex alignItems="center" mb="4">
-                    <IoBusinessOutline />
+                    <GiWashingMachine />
                     <Text ml="5px">Máy giặt</Text>
                   </Flex>
                   <Flex alignItems="center" mb="4">
-                    <IoBusinessOutline />
+                    <GiTowel />
                     <Text ml="5px">Khăn tắm</Text>
                   </Flex>
                   <Flex alignItems="center" mb="4">
-                    <IoBusinessOutline />
+                    <FaTemperatureHigh />
                     <Text ml="5px">Máy sấy</Text>
                   </Flex>
                   <Flex alignItems="center" mb="4">
-                    <IoBusinessOutline />
+                    <IoTvOutline />
                     <Text ml="5px">TV</Text>
                   </Flex>
                   <Flex alignItems="center" mb="4">
-                    <IoBusinessOutline />
+                    <GiMedicinePills />
                     <Text ml="5px">Dầu gội, dầu xả</Text>
                   </Flex>
                   <Flex alignItems="center" mb="4">
-                    <IoBusinessOutline />
+                    <GiTooth />
                     <Text ml="5px">Kem đánh răng</Text>
                   </Flex>
                   <Flex alignItems="center" mb="4">
-                    <IoBusinessOutline />
-                    <Text ml="5px">Internet</Text>
-                  </Flex>
-                  <Flex alignItems="center" mb="4">
-                    <IoBusinessOutline />
+                    <GiSnowflake1 />
                     <Text ml="5px">Điều hòa</Text>
                   </Flex>
                   <Flex alignItems="center" mb="4">
-                    <IoBusinessOutline />
+                    <FaToiletPaper />
                     <Text ml="5px">Giấy vệ sinh</Text>
-                  </Flex>
-                  <Flex alignItems="center" mb="4">
-                    <IoBusinessOutline />
-                    <Text ml="5px">Xà phòng tắm</Text>
                   </Flex>
                 </SimpleGrid>
                 <Stack>

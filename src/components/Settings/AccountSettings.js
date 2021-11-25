@@ -22,7 +22,7 @@ import { LanguageSelect } from "./LanguageSelect";
 
 const AccountSettings = () => {
   return (
-    <Box px={{ base: "4", md: "10" }} py="16" maxWidth="3xl" mx="auto">
+    <Box px="16" py="16" maxWidth="3xl" mx="auto" mt="5" mb="10" shadow="lg">
       <form
         id="settings-form"
         onSubmit={(e) => {
