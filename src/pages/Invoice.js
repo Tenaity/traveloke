@@ -18,6 +18,7 @@ import {
 import React, { useRef } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import { PayPalButton } from "react-paypal-button-v2";
 
 class ComponentToPrint extends React.Component {
   render() {
@@ -221,16 +222,21 @@ class ComponentToPrint extends React.Component {
                       </Text>
                     </Td>
                   </Tr>
-                  <Tr>
-                    <Td></Td>
-                    <Td></Td>
-                    <Td></Td>
-                    <Td>
-                      <Button>Thanh toán</Button>
-                    </Td>
-                  </Tr>
                 </Tbody>
               </Table>
+              <PayPalButton
+                options={{
+                  clientId:
+                    "AditNkLJT4JHknvoPaV4m12tWAGIk0dZ-gsAHX5gsXi4KfqlFeFS57W9E20nQaPKOy-W_bQJWoyBpQEr",
+                  currency: "USD",
+                }}
+                amount="10"
+                onSuccess={(details, data) => {
+                  alert(
+                    "Transaction completed by " + details.payer.name.given_name
+                  );
+                }}
+              />
             </Box>
           </Flex>
         </Box>
