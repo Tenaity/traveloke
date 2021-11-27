@@ -13,7 +13,7 @@ function BillingRow(props) {
   const textColor = useColorModeValue("gray.700", "white");
   const bgColor = useColorModeValue("#F8F9FA", "gray.800");
   const nameColor = useColorModeValue("gray.500", "white");
-  const { name, company, email, number } = props;
+  const { name, email, phone, service, price } = props;
 
   return (
     <Box p="24px" bg={bgColor} mb="22px" borderRadius="12px">
@@ -23,9 +23,9 @@ function BillingRow(props) {
             {name}
           </Text>
           <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            Company Name:{" "}
+            Phone:{" "}
             <Text as="span" color="gray.500">
-              {company}
+              {phone}
             </Text>
           </Text>
           <Text color="gray.400" fontSize="sm" fontWeight="semibold">
@@ -35,9 +35,15 @@ function BillingRow(props) {
             </Text>
           </Text>
           <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            VAT Number:{" "}
+            Service:{" "}
             <Text as="span" color="gray.500">
-              {number}
+              {service}
+            </Text>
+          </Text>
+          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
+            Price:{" "}
+            <Text as="span" color="gray.500">
+              {price}
             </Text>
           </Text>
         </Flex>

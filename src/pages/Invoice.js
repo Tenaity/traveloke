@@ -55,7 +55,7 @@ class ComponentToPrint extends React.Component {
                   St. Independence Embankment, 050105 Bucharest, Romania
                 </Text>
                 <Text color="gray.400" fontWeight="normal" fontSize="md">
-                  tel: +4 (074) 1090873
+                  tel: +84 (084) 6001503
                 </Text>
               </Flex>
               <Flex
@@ -69,10 +69,10 @@ class ComponentToPrint extends React.Component {
                   fontSize="lg"
                   mb="12px"
                 >
-                  Billed to: John Doe
+                  Billed to: Vo Muoi
                 </Text>
                 <Text color="gray.400" fontWeight="normal" fontSize="md">
-                  4006 Locust View Drive San Francisco CA California
+                  906 Ton Duc Thang, Lien Chieu, Da Nang
                 </Text>
               </Flex>
             </Flex>
@@ -105,7 +105,7 @@ class ComponentToPrint extends React.Component {
                     Invoice date:{" "}
                   </Text>
                   <Text color="gray.500" fontWeight="bold" fontSize="lg">
-                    06/03/2021
+                    29/11/2021
                   </Text>
                 </Stack>
                 <Stack direction="row" justify={{ md: "end" }}>
@@ -113,7 +113,7 @@ class ComponentToPrint extends React.Component {
                     Due date:{" "}
                   </Text>
                   <Text color="gray.500" fontWeight="bold" fontSize="lg">
-                    29/07/2021
+                    29/11/2021
                   </Text>
                 </Stack>
               </Flex>
@@ -145,7 +145,7 @@ class ComponentToPrint extends React.Component {
                   <Tr>
                     <Td ps="0px" minW={{ sm: "300px" }}>
                       <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        Premium Support
+                        Hotel
                       </Text>
                     </Td>
                     <Td>
@@ -155,56 +155,56 @@ class ComponentToPrint extends React.Component {
                     </Td>
                     <Td minW="125px" boxSizing="border-box">
                       <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        $ 9.00
+                        $ 10.00
                       </Text>
                     </Td>
                     <Td>
                       <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        $ 9.00
+                        $ 10.00
                       </Text>
                     </Td>
                   </Tr>
                   <Tr>
                     <Td ps="0px" minW={{ sm: "300px" }}>
                       <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        Chakra UI - Dashboard PRO
+                        Car
                       </Text>
                     </Td>
                     <Td>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        3
-                      </Text>
-                    </Td>
-                    <Td>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        $ 99.00
-                      </Text>
-                    </Td>
-                    <Td>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        $ 297.00
-                      </Text>
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td ps="0px" minW={{ sm: "300px" }} border="none">
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        Parts for Service
-                      </Text>
-                    </Td>
-                    <Td border="none">
                       <Text color="gray.500" fontWeight="normal" fontSize="md">
                         1
                       </Text>
                     </Td>
-                    <Td border="none">
+                    <Td minW="125px" boxSizing="border-box">
                       <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        $ 89.00
+                        $ 10.00
                       </Text>
                     </Td>
-                    <Td border="none">
+                    <Td>
                       <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        $ 89.00
+                        $ 10.00
+                      </Text>
+                    </Td>
+                  </Tr>
+                  <Tr>
+                    <Td ps="0px" minW={{ sm: "300px" }}>
+                      <Text color="gray.500" fontWeight="normal" fontSize="md">
+                        Restaurant
+                      </Text>
+                    </Td>
+                    <Td>
+                      <Text color="gray.500" fontWeight="normal" fontSize="md">
+                        1
+                      </Text>
+                    </Td>
+                    <Td minW="125px" boxSizing="border-box">
+                      <Text color="gray.500" fontWeight="normal" fontSize="md">
+                        $ 10.00
+                      </Text>
+                    </Td>
+                    <Td>
+                      <Text color="gray.500" fontWeight="normal" fontSize="md">
+                        $ 10.00
                       </Text>
                     </Td>
                   </Tr>
@@ -218,7 +218,7 @@ class ComponentToPrint extends React.Component {
                     </Td>
                     <Td>
                       <Text color={textColor} fontWeight="bold" fontSize="xl">
-                        $ 9.00
+                        $ 30.00
                       </Text>
                     </Td>
                   </Tr>
@@ -230,7 +230,7 @@ class ComponentToPrint extends React.Component {
                     "AditNkLJT4JHknvoPaV4m12tWAGIk0dZ-gsAHX5gsXi4KfqlFeFS57W9E20nQaPKOy-W_bQJWoyBpQEr",
                   currency: "USD",
                 }}
-                amount="10"
+                amount="30"
                 onSuccess={(details, data) => {
                   alert(
                     "Transaction completed by " + details.payer.name.given_name

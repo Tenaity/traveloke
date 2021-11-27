@@ -8,11 +8,9 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Button,
-  Input,
   useDisclosure,
   Flex,
 } from "@chakra-ui/react";
-import ItemBill from "./ItemBill";
 import BillingRow from "./BillingRow";
 import { Link } from "react-router-dom";
 const Bill = () => {
@@ -21,21 +19,24 @@ const Bill = () => {
   const billingData = [
     {
       name: "Oliver Liam",
-      company: "Viking Burrito",
       email: "oliver@burrito.com",
-      number: "FRB1235476",
+      phone: "0846001503",
+      service: "Car",
+      price: "10$",
     },
     {
       name: "Lucas Harper",
-      company: "Stone Tech Zone",
       email: "lucas@stone-tech.com",
-      number: "FRB1235476",
+      phone: "0846001503",
+      service: "Hotel",
+      price: "10$",
     },
     {
       name: "Ethan James",
-      company: "Fiber Notion",
       email: "ethan@fiber.com",
-      number: "FRB1235476",
+      phone: "0846001503",
+      service: "Restaurant",
+      price: "10$",
     },
   ];
   return (
@@ -72,10 +73,10 @@ const Bill = () => {
                   <Link to="/invoice">
                     <BillingRow
                       name={row.name}
-                      company={row.company}
                       email={row.email}
-                      number={row.number}
-                      key={index}
+                      phone={row.phone}
+                      service={row.service}
+                      price={row.price}
                     />
                   </Link>
                 );
