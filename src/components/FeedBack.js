@@ -27,7 +27,7 @@ const FeedBack = () => {
               .map((_, i) => (
                 <StarIcon
                   key={i}
-                  color={i < property.rating ? "yellow.300" : "gray.300"}
+                  color={i < property.rating ? "green.500" : "gray.300"}
                 />
               ))}
           </Box>

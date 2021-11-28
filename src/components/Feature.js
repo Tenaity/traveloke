@@ -33,13 +33,13 @@ const FeatureItem = (props) => {
   const { title, children, icon } = props;
   return (
     <Box>
-      <Box color={mode("blue.600", "blue.400")} fontSize="2.5rem">
+      <Box color={mode("green.600", "green.400")} fontSize="2.5rem">
         {icon}
       </Box>
       <Stack mt="4">
         <Text
           as="h3"
-          color={mode("blue.600", "blue.400")}
+          color={mode("green.600", "green.400")}
           fontSize="xl"
           fontWeight="bold"
         >
@@ -70,7 +70,7 @@ const Feature = () => {
                 fontWeight="extrabold"
               >
                 Tại sao nên đặt chỗ với
-                <Box as="span" px="3" color={mode("blue.600", "blue.400")}>
+                <Box as="span" px="3" color={mode("green.600", "green.400")}>
                   GoGo
                 </Box>
                 ?

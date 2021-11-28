@@ -9,7 +9,7 @@ const Discovery = () => {
         <Heading size="lg" textAlign="center" pb="5">
           Bạn muốn khám phá điều gì?
         </Heading>
-        <Tabs>
+        <Tabs colorScheme={"green"}>
           <TabList>
             <Tab _focus={{ boxShadow: "none" }}>Các khách sạn hàng đầu</Tab>
             <Tab _focus={{ boxShadow: "none" }}>Các nhà hàng hàng đầu</Tab>

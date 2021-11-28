@@ -43,7 +43,7 @@ function Billing() {
         scale="1"
         transform="auto"
         _hover={{
-          color: "blue.500",
+          color: "green.500",
           scale: "1.2",
         }}
         ref={btnRef}

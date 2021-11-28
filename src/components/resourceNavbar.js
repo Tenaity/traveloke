@@ -368,7 +368,7 @@ const Navbar = (props) => {
                 </Button>
                 <Button
                   color={useColorModeValue("white", "white")}
-                  bg={useColorModeValue("blue.400", "blue.800")}
+                  bg={useColorModeValue("green.400", "green.800")}
                   variant="solid"
                   size="sm"
                 >

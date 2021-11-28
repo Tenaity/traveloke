@@ -107,7 +107,7 @@ const Articles = () => {
         <Link
           fontSize="xl"
           fontWeight="bold"
-          color={mode("blue.600", "blue.400")}
+          color={mode("green.600", "green.400")}
         >
           <span>View all articles</span>
           <Box as={BsArrowRight} display="inline-block" ms="2" />

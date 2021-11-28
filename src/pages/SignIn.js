@@ -122,7 +122,7 @@ const SignIn = () => {
                       <FormLabel>Password</FormLabel>
                       <Box
                         as="a"
-                        color="blue.600"
+                        color="green.600"
                         fontWeight="semibold"
                         fontSize="sm"
                       >
@@ -152,7 +152,7 @@ const SignIn = () => {
                   </FormControl>
                   <Button
                     type="submit"
-                    colorScheme="blue"
+                    colorScheme="green"
                     size="lg"
                     fontSize="md"
                   >
@@ -179,7 +179,7 @@ const SignIn = () => {
                 <Box
                   as="a"
                   href="#"
-                  color="blue.600"
+                  color="green.600"
                   display={{ base: "block", md: "inline-block" }}
                 >
                   Sign up to GoGo

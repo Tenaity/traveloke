@@ -16,7 +16,7 @@ const ItemBill = () => {
         <Text mb="1">Ngày 22/10/2021 - 25/10/2021</Text>
         <Text mb="2">Giá: 1.000.000 VNĐ</Text>
         <Flex justifyContent="space-between">
-          <Button bg="blue.400">Chi tiết</Button>
+          <Button bg="green.400">Chi tiết</Button>
           <Button bg="red.500">Xóa</Button>
         </Flex>
       </Box>

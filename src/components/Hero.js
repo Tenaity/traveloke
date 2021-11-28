@@ -172,9 +172,9 @@ const Hero = () => {
                       <Button
                         w="300px"
                         color="white"
-                        bg={useColorModeValue("blue.500", "blue.700")}
+                        bg={useColorModeValue("green.500", "green.700")}
                         _hover={{
-                          bg: useColorModeValue("blue.300", "blue.500"),
+                          bg: useColorModeValue("green.300", "green.500"),
                         }}
                         _focus={{ boxShadow: "none" }}
                       >
@@ -262,9 +262,9 @@ const Hero = () => {
                     <Button
                       w="300px"
                       color="white"
-                      bg={useColorModeValue("blue.500", "blue.700")}
+                      bg={useColorModeValue("green.500", "green.700")}
                       _hover={{
-                        bg: useColorModeValue("blue.300", "blue.500"),
+                        bg: useColorModeValue("green.300", "green.500"),
                       }}
                       _focus={{ boxShadow: "none" }}
                     >

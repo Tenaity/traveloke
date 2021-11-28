@@ -154,9 +154,9 @@ const HotelDetail = () => {
                     <Button
                       w="350px"
                       color="white"
-                      bg="blue.500"
+                      bg="green.500"
                       _hover={{
-                        bg: "blue.300",
+                        bg: "green.300",
                       }}
                       _focus={{ boxShadow: "none" }}
                     >
@@ -170,7 +170,12 @@ const HotelDetail = () => {
           <Box my="10">
             <Heading>Đánh giá khách sạn</Heading>
             <Box my="10" alignItems="center">
-              <Tabs align="center" isManual variant="enclosed">
+              <Tabs
+                align="center"
+                isManual
+                variant="enclosed"
+                colorScheme={"green"}
+              >
                 <TabList>
                   <Tab>Tất cả</Tab>
                   <Tab>5 sao</Tab>
@@ -270,20 +275,13 @@ const HotelDetail = () => {
                     {property.title}
                   </Box>
 
-                  {/* <Box>
-              {property.formattedPrice}
-              <Box as="span" color="gray.600" fontSize="sm">
-                / wk
-              </Box>
-            </Box> */}
-
                   <Box d="flex" mt="2" alignItems="center">
                     {Array(5)
                       .fill("")
                       .map((_, i) => (
                         <StarIcon
                           key={i}
-                          color={i < property.rating ? "teal.500" : "gray.300"}
+                          color={i < property.rating ? "green.500" : "gray.300"}
                         />
                       ))}
                     <Box as="span" ml="2" color="gray.600" fontSize="sm">
@@ -335,20 +333,13 @@ const HotelDetail = () => {
                     {property.title}
                   </Box>
 
-                  {/* <Box>
-              {property.formattedPrice}
-              <Box as="span" color="gray.600" fontSize="sm">
-                / wk
-              </Box>
-            </Box> */}
-
                   <Box d="flex" mt="2" alignItems="center">
                     {Array(5)
                       .fill("")
                       .map((_, i) => (
                         <StarIcon
                           key={i}
-                          color={i < property.rating ? "teal.500" : "gray.300"}
+                          color={i < property.rating ? "green.500" : "gray.300"}
                         />
                       ))}
                     <Box as="span" ml="2" color="gray.600" fontSize="sm">
@@ -400,20 +391,13 @@ const HotelDetail = () => {
                     {property.title}
                   </Box>
 
-                  {/* <Box>
-              {property.formattedPrice}
-              <Box as="span" color="gray.600" fontSize="sm">
-                / wk
-              </Box>
-            </Box> */}
-
                   <Box d="flex" mt="2" alignItems="center">
                     {Array(5)
                       .fill("")
                       .map((_, i) => (
                         <StarIcon
                           key={i}
-                          color={i < property.rating ? "teal.500" : "gray.300"}
+                          color={i < property.rating ? "green.500" : "gray.300"}
                         />
                       ))}
                     <Box as="span" ml="2" color="gray.600" fontSize="sm">

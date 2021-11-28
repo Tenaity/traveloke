@@ -36,7 +36,7 @@ const FeatureLink = (props) => {
     >
       <Box fontWeight="semibold">{children}</Box>
       <RightArrow
-        color={mode("blue.500", "blue.400")}
+        color={mode("green.500", "green.400")}
         fontSize="sm"
         transition="transform 0.2s"
         pos="relative"
@@ -77,7 +77,7 @@ const FeatureEndow = () => {
             maxW={{ lg: "xl" }}
           >
             <Box maxW={{ base: "xl", lg: "unset" }}>
-              <Box as="b" color={mode("blue.500", "blue.300")}>
+              <Box as="b" color={mode("green.500", "green.300")}>
                 Có thể bạn chưa biết
               </Box>
               <Heading

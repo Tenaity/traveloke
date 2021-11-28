@@ -124,9 +124,9 @@ const RestaurantDetail = () => {
                     <Button
                       w="300px"
                       color="white"
-                      bg="blue.500"
+                      bg="green.500"
                       _hover={{
-                        bg: "blue.300",
+                        bg: "green.300",
                       }}
                       _focus={{ boxShadow: "none" }}
                     >

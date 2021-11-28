@@ -9,7 +9,7 @@ const PaginationMain = () => {
       <Pagination
         defaultCurrent={1}
         total={50}
-        colorScheme={"blue"}
+        colorScheme={"green"}
         paginationProps={{ display: "flex" }}
         current={current}
         onChange={(page) => setCurrent(page)}

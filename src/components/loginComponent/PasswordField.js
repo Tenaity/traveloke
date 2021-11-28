@@ -35,7 +35,7 @@ const PasswordField = () => {
         <FormLabel>Password</FormLabel>
         <Box
           as="a"
-          color={mode("blue.600", "blue.200")}
+          color={mode("green.600", "green.200")}
           fontWeight="semibold"
           fontSize="sm"
         >

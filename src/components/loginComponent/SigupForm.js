@@ -23,7 +23,7 @@ const SigupForm = () => {
           />
         </FormControl>
         <PasswordField />
-        <Button type="submit" colorScheme="blue" size="lg" fontSize="md">
+        <Button type="submit" colorScheme="green" size="lg" fontSize="md">
           Create my account
         </Button>
       </Stack>

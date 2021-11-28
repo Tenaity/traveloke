@@ -80,7 +80,7 @@ const AccountSettings = () => {
           </VStack>
           <Stack width="full" spacing="4" align="end">
             <HStack width="full">
-              <Button type="submit" colorScheme="blue">
+              <Button type="submit" colorScheme="green">
                 Save Changes
               </Button>
               <Button variant="outline">Cancel</Button>

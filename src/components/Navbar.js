@@ -7,6 +7,7 @@ import {
   Heading,
   Avatar,
   Text,
+  Image,
 } from "@chakra-ui/react";
 import {
   Menu,
@@ -21,6 +22,7 @@ import axios from "axios";
 import { useHistory } from "react-router";
 import Bill from "./Bill";
 import Search from "./Search";
+import gogo from "../assets/img/logo2.png";
 const Navbar = () => {
   const { state, dispatch } = useContext(AppContext);
   const history = useHistory();
@@ -44,7 +46,7 @@ const Navbar = () => {
     <Box
       bg="white"
       borderTop="5px solid"
-      borderTopColor="blue.500"
+      borderTopColor="green.500"
       pos="sticky"
       top="0"
       boxShadow="md"
@@ -60,7 +62,9 @@ const Navbar = () => {
           <Flex>
             <HStack spacing="5">
               <Heading as="a">
-                <Link to="/">GoGo</Link>
+                <Link to="/">
+                  <Image src={gogo} h="50" w="50" />
+                </Link>
               </Heading>
               <Box mt="2">
                 <Search />
@@ -74,7 +78,7 @@ const Navbar = () => {
                 variant="ghost"
                 transform="auto"
                 _hover={{
-                  color: "blue.500",
+                  color: "green.500",
                 }}
               >
                 <Link to="/hotel">Đặt phòng khách sạn</Link>
@@ -83,7 +87,7 @@ const Navbar = () => {
                 variant="ghost"
                 transform="auto"
                 _hover={{
-                  color: "blue.500",
+                  color: "green.500",
                 }}
               >
                 <Link to="/restaurant">Đặt bàn nhà hàng</Link>
@@ -92,23 +96,24 @@ const Navbar = () => {
                 variant="ghost"
                 transform="auto"
                 _hover={{
-                  color: "blue.500",
+                  color: "green.500",
                 }}
               >
                 <Link to="/car">Thuê xe tự lái</Link>
               </Button>
-              <Button
-                variant="ghost"
-                transform="auto"
-                _hover={{
-                  color: "blue.500",
-                }}
-              >
-                <Link to="/car">Thanh toán</Link>
-              </Button>
+
               {user ? (
                 <>
                   <Bill />
+                  <Button
+                    variant="ghost"
+                    transform="auto"
+                    _hover={{
+                      color: "green.500",
+                    }}
+                  >
+                    <Link to="/invoice">Thanh toán</Link>
+                  </Button>
                   <Menu>
                     <MenuButton>
                       <Button variant="ghost" color="orange.500">
@@ -136,7 +141,7 @@ const Navbar = () => {
                     variant="ghost"
                     transform="auto"
                     _hover={{
-                      color: "blue.500",
+                      color: "green.500",
                     }}
                   >
                     <Link to="/signin">Đăng nhập</Link>
@@ -144,8 +149,8 @@ const Navbar = () => {
                   <Button
                     color="white"
                     _focus={{ boxShadow: "none" }}
-                    bg={"blue.500"}
-                    _hover={{ bg: "blue.300" }}
+                    bg={"green.500"}
+                    _hover={{ bg: "green.300" }}
                   >
                     <Link to="/signup">Đăng ký</Link>
                   </Button>
