@@ -52,7 +52,7 @@ const Bill = () => {
         ref={btnRef}
         onClick={onOpen}
       >
-        Bill
+        Hoá đơn
       </Button>
       <Drawer
         isOpen={isOpen}

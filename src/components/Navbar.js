@@ -1,5 +1,20 @@
 import React, { useContext } from "react";
-import { HStack, Box, Flex, Button, Heading } from "@chakra-ui/react";
+import {
+  HStack,
+  Box,
+  Flex,
+  Button,
+  Heading,
+  Avatar,
+  Text,
+} from "@chakra-ui/react";
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import AppContext from "./AppContext";
 import axios from "axios";
@@ -54,74 +69,74 @@ const Navbar = () => {
           </Flex>
 
           <Box>
-            <HStack spacing="5">
+            <HStack spacing="2">
               <Button
                 variant="ghost"
-                scale="1"
                 transform="auto"
                 _hover={{
                   color: "blue.500",
-                  scale: "1.2",
                 }}
               >
                 <Link to="/hotel">Đặt phòng khách sạn</Link>
               </Button>
               <Button
                 variant="ghost"
-                scale="1"
                 transform="auto"
                 _hover={{
                   color: "blue.500",
-                  scale: "1.2",
                 }}
               >
                 <Link to="/restaurant">Đặt bàn nhà hàng</Link>
               </Button>
               <Button
                 variant="ghost"
-                scale="1"
                 transform="auto"
                 _hover={{
                   color: "blue.500",
-                  scale: "1.2",
                 }}
               >
                 <Link to="/car">Thuê xe tự lái</Link>
               </Button>
-              {/* <Bill /> */}
+              <Button
+                variant="ghost"
+                transform="auto"
+                _hover={{
+                  color: "blue.500",
+                }}
+              >
+                <Link to="/car">Thanh toán</Link>
+              </Button>
               {user ? (
                 <>
                   <Bill />
-                  <Button
-                    variant="ghost"
-                    color="orange.500"
-                    scale="1"
-                    transform="auto"
-                    _hover={{
-                      scale: "1.2",
-                    }}
-                  >
-                    <Link to="/settings">{user.userName}</Link>
-                  </Button>
-                  <Button
-                    color="white"
-                    _focus={{ boxShadow: "none" }}
-                    bg={"blue.500"}
-                    _hover={{ bg: "blue.300" }}
-                    onClick={signOut}
-                  >
-                    Đăng xuất
-                  </Button>
+                  <Menu>
+                    <MenuButton>
+                      <Button variant="ghost" color="orange.500">
+                        <Avatar src="" w="50px" h="50px" me="15px" />
+                        <Text>{user.userName}</Text>
+                      </Button>
+                    </MenuButton>
+                    <MenuList>
+                      <MenuItem>
+                        <Link to="/settings">Tài khoản</Link>
+                      </MenuItem>
+                      <MenuDivider />
+                      <MenuItem>
+                        {" "}
+                        <Text _focus={{ boxShadow: "none" }} onClick={signOut}>
+                          Đăng xuất
+                        </Text>
+                      </MenuItem>
+                    </MenuList>
+                  </Menu>
                 </>
               ) : (
                 <>
                   <Button
                     variant="ghost"
-                    scale="1"
                     transform="auto"
                     _hover={{
                       color: "blue.500",
-                      scale: "1.2",
                     }}
                   >
                     <Link to="/signin">Đăng nhập</Link>
