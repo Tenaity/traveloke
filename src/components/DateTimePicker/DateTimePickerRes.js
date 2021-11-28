@@ -4,7 +4,7 @@ import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./date-time-picker.css";
 
-const DateTimePicker = ({
+const DateTimePickerRes = ({
   selectedDate,
   onChange,
   isClearable = false,
@@ -16,10 +16,13 @@ const DateTimePicker = ({
     <ReactDatePicker
       selected={startDate}
       onChange={(date) => setStartDate(date)}
-      isClearable
-      placeholderText="I have been cleared!"
+      locale="pt-BR"
+      showTimeSelect
+      timeFormat="p"
+      timeIntervals={15}
+      dateFormat="Pp"
     />
   );
 };
 
-export default DateTimePicker;
+export default DateTimePickerRes;

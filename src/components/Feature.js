@@ -18,7 +18,9 @@ import {
 const FeatureImage = () => (
   <Box flex="1">
     <Img
+      ml="10"
       objectFit="cover"
+      borderRadius="10"
       h="100%"
       w="100%"
       src="https://images.unsplash.com/photo-1573878737226-4f9572c22b69?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
@@ -54,16 +56,13 @@ const FeatureItem = (props) => {
 const Feature = () => {
   return (
     <Box as="section" py="24" w="100vw">
-      <Box
-        maxW={{ base: "xl", md: "7xl" }}
-        mx="auto"
-        px={{ base: "6", md: "8" }}
-      >
+      <Box maxW={{ base: "xl", md: "7xl" }} mx="auto" overflow="hidden">
         <Flex justify="space-between" direction={{ base: "column", lg: "row" }}>
           <Box maxW={{ lg: "lg" }}>
             <Box>
               <Heading
                 pb="10"
+                mr="10"
                 lineHeight="shorter"
                 size="2xl"
                 letterSpacing="tight"
@@ -72,14 +71,14 @@ const Feature = () => {
               >
                 Tại sao nên đặt chỗ với
                 <Box as="span" px="3" color={mode("blue.600", "blue.400")}>
-                  VieTravel
+                  GoGo
                 </Box>
                 ?
               </Heading>
             </Box>
             <SimpleGrid
               flex="1"
-              columns={{ base: 1, md: 2 }}
+              columns="2"
               spacing={{ base: "3rem", md: "2rem" }}
             >
               <FeatureItem
@@ -114,7 +113,7 @@ const Feature = () => {
             </SimpleGrid>
           </Box>
           <FeatureImage
-            maxW={{ lg: "560px" }}
+            maxW={{ lg: "450px" }}
             display={{ base: "none", lg: "block" }}
           />
         </Flex>

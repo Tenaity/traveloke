@@ -1,18 +1,13 @@
-import { Fragment } from "react";
 import {
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
-  ModalCloseButton,
-  Button,
   Input,
   InputGroup,
   InputLeftElement,
   Spinner,
-  Text,
   Box,
   useDisclosure,
 } from "@chakra-ui/react";

@@ -105,29 +105,9 @@ const SignUp = () => {
               >
                 <Box mb="8" textAlign={{ base: "center", md: "start" }}>
                   <Heading size="lg" mb="2" fontWeight="extrabold">
-                    Welcome to VieTravel
+                    Welcome to GoGo
                   </Heading>
                 </Box>
-                {/* <Stack spacing="4">
-                  <Button
-                    variant="outline"
-                    leftIcon={<Box as={FaGoogle} color="red.500" />}
-                  >
-                    Sign up with Google
-                  </Button>
-                  <Button
-                    variant="outline"
-                    leftIcon={
-                      <Box
-                        as={FaFacebook}
-                        color={mode("facebook.500", "facebook.300")}
-                      />
-                    }
-                  >
-                    Sign up with Facebook
-                  </Button>
-                </Stack>
-                <DividerWithText>or</DividerWithText> */}
                 <form onSubmit={onSubmitHandle}>
                   <Stack spacing="4">
                     <FormControl>

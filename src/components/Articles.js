@@ -74,16 +74,9 @@ const Blog = (props) => {
 const Articles = () => {
   return (
     <Box as="section" w="100vw">
-      <Box
-        maxW={{ base: "xl", md: "7xl" }}
-        mx="auto"
-        px={{ base: "6", md: "8" }}
-        py={{ base: "10", sm: "24" }}
-        borderBottom="1px solid"
-        borderColor={mode("gray.300", "gray.700")}
-      >
+      <Box maxW={{ base: "xl", md: "7xl" }} mx="auto" mt="24">
         <Heading size="xl" mb="8" fontWeight="extrabold">
-          Xem những bài blog mới nhất trên VieTravel
+          Xem những bài blog mới nhất trên GoGo
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing="12" mb="10">
           <Blog

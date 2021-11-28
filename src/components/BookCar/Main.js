@@ -14,9 +14,9 @@ const Main = () => {
   );
   return (
     <>
-      <Box d="flex" flexWrap="wrap" maxW="7xl" mx="auto" mt="5">
+      <Box d="flex" flexWrap="wrap" maxW="6xl" mx="auto" mt="5">
         <BreadcrumbMain urls={["Home", "Car"]} />
-        <Box w="7xl">
+        <Box w="6xl">
           <Box my="7">
             <Heading size="lg">Thuê xe tại Hà Nội</Heading>
           </Box>

@@ -93,14 +93,7 @@ export const Wakanda = (props) => (
 const Partner = () => {
   return (
     <Box as="section" py="16" w="100vw">
-      <Box
-        maxW={{ base: "xl", md: "7xl" }}
-        mx="auto"
-        px={{ base: "6", md: "8" }}
-        py="10"
-        borderBottom="1px solid"
-        borderColor={useColorModeValue("gray.300", "gray.700")}
-      >
+      <Box maxW={{ base: "xl", md: "7xl" }} mx="auto">
         <Heading align="center" fontWeight="extrabold" maxW="md" mx="auto">
           Đối tác trên toàn thế giới
         </Heading>

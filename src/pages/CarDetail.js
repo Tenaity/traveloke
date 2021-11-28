@@ -9,7 +9,6 @@ import {
   InputGroup,
   InputLeftElement,
   Button,
-  Wrap,
 } from "@chakra-ui/react";
 import { Image, Badge } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";

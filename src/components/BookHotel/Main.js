@@ -13,40 +13,49 @@ const Main = () => {
   );
   return (
     <>
-      <Box d="flex" flexWrap="wrap" maxW="7xl" mx="auto" mt="5">
-        <BreadcrumbMain urls={["Home", "Hotel"]} />
-        <Box w="7xl">
+      <Box d="flex" flexWrap="wrap" maxW="6xl" mx="auto" mt="5">
+        <BreadcrumbMain urls={["Trang chủ", "Phòng khách sạn"]} />
+        <Box w="6xl">
           <Box my="7">
             <Heading size="lg">2033 homestay tại Hà Nội</Heading>
           </Box>
           <Flex my="10" justifyContent="space-between" alignItems="center">
             <Flex alignItems="center">
-              <Box mr="10">Filter by</Box>
               <HStack spacing="5">
-                <Select placeholder="Bed">
-                  <option value="option1">1</option>
-                  <option value="option2">2</option>
-                  <option value="option3">3</option>
-                </Select>
-                <Select placeholder="Price">
-                  <option value="option1">0$-25$</option>
-                  <option value="option2">25$-50$</option>
-                  <option value="option3">50$+</option>
-                </Select>
-                <Select placeholder="Star">
-                  <option value="option1">1</option>
-                  <option value="option2">2</option>
-                  <option value="option3">3</option>
-                  <option value="option3">4</option>
-                  <option value="option3">5</option>
-                </Select>
+                <Flex alignItems="center">
+                  <Box mr="5">Giường</Box>
+                  <Select>
+                    <option value="option1">1</option>
+                    <option value="option2">2</option>
+                    <option value="option3">3</option>
+                  </Select>
+                </Flex>
+                <Flex alignItems="center">
+                  <Box mr="5">Giá</Box>
+                  <Select>
+                    <option value="option1">0$-25$</option>
+                    <option value="option2">25$-50$</option>
+                    <option value="option3">50$+</option>
+                  </Select>
+                </Flex>
+                <Flex alignItems="center">
+                  <Box mr="5">Sao</Box>
+                  <Select>
+                    <option value="option1">1</option>
+                    <option value="option2">2</option>
+                    <option value="option3">3</option>
+                    <option value="option3">4</option>
+                    <option value="option3">5</option>
+                  </Select>
+                </Flex>
               </HStack>
             </Flex>
             <Flex alignItems="center">
-              <Box mr="10">Sort by</Box>
+              <Box mr="10">Sắp xếp</Box>
               <Box>
-                <Select placeholder="Price">
-                  <option value="option1">Seller</option>
+                <Select>
+                  <option value="option1">Nổi bật</option>
+                  <option value="option1">Giá</option>
                 </Select>
               </Box>
             </Flex>

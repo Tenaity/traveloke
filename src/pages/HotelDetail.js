@@ -9,12 +9,10 @@ import {
   InputGroup,
   InputLeftElement,
   Button,
-  Wrap,
 } from "@chakra-ui/react";
 import { Image, Badge } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import SmallGallery from "../components/SmallGallery";
 import BreadcrumbMain from "../components/BreadcrumbMain";
 import {
   IoBusinessOutline,
@@ -22,7 +20,6 @@ import {
   IoReceiptOutline,
   IoTvOutline,
   IoWifiOutline,
-  IoSunnyOutline, // may say
 } from "react-icons/io5";
 import { BiArea } from "react-icons/bi";
 import { FaToiletPaper, FaTemperatureHigh } from "react-icons/fa";
@@ -38,8 +35,9 @@ import DateTimePicker from "../components/DateTimePicker/DateTimePicker";
 import useSWR from "swr";
 import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
-import NumberButton from "../components/NumberButton";
 import FeedBack from "../components/FeedBack";
+import NewFeedBack from "../components/NewFeedBack";
+import CarouselBeauty from "../components/CarouselBeauty";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const HotelDetail = () => {
   let { id } = useParams();
@@ -64,12 +62,14 @@ const HotelDetail = () => {
       <Navbar />
       <Box py="5">
         <Box w="6xl" mx="auto">
-          <BreadcrumbMain urls={["Home", "Hotel", "Booking"]} />
+          <BreadcrumbMain
+            urls={["Trang chủ", "Phòng khách sạn", "Đặt phòng"]}
+          />
           <Box>
             <SimpleGrid mt="7" columns={{ base: 1, md: 2 }}>
-              <SmallGallery />
-              <Box>
-                <Heading mb="10">The Galaxy Home</Heading>
+              <CarouselBeauty />
+              <Box ml="10">
+                <Heading mb="4">The Galaxy Home</Heading>
                 <Flex alignItems="center" mb="4">
                   <IoBusinessOutline />
                   <Text ml="5px">Cầu Giấy, Hà Nội, Việt Nam</Text>
@@ -122,7 +122,7 @@ const HotelDetail = () => {
                 </SimpleGrid>
                 <Stack>
                   <Box d="flex">
-                    <Box mr="25px" width="390px">
+                    <Box mr="25px">
                       <Text mb="4">Nhận phòng:</Text>
                       <InputGroup>
                         <InputLeftElement
@@ -133,20 +133,26 @@ const HotelDetail = () => {
                       </InputGroup>
                     </Box>
                     <Box mr="25px">
-                      <Text mb="4">Số đêm:</Text>
-                      <NumberButton />
+                      <Text mb="4">Trả phòng:</Text>
+                      <InputGroup>
+                        <InputLeftElement
+                          pointerEvents="none"
+                          children={<IoCalendarOutline />}
+                        />
+                        <DateTimePicker />
+                      </InputGroup>
                     </Box>
                   </Box>
 
                   <Box d="flex" alignItems="baseline">
                     <IoReceiptOutline />
-                    <Text as="button" align="left" ml="10px" mb="2">
+                    <Text mt="2" as="button" align="left" ml="10px" mb="2">
                       Thanh toán khi nhận phòng
                     </Text>
                   </Box>
-                  <Box>
+                  <Flex justifyContent="center">
                     <Button
-                      w="300px"
+                      w="350px"
                       color="white"
                       bg="blue.500"
                       _hover={{
@@ -156,7 +162,7 @@ const HotelDetail = () => {
                     >
                       Đặt khách sạn
                     </Button>
-                  </Box>
+                  </Flex>
                 </Stack>
               </Box>
             </SimpleGrid>
@@ -180,33 +186,39 @@ const HotelDetail = () => {
                     <FeedBack />
                     <FeedBack />
                     <FeedBack />
+                    <NewFeedBack />
                   </TabPanel>
                   <TabPanel>
                     <FeedBack />
                     <FeedBack />
                     <FeedBack />
-                  </TabPanel>
-                  <TabPanel>
-                    <FeedBack />
-                    <FeedBack />
-                    <FeedBack />
-                    <FeedBack />
-                    <FeedBack />
-                  </TabPanel>
-                  <TabPanel>
-                    <FeedBack />
-                    <FeedBack />
-                    <FeedBack />
+                    <NewFeedBack />
                   </TabPanel>
                   <TabPanel>
                     <FeedBack />
                     <FeedBack />
                     <FeedBack />
                     <FeedBack />
+                    <FeedBack />
+                    <NewFeedBack />
                   </TabPanel>
                   <TabPanel>
                     <FeedBack />
                     <FeedBack />
+                    <FeedBack />
+                    <NewFeedBack />
+                  </TabPanel>
+                  <TabPanel>
+                    <FeedBack />
+                    <FeedBack />
+                    <FeedBack />
+                    <FeedBack />
+                    <NewFeedBack />
+                  </TabPanel>
+                  <TabPanel>
+                    <FeedBack />
+                    <FeedBack />
+                    <NewFeedBack />
                   </TabPanel>
                 </TabPanels>
               </Tabs>

@@ -1,9 +1,7 @@
 import {
   Box,
-  Button,
   Flex,
   Heading,
-  Image,
   Stack,
   Table,
   Tbody,

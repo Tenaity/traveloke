@@ -5,7 +5,7 @@ import React from "react";
 const Discovery = () => {
   return (
     <Box w="100vw" py="10">
-      <Box maxW="5xl" mx="auto">
+      <Box maxW="7xl" mx="auto">
         <Heading size="lg" textAlign="center" pb="5">
           Bạn muốn khám phá điều gì?
         </Heading>

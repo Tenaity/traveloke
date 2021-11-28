@@ -99,7 +99,7 @@ const SignIn = () => {
             >
               <Box mb="8" textAlign={{ base: "center", md: "start" }}>
                 <Heading size="lg" mb="2" fontWeight="extrabold">
-                  Chào mừng bạn trở lại với VieTravel
+                  Chào mừng bạn trở lại với GoGo
                 </Heading>
                 <Text fontSize="lg" color="gray.600" fontWeight="medium">
                   Đặt chỗ ngay thôi nào !

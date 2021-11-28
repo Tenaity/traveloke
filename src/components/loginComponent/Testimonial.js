@@ -24,7 +24,7 @@ function Testimonial() {
             <Text as="cite" fontStyle="normal" fontWeight="medium">
               Tenaity Võ
             </Text>
-            <Text color={mode("gray.600", "gray.400")}>Founder VieTravel</Text>
+            <Text color={mode("gray.600", "gray.400")}>Founder GoGo</Text>
           </Box>
         </HStack>
       </Box>

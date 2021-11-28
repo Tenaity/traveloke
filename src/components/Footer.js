@@ -49,12 +49,11 @@ const ListHeader = ({ children }) => {
 const Footer = () => {
   return (
     <Box
-      w="100vw"
       color={useColorModeValue("gray.700", "gray.200")}
       borderTop="1px solid"
       borderColor={useColorModeValue("gray.300", "gray.700")}
     >
-      <Container as={Stack} maxW={"1200px"} py="10">
+      <Container as={Stack} maxW="7xl" py="10">
         <SimpleGrid
           templateColumns={{ sm: "1fr 1fr", md: "1.5fr 1fr 1fr 1fr" }}
           spacing={8}

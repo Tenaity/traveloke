@@ -53,9 +53,8 @@ const FeatureEndow = () => {
       <Box
         maxW={{ base: "xl", md: "7xl" }}
         mx="auto"
-        px={{ base: "6", md: "8" }}
+        // px={{ base: "6", md: "8" }}
         py="24"
-        borderBottom="1px solid"
         borderColor={useColorModeValue("gray.300", "gray.700")}
       >
         <Flex direction={{ base: "column", lg: "row" }} justify="space-between">
@@ -64,6 +63,7 @@ const FeatureEndow = () => {
               d={{ base: "none", md: "block" }}
               htmlWidth="560px"
               htmlHeight="430px"
+              borderRadius="10"
               w="100%"
               h="100%"
               objectFit="cover"
@@ -87,20 +87,15 @@ const FeatureEndow = () => {
                 fontWeight="extrabold"
                 lineHeight="1.2"
               >
-                Chỉ dành riêng cho thành viên VieTravel
+                Chỉ dành riêng cho thành viên GoGo
               </Heading>
               <Text fontSize="lg" color={mode("gray.600", "gray.400")}>
-                Ưu đãi dành riêng cho thành viên VieTravel
+                Ưu đãi dành riêng cho thành viên GoGo
               </Text>
             </Box>
             <SimpleGrid columns={{ base: 1, md: 2 }} mt="8">
               {links.map((link) => (
-                <Flex
-                  key={link.label}
-                  align="center"
-                  minH="14"
-                  borderBottomWidth="1px"
-                >
+                <Flex key={link.label} align="center" minH="14">
                   <FeatureLink href={link.href}>{link.label}</FeatureLink>
                 </Flex>
               ))}
@@ -114,7 +109,7 @@ const FeatureEndow = () => {
                 Thêm không gian cho gia đình và bạn bè
               </Heading>
               <Text>
-                Rất nhiều lựa chọn hấp dẫn các căn hộ và biệt thự trên VieTravel
+                Rất nhiều lựa chọn hấp dẫn các căn hộ và biệt thự trên GoGo
               </Text>
             </Box>
             <Box>

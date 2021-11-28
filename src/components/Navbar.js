@@ -1,21 +1,6 @@
-import React, { useContext, useState } from "react";
-import {
-  HStack,
-  Box,
-  Flex,
-  Button,
-  Heading,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  useDisclosure,
-} from "@chakra-ui/react";
+import React, { useContext } from "react";
+import { HStack, Box, Flex, Button, Heading } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { SearchIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import AppContext from "./AppContext";
 import axios from "axios";
 import { useHistory } from "react-router";
@@ -54,7 +39,6 @@ const Navbar = () => {
         <Flex
           w="full"
           h="full"
-          px="6"
           alignItems="center"
           justifyContent="space-between"
         >
@@ -80,7 +64,7 @@ const Navbar = () => {
                   scale: "1.2",
                 }}
               >
-                <Link to="/hotel">Hotel</Link>
+                <Link to="/hotel">Đặt phòng khách sạn</Link>
               </Button>
               <Button
                 variant="ghost"
@@ -91,7 +75,7 @@ const Navbar = () => {
                   scale: "1.2",
                 }}
               >
-                <Link to="/restaurant">Restaurant</Link>
+                <Link to="/restaurant">Đặt bàn nhà hàng</Link>
               </Button>
               <Button
                 variant="ghost"
@@ -102,7 +86,7 @@ const Navbar = () => {
                   scale: "1.2",
                 }}
               >
-                <Link to="/car">Car</Link>
+                <Link to="/car">Thuê xe tự lái</Link>
               </Button>
               {/* <Bill /> */}
               {user ? (
@@ -126,7 +110,7 @@ const Navbar = () => {
                     _hover={{ bg: "blue.300" }}
                     onClick={signOut}
                   >
-                    Sign Out
+                    Đăng xuất
                   </Button>
                 </>
               ) : (
@@ -140,7 +124,7 @@ const Navbar = () => {
                       scale: "1.2",
                     }}
                   >
-                    <Link to="/signin">Sign In</Link>
+                    <Link to="/signin">Đăng nhập</Link>
                   </Button>
                   <Button
                     color="white"
@@ -148,7 +132,7 @@ const Navbar = () => {
                     bg={"blue.500"}
                     _hover={{ bg: "blue.300" }}
                   >
-                    <Link to="/signup">Sign up</Link>
+                    <Link to="/signup">Đăng ký</Link>
                   </Button>
                 </>
               )}

@@ -292,8 +292,6 @@ const Navbar = (props) => {
         borderTopColor="brand.400"
         w="full"
         overflowY="hidden"
-        borderBottomWidth={2}
-        borderBottomColor={useColorModeValue("gray.200", "gray.900")}
       >
         <chakra.div h="4.5rem" mx="auto" maxW="1200px">
           <Flex
