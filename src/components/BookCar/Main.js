@@ -9,43 +9,54 @@ import { dummyData } from "../BookCar/DummyData";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const Main = () => {
   const { data = [] } = useSWR(
-    "https://pbl6-travelapp.herokuapp.com/hotel",
+    "https://pbl6-travelapp.herokuapp.com/hotel", //////////
     fetcher
   );
   return (
     <>
       <Box d="flex" flexWrap="wrap" maxW="6xl" mx="auto" mt="5">
-        <BreadcrumbMain urls={["Home", "Car"]} />
+        <BreadcrumbMain urls={["Trang chủ", "Xe Tự Lái"]} />
         <Box w="6xl">
           <Box my="7">
-            <Heading size="lg">Thuê xe tại Hà Nội</Heading>
+            <Heading size="lg">802 Xe tự lái tại Hà Nội</Heading>
           </Box>
           <Flex my="10" justifyContent="space-between" alignItems="center">
             <Flex alignItems="center">
-              <Box mr="10">Filter by</Box>
               <HStack spacing="5">
-                <Select placeholder="Khu vực">
-                  <option value="option1">Ba Đình</option>
-                  <option value="option2">Hoàn Kiếm</option>
-                  <option value="option3">Đống Đa</option>
-                </Select>
-                <Select placeholder="Giá">
-                  <option value="option1">200$-300$</option>
-                  <option value="option2">300$-400$</option>
-                  <option value="option3">400$-500$</option>
-                </Select>
-                <Select placeholder="Loại Xe">
-                  <option value="option1">Cỡ Trung</option>
-                  <option value="option2">Cỡ Lớn</option>
-                  <option value="option3">SUV</option>
-                </Select>
+                <Flex alignItems="center">
+                  <Box mr="5" width="115px" > Chỗ ngồi </Box>
+                  <Select>
+                    <option value="option1">04</option>
+                    <option value="option2">06</option>
+                    <option value="option3">16</option>
+                  </Select>
+                </Flex>
+                <Flex alignItems="center">
+                  <Box mr="5">Giá</Box>
+                  <Select>
+                    <option value="option1">0$-25$</option>
+                    <option value="option2">25$-50$</option>
+                    <option value="option3">50$+</option>
+                  </Select>
+                </Flex>
+                <Flex alignItems="center">
+                  <Box mr="5">Sao</Box>
+                  <Select>
+                    <option value="option1">1</option>
+                    <option value="option2">2</option>
+                    <option value="option3">3</option>
+                    <option value="option3">4</option>
+                    <option value="option3">5</option>
+                  </Select>
+                </Flex>
               </HStack>
             </Flex>
             <Flex alignItems="center">
-              <Box mr="10">Sort by</Box>
+              <Box mr="10">Sắp xếp</Box>
               <Box>
-                <Select placeholder="Price">
-                  <option value="option1">Seller</option>
+                <Select>
+                  <option value="option1">Nổi bật</option>
+                  <option value="option1">Giá</option>
                 </Select>
               </Box>
             </Flex>

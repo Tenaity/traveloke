@@ -13,7 +13,6 @@ import {
 import { Image, Badge } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import CarSmallGallery from "../components/CarSmallGallery";
 import BreadcrumbMain from "../components/BreadcrumbMain";
 import {
   IoBusinessOutline,
@@ -31,6 +30,7 @@ import useSWR from "swr";
 import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
 import CarFeedBack from "../components/CarFeedBack";
+import CarCarouselBeauty from "../components/CarCarouselBeauty";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const CarDetail = () => {
   let { id } = useParams();
@@ -55,10 +55,10 @@ const CarDetail = () => {
       <Navbar />
       <Box py="5">
         <Box w="6xl" mx="auto">
-          <BreadcrumbMain urls={["Home", "Car", "Booking"]} />
+          <BreadcrumbMain urls={["Trang chủ", "Xe tự lái", "Đặt xe"]} />
           <Box>
             <SimpleGrid mt="7" columns={{ base: 1, md: 2 }}>
-              <CarSmallGallery />
+              <CarCarouselBeauty />
               <Box>
                 <Heading mb="10">Mercedes-Benz A-Class</Heading>
                 <Flex alignItems="center" mb="4">

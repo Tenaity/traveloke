@@ -13,7 +13,6 @@ import {
 import { Image, Badge } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import RestaurantSmallGallery from "../components/RestaurantSmallGallery";
 import BreadcrumbMain from "../components/BreadcrumbMain";
 import {
   IoBusinessOutline,
@@ -31,6 +30,7 @@ import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
 import NumberButton from "../components/NumberButton";
 import RestaurantFeedBack from "../components/RestaurantFeedBack";
+import ResCarouselBeauty from "../components/ResCarouselBeauty";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const RestaurantDetail = () => {
   let { id } = useParams();
@@ -55,10 +55,10 @@ const RestaurantDetail = () => {
       <Navbar />
       <Box py="5">
         <Box w="6xl" mx="auto">
-          <BreadcrumbMain urls={["Home", "Restaurant", "Booking"]} />
+          <BreadcrumbMain urls={["Trang chủ", "Nhà hàng", "Đặt bàn"]} />
           <Box>
             <SimpleGrid mt="7" columns={{ base: 1, md: 2 }}>
-              <RestaurantSmallGallery />
+              <ResCarouselBeauty />
               <Box>
                 <Heading mb="10">Stellar Steakhouse</Heading>
                 <Flex alignItems="baseline" mb="4">
