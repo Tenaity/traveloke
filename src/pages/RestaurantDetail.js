@@ -59,7 +59,7 @@ const RestaurantDetail = () => {
           <Box>
             <SimpleGrid mt="7" columns={{ base: 1, md: 2 }}>
               <ResCarouselBeauty />
-              <Box>
+              <Box ml="10">
                 <Heading mb="10">Stellar Steakhouse</Heading>
                 <Flex alignItems="baseline" mb="4">
                   <IoBusinessOutline />

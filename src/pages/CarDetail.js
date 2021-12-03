@@ -59,7 +59,7 @@ const CarDetail = () => {
           <Box>
             <SimpleGrid mt="7" columns={{ base: 1, md: 2 }}>
               <CarCarouselBeauty />
-              <Box>
+              <Box ml="10">
                 <Heading mb="10">Mercedes-Benz A-Class</Heading>
                 <Flex alignItems="center" mb="4">
                   <IoBusinessOutline />
