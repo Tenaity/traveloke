@@ -31,6 +31,7 @@ import { useParams } from "react-router-dom";
 import NumberButton from "../components/NumberButton";
 import RestaurantFeedBack from "../components/RestaurantFeedBack";
 import ResCarouselBeauty from "../components/ResCarouselBeauty";
+import NewFeedBack from "../components/NewFeedBack";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const RestaurantDetail = () => {
   let { id } = useParams();
@@ -156,33 +157,39 @@ const RestaurantDetail = () => {
                     <RestaurantFeedBack />
                     <RestaurantFeedBack />
                     <RestaurantFeedBack />
+                    <NewFeedBack />
                   </TabPanel>
                   <TabPanel>
                     <RestaurantFeedBack />
                     <RestaurantFeedBack />
                     <RestaurantFeedBack />
-                  </TabPanel>
-                  <TabPanel>
-                    <RestaurantFeedBack />
-                    <RestaurantFeedBack />
-                    <RestaurantFeedBack />
-                    <RestaurantFeedBack />
-                    <RestaurantFeedBack />
-                  </TabPanel>
-                  <TabPanel>
-                    <RestaurantFeedBack />
-                    <RestaurantFeedBack />
-                    <RestaurantFeedBack />
+                    <NewFeedBack />
                   </TabPanel>
                   <TabPanel>
                     <RestaurantFeedBack />
                     <RestaurantFeedBack />
                     <RestaurantFeedBack />
                     <RestaurantFeedBack />
+                    <RestaurantFeedBack />
+                    <NewFeedBack />
                   </TabPanel>
                   <TabPanel>
                     <RestaurantFeedBack />
                     <RestaurantFeedBack />
+                    <RestaurantFeedBack />
+                    <NewFeedBack />
+                  </TabPanel>
+                  <TabPanel>
+                    <RestaurantFeedBack />
+                    <RestaurantFeedBack />
+                    <RestaurantFeedBack />
+                    <RestaurantFeedBack />
+                    <NewFeedBack />
+                  </TabPanel>
+                  <TabPanel>
+                    <RestaurantFeedBack />
+                    <RestaurantFeedBack />
+                    <NewFeedBack />
                   </TabPanel>
                 </TabPanels>
               </Tabs>

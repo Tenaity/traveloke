@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Text, Flex, Avatar } from "@chakra-ui/react";
 import { AiFillLike } from "react-icons/ai";
 import { StarIcon } from "@chakra-ui/icons";
+import NewFeedBack from "../components/NewFeedBack";
 const property = {
   rating: 5,
 };

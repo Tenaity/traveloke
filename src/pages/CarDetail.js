@@ -31,6 +31,7 @@ import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
 import CarFeedBack from "../components/CarFeedBack";
 import CarCarouselBeauty from "../components/CarCarouselBeauty";
+import NewFeedBack from "../components/NewFeedBack";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const CarDetail = () => {
   let { id } = useParams();
@@ -157,40 +158,46 @@ const CarDetail = () => {
                     <CarFeedBack />
                     <CarFeedBack />
                     <CarFeedBack />
+                    <NewFeedBack />
                   </TabPanel>
                   <TabPanel>
                     <CarFeedBack />
                     <CarFeedBack />
                     <CarFeedBack />
-                  </TabPanel>
-                  <TabPanel>
-                    <CarFeedBack />
-                    <CarFeedBack />
-                    <CarFeedBack />
-                    <CarFeedBack />
-                    <CarFeedBack />
-                  </TabPanel>
-                  <TabPanel>
-                    <CarFeedBack />
-                    <CarFeedBack />
-                    <CarFeedBack />
+                    <NewFeedBack />
                   </TabPanel>
                   <TabPanel>
                     <CarFeedBack />
                     <CarFeedBack />
                     <CarFeedBack />
                     <CarFeedBack />
+                    <CarFeedBack />
+                    <NewFeedBack />
                   </TabPanel>
                   <TabPanel>
                     <CarFeedBack />
                     <CarFeedBack />
+                    <CarFeedBack />
+                    <NewFeedBack />
+                  </TabPanel>
+                  <TabPanel>
+                    <CarFeedBack />
+                    <CarFeedBack />
+                    <CarFeedBack />
+                    <CarFeedBack />
+                    <NewFeedBack />
+                  </TabPanel>
+                  <TabPanel>
+                    <CarFeedBack />
+                    <CarFeedBack />
+                    <NewFeedBack />
                   </TabPanel>
                 </TabPanels>
               </Tabs>
             </Box>
           </Box>
           <Box my="10">
-            <Heading>Phòng liên quan</Heading>
+            <Heading>Xe liên quan</Heading>
             <Flex my="10">
               <Box
                 w="xs"
