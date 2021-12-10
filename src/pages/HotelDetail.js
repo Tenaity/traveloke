@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import {
   Box,
   SimpleGrid,
@@ -38,6 +39,7 @@ import { useParams } from "react-router-dom";
 import FeedBack from "../components/FeedBack";
 import NewFeedBack from "../components/NewFeedBack";
 import CarouselBeauty from "../components/CarouselBeauty";
+import { useFeedback } from "../hooks/useFeedback";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const HotelDetail = () => {
   let { id } = useParams();
@@ -45,7 +47,6 @@ const HotelDetail = () => {
     `https://pbl6-travelapp.herokuapp.com/hotel/${id}/room/`,
     fetcher
   );
-
   const property = {
     imageUrl: "https://bit.ly/2Z4KKcF",
     imageAlt: "Rear view of modern home with pool",
@@ -56,6 +57,11 @@ const HotelDetail = () => {
     reviewCount: 34,
     rating: 4,
   };
+  const path = window.location.pathname.slice(1);
+  const service = path.slice(0, path.indexOf("/"));
+
+
+  const { handleEnter, inputValue, handleUserInput, listFeedback } = useFeedback();
 
   return (
     <>
@@ -186,44 +192,62 @@ const HotelDetail = () => {
                 </TabList>
                 <TabPanels>
                   <TabPanel>
-                    <FeedBack />
-                    <FeedBack />
-                    <FeedBack />
-                    <FeedBack />
-                    <FeedBack />
-                    <NewFeedBack />
+                    {listFeedback.map((value, index) => {
+                      return (
+                        <FeedBack vote={value.vote} comment={value.comment} key={index} />
+                      )
+                    })}
+                    <NewFeedBack handleEnter={handleEnter} handleUserInput={handleUserInput} inputValue={inputValue} />
                   </TabPanel>
                   <TabPanel>
-                    <FeedBack />
-                    <FeedBack />
-                    <FeedBack />
-                    <NewFeedBack />
+                    {listFeedback.map((value, index) => {
+                      if (value.vote === 5) {
+                        return (
+                          <FeedBack vote={value.vote} comment={value.comment} key={index} />
+                        )
+                      }
+                    })}
+                    <NewFeedBack handleEnter={handleEnter} handleUserInput={handleUserInput} inputValue={inputValue} />
                   </TabPanel>
                   <TabPanel>
-                    <FeedBack />
-                    <FeedBack />
-                    <FeedBack />
-                    <FeedBack />
-                    <FeedBack />
-                    <NewFeedBack />
+                    {listFeedback.map((value, index) => {
+                      if (value.vote === 4) {
+                        return (
+                          <FeedBack vote={value.vote} comment={value.comment} key={index} />
+                        )
+                      }
+                    })}
+                    <NewFeedBack handleEnter={handleEnter} handleUserInput={handleUserInput} inputValue={inputValue} />
                   </TabPanel>
                   <TabPanel>
-                    <FeedBack />
-                    <FeedBack />
-                    <FeedBack />
-                    <NewFeedBack />
+                    {listFeedback.map((value, index) => {
+                      if (value.vote === 3) {
+                        return (
+                          <FeedBack vote={value.vote} comment={value.comment} key={index} />
+                        )
+                      }
+                    })}
+                    <NewFeedBack handleEnter={handleEnter} handleUserInput={handleUserInput} inputValue={inputValue} />
                   </TabPanel>
                   <TabPanel>
-                    <FeedBack />
-                    <FeedBack />
-                    <FeedBack />
-                    <FeedBack />
-                    <NewFeedBack />
+                    {listFeedback.map((value, index) => {
+                      if (value.vote === 2) {
+                        return (
+                          <FeedBack vote={value.vote} comment={value.comment} key={index} />
+                        )
+                      }
+                    })}
+                    <NewFeedBack handleEnter={handleEnter} handleUserInput={handleUserInput} inputValue={inputValue} />
                   </TabPanel>
                   <TabPanel>
-                    <FeedBack />
-                    <FeedBack />
-                    <NewFeedBack />
+                    {listFeedback.map((value, index) => {
+                      if (value.vote === 1) {
+                        return (
+                          <FeedBack vote={value.vote} comment={value.comment} key={index} />
+                        )
+                      }
+                    })}
+                    <NewFeedBack handleEnter={handleEnter} handleUserInput={handleUserInput} inputValue={inputValue} />
                   </TabPanel>
                 </TabPanels>
               </Tabs>

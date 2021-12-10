@@ -26,7 +26,6 @@ import gogo from "../assets/img/logo2.png";
 const Navbar = () => {
   const { state, dispatch } = useContext(AppContext);
   const history = useHistory();
-
   const user = state.user;
   console.log(user);
   const signOut = () => {
