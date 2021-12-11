@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
+import axios from "axios";
+import AppContext from "./AppContext";
 import {
   Drawer,
   DrawerBody,
@@ -39,15 +41,36 @@ const Bill = () => {
       price: "10$",
     },
   ];
+
+  const { state } = useContext(AppContext);
+  const userId = state.user.userId;
+
+  const fetchBill = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const option = {
+        method: "get",
+        url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios(option);
+      console.log("res", response);
+    } catch (err) {
+      console.log(err.response.data.message);
+    }
+  };
+  useEffect(() => {
+    fetchBill();
+  }, []);
   return (
     <>
       <Button
         variant="ghost"
-        scale="1"
         transform="auto"
         _hover={{
           color: "green.500",
-          scale: "1.2",
         }}
         ref={btnRef}
         onClick={onOpen}

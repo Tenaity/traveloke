@@ -37,6 +37,7 @@ const Navbar = () => {
     };
     axios(option);
     localStorage.removeItem("token");
+    localStorage.removeItem("userId");
     dispatch({ type: "CURRENT_USER", payload: null });
     history.push("/");
   };

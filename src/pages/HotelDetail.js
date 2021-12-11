@@ -50,9 +50,10 @@ const HotelDetail = () => {
 
   let { id } = useParams();
   const { data = {} } = useSWR(
-    `https://pbl6-travelapp.herokuapp.com/hotel/${id}/room/`,
+    `https://pbl6-travelapp.herokuapp.com/hotel/${id}/`,
     fetcher
   );
+  console.log("hotel", data);
   const property = {
     imageUrl: "https://bit.ly/2Z4KKcF",
     imageAlt: "Rear view of modern home with pool",

@@ -76,29 +76,31 @@ function Car() {
 const App = () => {
   const initialState = { user: null, posts: [] };
   const [state, dispatch] = useReducer(AppReducer, initialState);
-  // const checkCurrentUser = useCallback(async () => {
-  //   try {
-  //     const token = localStorage.getItem("token");
-  //     const option = {
-  //       method: "get",
-  //       url: "https://pbl6-travelapp.herokuapp.com/auth/login",
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     };
-  //     const response = await axios(option);
-  //     if (response.data.data.user) {
-  //       const { userName } = response.data.data.user.name;
-  //       dispatch({ type: "CURRENT_USER", payload: { userName } });
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, [dispatch]);
+  const checkCurrentUser = useCallback(async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const userId = localStorage.getItem("userId");
+      const option = {
+        method: "get",
+        url: `https://pbl6-travelapp.herokuapp.com/users/${userId}`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios(option);
+      console.log(response);
+      if (response) {
+        const userName = response.data.name;
+        dispatch({ type: "CURRENT_USER", payload: { userName } });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [dispatch]);
 
-  // useEffect(() => {
-  //   checkCurrentUser();
-  // }, [checkCurrentUser]);
+  useEffect(() => {
+    checkCurrentUser();
+  }, [checkCurrentUser]);
   return (
     <ChakraProvider theme={theme}>
       <AppContext.Provider value={{ state, dispatch }}>

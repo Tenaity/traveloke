@@ -47,6 +47,7 @@ const SignIn = () => {
       const userName = user.name;
       const userId = user.id;
       localStorage.setItem("token", tokens.access.token);
+      localStorage.setItem("userId", userId);
       dispatch({ type: "CURRENT_USER", payload: { userName, userId } });
       history.push("/");
     } catch (err) {
