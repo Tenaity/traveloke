@@ -10,6 +10,8 @@ import {
   InputLeftElement,
   Button,
 } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
+import { Alert, AlertIcon } from "@chakra-ui/react";
 import { Image, Badge } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
@@ -41,10 +43,11 @@ import CarouselBeauty from "../components/CarouselBeauty";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const HotelDetail = () => {
   let { id } = useParams();
-  const { data = [] } = useSWR(
+  const { data = {} } = useSWR(
     `https://pbl6-travelapp.herokuapp.com/hotel/${id}/room/`,
     fetcher
   );
+  console.log(data);
 
   const property = {
     imageUrl: "https://bit.ly/2Z4KKcF",
@@ -56,6 +59,8 @@ const HotelDetail = () => {
     reviewCount: 34,
     rating: 4,
   };
+
+  const toast = useToast();
 
   return (
     <>
@@ -147,9 +152,18 @@ const HotelDetail = () => {
                   <Box d="flex" alignItems="baseline">
                     <IoReceiptOutline />
                     <Text mt="2" as="button" align="left" ml="10px" mb="2">
-                      Thanh toán khi nhận phòng
+                      Thanh toán khi nhận phòng hoặc thanh toán trực tiếp.
                     </Text>
                   </Box>
+                  <Flex alignItems="center" pb="3">
+                    <Heading size="lg" mr="2">
+                      Giá :
+                    </Heading>
+                    <Heading size="lg" color="green.500">
+                      500.000
+                    </Heading>
+                  </Flex>
+
                   <Flex justifyContent="center">
                     <Button
                       w="350px"
@@ -159,6 +173,16 @@ const HotelDetail = () => {
                         bg: "green.300",
                       }}
                       _focus={{ boxShadow: "none" }}
+                      onClick={() =>
+                        toast({
+                          render: () => (
+                            <Alert status="success" variant="left-accent">
+                              <AlertIcon />
+                              Đặt phòng thành công!
+                            </Alert>
+                          ),
+                        })
+                      }
                     >
                       Đặt khách sạn
                     </Button>

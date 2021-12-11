@@ -142,7 +142,12 @@ const CarDetail = () => {
           <Box my="10">
             <Heading>Đánh giá xe</Heading>
             <Box my="10" alignItems="center">
-              <Tabs align="center" isManual variant="enclosed">
+              <Tabs
+                align="center"
+                isManual
+                variant="enclosed"
+                colorScheme="green"
+              >
                 <TabList>
                   <Tab>Tất cả</Tab>
                   <Tab>5 sao</Tab>

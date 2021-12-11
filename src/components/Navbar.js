@@ -25,9 +25,9 @@ import Search from "./Search";
 import gogo from "../assets/img/logo2.png";
 const Navbar = () => {
   const { state, dispatch } = useContext(AppContext);
+  const user = state.user;
   const history = useHistory();
 
-  const user = state.user;
   console.log(user);
   const signOut = () => {
     const token = localStorage.getItem("token");
