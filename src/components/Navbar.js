@@ -27,7 +27,6 @@ const Navbar = () => {
   const { state, dispatch } = useContext(AppContext);
   const user = state.user;
   const history = useHistory();
-
   console.log(user);
   const signOut = () => {
     const token = localStorage.getItem("token");

@@ -5,7 +5,8 @@ import { StarIcon } from "@chakra-ui/icons";
 const property = {
   rating: 2,
 };
-const FeedBack = () => {
+const FeedBack = (props) => {
+  const { vote, comment } = props
   return (
     <Box align="start" my="2">
       <Flex mb="30px">
@@ -27,7 +28,7 @@ const FeedBack = () => {
               .map((_, i) => (
                 <StarIcon
                   key={i}
-                  color={i < property.rating ? "green.500" : "gray.300"}
+                  color={i < vote ? "green.500" : "gray.300"}
                 />
               ))}
           </Box>
@@ -38,12 +39,7 @@ const FeedBack = () => {
             mt="6px"
             mb="14px"
           >
-            I always felt like I could do anything. That’s the main thing people
-            are controlled by! Thoughts- their perception of themselves! I
-            always felt like I could do anything. That’s the main thing people
-            are controlled by! Thoughts- their perception of themselves! I
-            always felt like I could do anything. That’s the main thing people
-            are controlled by! Thoughts- their perception of themselves!
+            {comment}
           </Text>
           <Flex>
             <Flex align="center" color="gray.500" me="21px">

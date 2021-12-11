@@ -4,10 +4,10 @@ import { Box, Flex, Image, HStack } from "@chakra-ui/react";
 const CarouselBanner = () => {
   const slides = [
     {
-      img: "/images/luxstay/luxstayBanner1.png",
+      img: "/images/banner1.png",
     },
     {
-      img: "/images/luxstay/luxstayBanner2.png",
+      img: "/images/banner2.png",
     },
   ];
 
