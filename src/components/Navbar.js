@@ -63,7 +63,7 @@ const Navbar = () => {
             <HStack spacing="5">
               <Heading as="a">
                 <Link to="/">
-                  <Image src={gogo} h="50" w="50" />
+                  <Image src={gogo} h="50px" w="150px" />
                 </Link>
               </Heading>
               <Box mt="2">
@@ -74,46 +74,54 @@ const Navbar = () => {
 
           <Box>
             <HStack spacing="2">
-              <Button
-                variant="ghost"
-                transform="auto"
-                _hover={{
-                  color: "green.500",
-                }}
-              >
-                <Link to="/hotel">Đặt phòng khách sạn</Link>
-              </Button>
-              <Button
-                variant="ghost"
-                transform="auto"
-                _hover={{
-                  color: "green.500",
-                }}
-              >
-                <Link to="/restaurant">Đặt bàn nhà hàng</Link>
-              </Button>
-              <Button
-                variant="ghost"
-                transform="auto"
-                _hover={{
-                  color: "green.500",
-                }}
-              >
-                <Link to="/car">Thuê xe tự lái</Link>
-              </Button>
+              <Link to="/hotel">
+                <Button
+                  variant="ghost"
+                  transform="auto"
+                  _hover={{
+                    color: "green.500",
+                  }}
+                >
+                  Đặt phòng khách sạn
+                </Button>
+              </Link>
+              <Link to="/restaurant">
+                <Button
+                  variant="ghost"
+                  transform="auto"
+                  _hover={{
+                    color: "green.500",
+                  }}
+                >
+                  Đặt bàn nhà hàng
+                </Button>
+              </Link>
+              <Link to="/car">
+                <Button
+                  variant="ghost"
+                  transform="auto"
+                  _hover={{
+                    color: "green.500",
+                  }}
+                >
+                  Thuê xe tự lái
+                </Button>
+              </Link>
 
               {user ? (
                 <>
                   <Bill />
-                  <Button
-                    variant="ghost"
-                    transform="auto"
-                    _hover={{
-                      color: "green.500",
-                    }}
-                  >
-                    <Link to="/invoice">Thanh toán</Link>
-                  </Button>
+                  <Link to="/invoice">
+                    <Button
+                      variant="ghost"
+                      transform="auto"
+                      _hover={{
+                        color: "green.500",
+                      }}
+                    >
+                      Thanh toán
+                    </Button>
+                  </Link>
                   <Menu>
                     <MenuButton>
                       <Button variant="ghost" color="orange.500">
@@ -137,23 +145,27 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
-                  <Button
-                    variant="ghost"
-                    transform="auto"
-                    _hover={{
-                      color: "green.500",
-                    }}
-                  >
-                    <Link to="/signin">Đăng nhập</Link>
-                  </Button>
-                  <Button
-                    color="white"
-                    _focus={{ boxShadow: "none" }}
-                    bg={"green.500"}
-                    _hover={{ bg: "green.300" }}
-                  >
-                    <Link to="/signup">Đăng ký</Link>
-                  </Button>
+                  <Link to="/signin">
+                    <Button
+                      variant="ghost"
+                      transform="auto"
+                      _hover={{
+                        color: "green.500",
+                      }}
+                    >
+                      Đăng nhập
+                    </Button>
+                  </Link>
+                  <Link to="/signup">
+                    <Button
+                      color="white"
+                      _focus={{ boxShadow: "none" }}
+                      bg={"green.500"}
+                      _hover={{ bg: "green.300" }}
+                    >
+                      Đăng ký
+                    </Button>
+                  </Link>
                 </>
               )}
             </HStack>
