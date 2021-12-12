@@ -66,7 +66,7 @@ const Carousels = () => {
     <Box w="7xl" mx="auto" pt="10">
       <Heading> Địa điểm nổi bật</Heading>
       <Text pt="2" pb="3">
-        Cùng Luxstay bắt đầu chuyến hành trình chinh phục thế giới của bạn
+        Cùng GoGo bắt đầu chuyến hành trình chinh phục thế giới của bạn
       </Text>
       <Flex w="full" pos="relative">
         <Flex w="full" overflow="hidden" pos="relative" borderRadius="5">

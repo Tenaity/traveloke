@@ -53,8 +53,7 @@ const FeatureEndow = () => {
       <Box
         maxW={{ base: "xl", md: "7xl" }}
         mx="auto"
-        // px={{ base: "6", md: "8" }}
-        py="24"
+        // py="12"
         borderColor={useColorModeValue("gray.300", "gray.700")}
       >
         <Flex direction={{ base: "column", lg: "row" }} justify="space-between">
@@ -83,7 +82,7 @@ const FeatureEndow = () => {
               <Heading
                 mt="4"
                 mb="5"
-                size="2xl"
+                size="xl"
                 fontWeight="extrabold"
                 lineHeight="1.2"
               >
