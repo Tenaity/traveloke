@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import axios from "axios";
 import AppContext from "./AppContext";
 import {
@@ -13,6 +13,7 @@ import {
   useDisclosure,
   Flex,
 } from "@chakra-ui/react";
+import useSWR from "swr";
 import BillingRow from "./BillingRow";
 import { Link } from "react-router-dom";
 const Bill = () => {
@@ -45,25 +46,22 @@ const Bill = () => {
   const { state } = useContext(AppContext);
   const userId = state.user.userId;
 
-  const fetchBill = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const option = {
-        method: "get",
-        url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const response = await axios(option);
-      console.log("res", response);
-    } catch (err) {
-      console.log(err.response.data.message);
-    }
+  const fetcher = (url) => {
+    const token = localStorage.getItem("token");
+    return fetch(url, {
+      method: "get",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((response) => response.json());
   };
-  useEffect(() => {
-    fetchBill();
-  }, []);
+
+  const { data: bills } = useSWR(
+    `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
+    fetcher
+  );
+
+  console.log("aaaa", bills);
   return (
     <>
       <Button
@@ -82,7 +80,7 @@ const Bill = () => {
         placement="right"
         onClose={onClose}
         finalFocusRef={btnRef}
-        size="sm"
+        size="md"
       >
         <DrawerOverlay />
         <DrawerContent>
@@ -91,19 +89,18 @@ const Bill = () => {
 
           <DrawerBody>
             <Flex direction="column" w="100%">
-              {billingData.map((row, index) => {
-                return (
-                  <Link to="/invoice">
+              {bills &&
+                bills.map((row, index) => {
+                  return (
                     <BillingRow
-                      name={row.name}
-                      email={row.email}
-                      phone={row.phone}
+                      additionalFee={row.additionalFee}
+                      checkOut={row.checkOut}
+                      checkIn={row.checkIn}
                       service={row.service}
-                      price={row.price}
+                      total={row.total}
                     />
-                  </Link>
-                );
-              })}
+                  );
+                })}
             </Flex>
           </DrawerBody>
 

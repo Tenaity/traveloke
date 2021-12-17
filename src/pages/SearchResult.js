@@ -1,9 +1,8 @@
 import React from "react";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Main from "../components/Hotel/Main";
-
-const Hotel = () => {
+import Navbar from "../components/Navbar";
+import Main from "../components/Search/Main";
+const SearchResult = () => {
   return (
     <>
       <Navbar />
@@ -13,4 +12,4 @@ const Hotel = () => {
   );
 };
 
-export default Hotel;
+export default SearchResult;

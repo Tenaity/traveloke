@@ -18,9 +18,6 @@ export default function SearchModal({
   //   onClose = () => {},
   changeInput,
   loading,
-  allProducts = [],
-  allPosts = [],
-  called,
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (

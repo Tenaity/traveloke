@@ -13,37 +13,43 @@ function BillingRow(props) {
   const textColor = useColorModeValue("gray.700", "white");
   const bgColor = useColorModeValue("#F8F9FA", "gray.800");
   const nameColor = useColorModeValue("gray.500", "white");
-  const { name, email, phone, service, price } = props;
+  const { checkIn, checkOut, additionalFee, service, total } = props;
 
   return (
     <Box p="24px" bg={bgColor} mb="22px" borderRadius="12px">
       <Flex justify="space-between" w="100%">
         <Flex direction="column" maxWidth="70%">
-          <Text color={nameColor} fontSize="md" fontWeight="bold" mb="10px">
+          {/* <Text color={nameColor} fontSize="md" fontWeight="bold" mb="10px">
             {name}
-          </Text>
+          </Text> */}
           <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            Phone:{" "}
-            <Text as="span" color="gray.500">
-              {phone}
-            </Text>
-          </Text>
-          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            Email Address:{" "}
-            <Text as="span" color="gray.500">
-              {email}
-            </Text>
-          </Text>
-          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            Service:{" "}
-            <Text as="span" color="gray.500">
+            Service:
+            <Text as="span" color="gray.500" ml="1">
               {service}
             </Text>
           </Text>
           <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            Price:{" "}
-            <Text as="span" color="gray.500">
-              {price}
+            Check In:
+            <Text as="span" color="gray.500" ml="1">
+              {checkIn}
+            </Text>
+          </Text>
+          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
+            CheckOut:
+            <Text as="span" color="gray.500" ml="1">
+              {checkOut}
+            </Text>
+          </Text>
+          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
+            Additional Fee:
+            <Text as="span" color="gray.500" ml="1">
+              {additionalFee}
+            </Text>
+          </Text>
+          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
+            Price:
+            <Text as="span" color="gray.500" ml="1">
+              {total}
             </Text>
           </Text>
         </Flex>
@@ -65,14 +71,14 @@ function BillingRow(props) {
               </Text>
             </Flex>
           </Button>
-          <Button p="0px" bg="transparent">
+          {/* <Button p="0px" bg="transparent">
             <Flex color={textColor} cursor="pointer" align="center" p="12px">
               <Icon as={FaPencilAlt} me="4px" />
               <Text fontSize="sm" fontWeight="semibold">
                 EDIT
               </Text>
             </Flex>
-          </Button>
+          </Button> */}
         </Flex>
       </Flex>
     </Box>

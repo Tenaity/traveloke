@@ -2,20 +2,22 @@ import React from "react";
 import { Box, Flex, Image, Badge } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
-const CardHotel = ({ hotel }) => {
+const CardRoom = ({ room }) => {
   const property = {
-    imageUrl: hotel.images[0],
+    imageUrl: room.images[1],
     imageAlt: "Rear view of modern home with pool",
-    rooms: hotel.totalRooms,
-    available: hotel.availableRooms,
-    title: hotel.name,
+    rooms: room.totalRooms,
+    available: room.available,
+    title: room.name,
     formattedPrice: "$1,900.00",
-    reviewCount: hotel.feedbacks?.length || 0,
-    rating: hotel.vote,
+    reviewCount: room.feedbacks?.length || 0,
+    rating: room.vote,
   };
 
+  console.log("room detail", room);
+
   return (
-    <Link to={`/hotel/${hotel.id}`}>
+    <Link to={`/room/${room._id}`}>
       <Flex>
         <Box
           w="md"
@@ -25,8 +27,8 @@ const CardHotel = ({ hotel }) => {
           _hover={{ shadow: "xl" }}
         >
           <Image
-            src={property.imageUrl}
-            alt={property.imageAlt}
+            src={room.images[0]}
+            alt={room.imageAlt}
             roundedTop="lg"
             objectFit="cover"
             h="220px"
@@ -35,7 +37,7 @@ const CardHotel = ({ hotel }) => {
           <Box p="5">
             <Box d="flex" alignItems="baseline">
               <Badge rounded="full" colorScheme="teal">
-                {hotel.city}
+                new
               </Badge>
               <Box
                 color="gray.500"
@@ -45,7 +47,7 @@ const CardHotel = ({ hotel }) => {
                 textTransform="uppercase"
                 ml="2"
               >
-                {property.available} available
+                {room.type} available
               </Box>
             </Box>
 
@@ -59,14 +61,14 @@ const CardHotel = ({ hotel }) => {
               {property.title}
             </Box>
 
-            {/* <Box>
-              {property.formattedPrice}
+            <Box>
+              {room.price}
               <Box as="span" color="gray.600" fontSize="sm">
-                / wk
+                / day
               </Box>
-            </Box> */}
+            </Box>
 
-            <Box d="flex" mt="2" alignItems="center">
+            {/* <Box d="flex" mt="2" alignItems="center">
               {Array(5)
                 .fill("")
                 .map((_, i) => (
@@ -78,7 +80,7 @@ const CardHotel = ({ hotel }) => {
               <Box as="span" ml="2" color="gray.600" fontSize="sm">
                 {property.reviewCount} reviews
               </Box>
-            </Box>
+            </Box> */}
           </Box>
         </Box>
       </Flex>
@@ -86,4 +88,4 @@ const CardHotel = ({ hotel }) => {
   );
 };
 
-export default CardHotel;
+export default CardRoom;

@@ -11,6 +11,7 @@ const Main = () => {
     "https://pbl6-travelapp.herokuapp.com/hotel",
     fetcher
   );
+  console.log("list hotel", data);
   return (
     <>
       <Box d="flex" flexWrap="wrap" maxW="6xl" mx="auto" mt="5">

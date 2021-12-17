@@ -6,7 +6,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import "./styles.css";
 import BookHotel from "./pages/BookHotel";
-import HotelDetail from "./pages/HotelDetail";
+import RoomDetail from "./pages/RoomDetail";
 import AppReducer from "./reducers/AppReducer";
 import { useCallback, useEffect, useReducer } from "react";
 import AppContext from "./components/AppContext";
@@ -17,6 +17,8 @@ import RestaurantDetail from "./pages/RestaurantDetail";
 import CarDetail from "./pages/CarDetail";
 import BookCar from "./pages/BookCar";
 import Invoice from "./pages/Invoice";
+import SearchResult from "./pages/SearchResult";
+import HotelDetail from "./pages/HotelDetail";
 
 const theme = extendTheme();
 function Hotel() {
@@ -24,7 +26,6 @@ function Hotel() {
   console.log(path);
   return (
     <Fragment>
-      {/*  */}
       <Switch>
         <Route exact path={path}>
           <BookHotel />
@@ -33,7 +34,19 @@ function Hotel() {
           <HotelDetail />
         </Route>
       </Switch>
-      {/*  */}
+    </Fragment>
+  );
+}
+function Room() {
+  let { path, url } = useRouteMatch();
+  console.log(path);
+  return (
+    <Fragment>
+      <Switch>
+        <Route exact path={`${path}/:id`}>
+          <RoomDetail />
+        </Route>
+      </Switch>
     </Fragment>
   );
 }
@@ -42,7 +55,6 @@ function Restaurant() {
   console.log(path);
   return (
     <Fragment>
-      {/*  */}
       <Switch>
         <Route exact path={path}>
           <BookRestaurant />
@@ -51,7 +63,6 @@ function Restaurant() {
           <RestaurantDetail />
         </Route>
       </Switch>
-      {/*  */}
     </Fragment>
   );
 }
@@ -60,7 +71,6 @@ function Car() {
   console.log(path);
   return (
     <Fragment>
-      {/*  */}
       <Switch>
         <Route exact path={path}>
           <BookCar />
@@ -69,7 +79,19 @@ function Car() {
           <CarDetail />
         </Route>
       </Switch>
-      {/*  */}
+    </Fragment>
+  );
+}
+function Search() {
+  let { path, url } = useRouteMatch();
+  console.log(path);
+  return (
+    <Fragment>
+      <Switch>
+        <Route path={`${path}`}>
+          <SearchResult />
+        </Route>
+      </Switch>
     </Fragment>
   );
 }
@@ -114,6 +136,9 @@ const App = () => {
           <Route path="/hotel">
             <Hotel />
           </Route>
+          <Route path="/room">
+            <Room />
+          </Route>
           <Route path="/signin">
             <SignIn />
           </Route>
@@ -126,7 +151,9 @@ const App = () => {
           <Route path="/invoice">
             <Invoice />
           </Route>
-
+          <Route path="/search">
+            <Search />
+          </Route>
           <Route exact path="/">
             <Home />
           </Route>

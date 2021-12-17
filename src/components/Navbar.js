@@ -63,7 +63,7 @@ const Navbar = () => {
             <HStack spacing="5">
               <Heading as="a">
                 <Link to="/">
-                  <Image src={gogo} h="50px" w="115px" />
+                  <Image src={gogo} h="50px" maxW="120px" />
                 </Link>
               </Heading>
               <Box mt="2">

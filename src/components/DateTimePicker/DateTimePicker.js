@@ -12,6 +12,7 @@ const DateTimePicker = ({
   ...props
 }) => {
   const [startDate, setStartDate] = useState(new Date());
+  console.log(startDate);
   return (
     <ReactDatePicker
       selected={startDate}
