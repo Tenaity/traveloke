@@ -57,7 +57,7 @@ const Bill = () => {
     }).then((response) => response.json());
   };
 
-  const { data: bills } = useSWR(
+  const { data: bills = [] } = useSWR(
     `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
     fetcher
   );

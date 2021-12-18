@@ -118,8 +118,8 @@ class ComponentToPrint extends React.Component {
                 </Stack>
               </Flex>
             </Flex>
-            <Box overflowX={{ sm: "scroll", lg: "hidden" }}>
-              <Table mb="85px" overflowX={{ sm: "scroll", lg: "hidden" }}>
+            <Box>
+              <Table mb="85px">
                 <Thead>
                   <Tr>
                     <Th
@@ -134,6 +134,9 @@ class ComponentToPrint extends React.Component {
                       Ngày đặt
                     </Th>
                     <Th color="gray.400" fontSize="sm" fontWeight="normal">
+                      Ngày trả
+                    </Th>
+                    <Th color="gray.400" fontSize="sm" fontWeight="normal">
                       Phụ phí
                     </Th>
                     <Th color="gray.400" fontSize="sm" fontWeight="normal">
@@ -145,6 +148,7 @@ class ComponentToPrint extends React.Component {
                   {data &&
                     data.map((item) => {
                       let dateCheckIn = new Date(item.checkIn);
+                      let dateCheckOut = new Date(item.checkOut);
                       return (
                         <Tr>
                           <Td ps="0px" minW={{ sm: "300px" }}>
@@ -165,6 +169,17 @@ class ComponentToPrint extends React.Component {
                               {`${dateCheckIn.getDate()}/${
                                 dateCheckIn.getMonth() + 1
                               }/${dateCheckIn.getFullYear()}`}
+                            </Text>
+                          </Td>
+                          <Td>
+                            <Text
+                              color="gray.500"
+                              fontWeight="normal"
+                              fontSize="md"
+                            >
+                              {`${dateCheckOut.getDate()}/${
+                                dateCheckOut.getMonth() + 1
+                              }/${dateCheckOut.getFullYear()}`}
                             </Text>
                           </Td>
                           <Td minW="125px" boxSizing="border-box">

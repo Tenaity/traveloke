@@ -19,6 +19,7 @@ import BookCar from "./pages/BookCar";
 import Invoice from "./pages/Invoice";
 import SearchResult from "./pages/SearchResult";
 import HotelDetail from "./pages/HotelDetail";
+import HistoryBill from "./pages/HistoryBill";
 
 const theme = extendTheme();
 function Hotel() {
@@ -153,6 +154,9 @@ const App = () => {
           </Route>
           <Route path="/search">
             <Search />
+          </Route>
+          <Route path="/historybills">
+            <HistoryBill />
           </Route>
           <Route exact path="/">
             <Home />

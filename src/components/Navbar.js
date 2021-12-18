@@ -133,6 +133,9 @@ const Navbar = () => {
                       <MenuItem>
                         <Link to="/settings">Tài khoản</Link>
                       </MenuItem>
+                      <MenuItem>
+                        <Link to="/historybills">Lịch sử thanh toán</Link>
+                      </MenuItem>
                       <MenuDivider />
                       <MenuItem>
                         {" "}
