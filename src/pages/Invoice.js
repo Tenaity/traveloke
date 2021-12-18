@@ -13,239 +13,124 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 // Custom components
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { PayPalButton } from "react-paypal-button-v2";
 import useSWR from "swr";
-
-class ComponentToPrint extends React.Component {
-  render() {
-    const { textColor } = this.props;
-    const { data } = this.props;
-
-    return (
-      <Box
-        w={{ sm: "330px", md: "500px", lg: "900px" }}
-        justifySelf="center"
-        alignSelf="center"
-        mb="10"
-        p={{ sm: "24px", md: "44px" }}
-        shadow="lg"
-      >
-        <Box mb={{ sm: "60px", md: "95px" }}>
-          <Flex direction="column" w="100%">
-            <Heading mb="10">GoGo Invoice</Heading>
-            <Flex
-              direction={{ sm: "column", md: "row" }}
-              justify="space-between"
-              w="100%"
-            >
-              <Flex
-                direction="column"
-                maxW={{ sm: "100%", md: "150px", lg: "300px" }}
-                mb={{ sm: "48px", md: "0px" }}
-              >
-                <Text
-                  color="gray.500"
-                  fontWeight="bold"
-                  fontSize="lg"
-                  mb="12px"
-                >
-                  St. Independence Embankment, 050105 Bucharest, Romania
-                </Text>
-                <Text color="gray.400" fontWeight="normal" fontSize="md">
-                  tel: +84 (084) 6001503
-                </Text>
-              </Flex>
-              <Flex
-                direction="column"
-                textAlign={{ sm: "start", md: "end" }}
-                maxW={{ sm: "100%", md: "170px" }}
-              >
-                <Text
-                  color="gray.500"
-                  fontWeight="bold"
-                  fontSize="lg"
-                  mb="12px"
-                >
-                  Billed to: Vo Muoi
-                </Text>
-                <Text color="gray.400" fontWeight="normal" fontSize="md">
-                  906 Ton Duc Thang, Lien Chieu, Da Nang
-                </Text>
-              </Flex>
-            </Flex>
-          </Flex>
-        </Box>
+import { useParams } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
+import { Alert, AlertIcon } from "@chakra-ui/react";
+const ComponentToPrint = (props) => {
+  const { data = [] } = props;
+  let dateCheckIn = new Date(data.checkIn);
+  let dateCheckOut = new Date(data.checkOut);
+  const toast = useToast();
+  return (
+    <Box
+      w={{ sm: "330px", md: "500px", lg: "900px" }}
+      justifySelf="center"
+      alignSelf="center"
+      mb="10"
+      p={{ sm: "24px", md: "44px" }}
+      shadow="lg"
+    >
+      <Box mb={{ sm: "40px" }}>
+        <Flex direction="column" w="100%">
+          <Heading>Thanh toán hoá đơn</Heading>
+        </Flex>
+      </Box>
+      <Box>
         <Box>
-          <Flex direction="column" w="100%">
-            <Flex
-              direction={{ sm: "column", md: "row" }}
-              justify="space-between"
-              w="100%"
-              mb="60px"
-            >
-              <Flex direction="column" mb={{ sm: "16px", md: "0px" }}>
-                <Text
-                  color="gray.400"
-                  fontWeight="normal"
-                  fontSize="md"
-                  mb="8px"
-                >
-                  Invoice no
-                </Text>
-                <Text color="gray.500" fontWeight="bold" fontSize="lg">
-                  #0453119
-                </Text>
-              </Flex>
-              <Flex direction="column">
-                <Stack direction="row" mb="8px" justify={{ md: "end" }}>
-                  <Text color="gray.400" fontWeight="normal" fontSize="md">
-                    Invoice date:{" "}
-                  </Text>
-                  <Text color="gray.500" fontWeight="bold" fontSize="lg">
-                    29/11/2021
-                  </Text>
-                </Stack>
-                <Stack direction="row" justify={{ md: "end" }}>
-                  <Text color="gray.400" fontWeight="normal" fontSize="md">
-                    Due date:{" "}
-                  </Text>
-                  <Text color="gray.500" fontWeight="bold" fontSize="lg">
-                    29/11/2021
-                  </Text>
-                </Stack>
-              </Flex>
-            </Flex>
-            <Box>
-              <Table mb="85px">
-                <Thead>
+          <Table mb="85px">
+            <Thead>
+              <Tr>
+                <Th color="gray.400" fontSize="sm" fontWeight="normal" ps="0px">
+                  Dịch vụ
+                </Th>
+                <Th color="gray.400" fontSize="sm" fontWeight="normal">
+                  Ngày đặt
+                </Th>
+                <Th color="gray.400" fontSize="sm" fontWeight="normal">
+                  Ngày trả
+                </Th>
+                <Th color="gray.400" fontSize="sm" fontWeight="normal">
+                  Phụ phí
+                </Th>
+                <Th color="gray.400" fontSize="sm" fontWeight="normal">
+                  Thành tiền
+                </Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {data && (
+                <>
                   <Tr>
-                    <Th
-                      color="gray.400"
-                      fontSize="sm"
-                      fontWeight="normal"
-                      ps="0px"
-                    >
-                      Dịch vụ
-                    </Th>
-                    <Th color="gray.400" fontSize="sm" fontWeight="normal">
-                      Ngày đặt
-                    </Th>
-                    <Th color="gray.400" fontSize="sm" fontWeight="normal">
-                      Ngày trả
-                    </Th>
-                    <Th color="gray.400" fontSize="sm" fontWeight="normal">
-                      Phụ phí
-                    </Th>
-                    <Th color="gray.400" fontSize="sm" fontWeight="normal">
-                      Thành tiền
-                    </Th>
-                  </Tr>
-                </Thead>
-                <Tbody>
-                  {data &&
-                    data.map((item) => {
-                      let dateCheckIn = new Date(item.checkIn);
-                      let dateCheckOut = new Date(item.checkOut);
-                      return (
-                        <Tr>
-                          <Td ps="0px" minW={{ sm: "300px" }}>
-                            <Text
-                              color="gray.500"
-                              fontWeight="normal"
-                              fontSize="md"
-                            >
-                              {item.service}
-                            </Text>
-                          </Td>
-                          <Td>
-                            <Text
-                              color="gray.500"
-                              fontWeight="normal"
-                              fontSize="md"
-                            >
-                              {`${dateCheckIn.getDate()}/${
-                                dateCheckIn.getMonth() + 1
-                              }/${dateCheckIn.getFullYear()}`}
-                            </Text>
-                          </Td>
-                          <Td>
-                            <Text
-                              color="gray.500"
-                              fontWeight="normal"
-                              fontSize="md"
-                            >
-                              {`${dateCheckOut.getDate()}/${
-                                dateCheckOut.getMonth() + 1
-                              }/${dateCheckOut.getFullYear()}`}
-                            </Text>
-                          </Td>
-                          <Td minW="125px" boxSizing="border-box">
-                            <Text
-                              color="gray.500"
-                              fontWeight="normal"
-                              fontSize="md"
-                            >
-                              {item.additionalFee}
-                            </Text>
-                          </Td>
-                          <Td>
-                            <Text
-                              color="gray.500"
-                              fontWeight="normal"
-                              fontSize="md"
-                            >
-                              {item.total}
-                            </Text>
-                          </Td>
-                        </Tr>
-                      );
-                    })}
-
-                  <Tr>
-                    <Td ps="0px" minW={{ sm: "300px" }}></Td>
-                    <Td></Td>
-                    <Td>
-                      <Text color={textColor} fontWeight="bold" fontSize="xl">
-                        Tổng
+                    <Td ps="0px" minW={{ sm: "300px" }}>
+                      <Text color="gray.500" fontWeight="normal" fontSize="md">
+                        {data.service}
                       </Text>
                     </Td>
                     <Td>
-                      <Text color={textColor} fontWeight="bold" fontSize="xl">
-                        3000000
+                      <Text color="gray.500" fontWeight="normal" fontSize="md">
+                        {`${dateCheckIn.getDate()}/${
+                          dateCheckIn.getMonth() + 1
+                        }/${dateCheckIn.getFullYear()}`}
+                      </Text>
+                    </Td>
+                    <Td>
+                      <Text color="gray.500" fontWeight="normal" fontSize="md">
+                        {`${dateCheckOut.getDate()}/${
+                          dateCheckOut.getMonth() + 1
+                        }/${dateCheckOut.getFullYear()}`}
+                      </Text>
+                    </Td>
+                    <Td minW="125px" boxSizing="border-box">
+                      <Text color="gray.500" fontWeight="normal" fontSize="md">
+                        {data.additionalFee}
+                      </Text>
+                    </Td>
+                    <Td>
+                      <Text color="gray.500" fontWeight="normal" fontSize="md">
+                        {data.total}
                       </Text>
                     </Td>
                   </Tr>
-                </Tbody>
-              </Table>
-              <PayPalButton
-                options={{
-                  clientId:
-                    "AditNkLJT4JHknvoPaV4m12tWAGIk0dZ-gsAHX5gsXi4KfqlFeFS57W9E20nQaPKOy-W_bQJWoyBpQEr",
-                  currency: "USD",
-                }}
-                amount="30"
-                onSuccess={(details, data) => {
-                  alert(
-                    "Transaction completed by " + details.payer.name.given_name
-                  );
-                }}
-              />
-            </Box>
-          </Flex>
+                </>
+              )}
+            </Tbody>
+          </Table>
+          <PayPalButton
+            options={{
+              clientId:
+                "AditNkLJT4JHknvoPaV4m12tWAGIk0dZ-gsAHX5gsXi4KfqlFeFS57W9E20nQaPKOy-W_bQJWoyBpQEr",
+              currency: "USD",
+            }}
+            amount={data?.total}
+            onSuccess={(details, data) => {
+              toast({
+                render: () => (
+                  <Alert status="success" variant="left-accent">
+                    <AlertIcon />
+                    Đặt phòng thành công!
+                  </Alert>
+                ),
+              });
+            }}
+          />
         </Box>
       </Box>
-    );
-  }
-}
+    </Box>
+  );
+};
 
 function Invoice() {
   const textColor = useColorModeValue("gray.700", "white");
 
   const componentRef = useRef();
   const userId = localStorage.getItem("useId");
+  let { id } = useParams();
+  console.log("BillIDDDD", id);
   const fetcher = (url) => {
     const token = localStorage.getItem("token");
     return fetch(url, {
@@ -256,17 +141,18 @@ function Invoice() {
     }).then((response) => response.json());
   };
 
-  const { data: bills } = useSWR(
-    `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
+  const { data: bill } = useSWR(
+    `https://pbl6-travelapp.herokuapp.com/bill/${userId}/${id}`,
     fetcher
   );
+  console.log("billlllllxxx", bill);
 
   return (
     <>
       <Navbar />
       <Flex direction="column" pt={{ sm: "100px", lg: "50px" }}>
         <ComponentToPrint
-          data={bills}
+          data={bill}
           ref={componentRef}
           textColor={textColor}
         />

@@ -93,14 +93,16 @@ const Bill = () => {
               {bills ? (
                 bills.map((row, index) => {
                   return (
-                    <BillingRow
-                      additionalFee={row.additionalFee}
-                      checkOut={row.checkOut}
-                      checkIn={row.checkIn}
-                      service={row.service}
-                      billId={row.id}
-                      total={row.total}
-                    />
+                    <Link to={"/invoice/" + `${row.id}`}>
+                      <BillingRow
+                        additionalFee={row.additionalFee}
+                        checkOut={row.checkOut}
+                        checkIn={row.checkIn}
+                        service={row.service}
+                        billId={row.id}
+                        total={row.total}
+                      />
+                    </Link>
                   );
                 })
               ) : (

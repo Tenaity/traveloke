@@ -23,7 +23,7 @@ import HistoryBill from "./pages/HistoryBill";
 
 const theme = extendTheme();
 function Hotel() {
-  let { path, url } = useRouteMatch();
+  let { path } = useRouteMatch();
   console.log(path);
   return (
     <Fragment>
@@ -39,7 +39,7 @@ function Hotel() {
   );
 }
 function Room() {
-  let { path, url } = useRouteMatch();
+  let { path } = useRouteMatch();
   console.log(path);
   return (
     <Fragment>
@@ -52,7 +52,7 @@ function Room() {
   );
 }
 function Restaurant() {
-  let { path, url } = useRouteMatch();
+  let { path } = useRouteMatch();
   console.log(path);
   return (
     <Fragment>
@@ -68,7 +68,7 @@ function Restaurant() {
   );
 }
 function Car() {
-  let { path, url } = useRouteMatch();
+  let { path } = useRouteMatch();
   console.log(path);
   return (
     <Fragment>
@@ -83,8 +83,21 @@ function Car() {
     </Fragment>
   );
 }
+function Payment() {
+  let { path } = useRouteMatch();
+  console.log(path);
+  return (
+    <Fragment>
+      <Switch>
+        <Route path={`${path}/:id`}>
+          <Invoice />
+        </Route>
+      </Switch>
+    </Fragment>
+  );
+}
 function Search() {
-  let { path, url } = useRouteMatch();
+  let { path } = useRouteMatch();
   console.log(path);
   return (
     <Fragment>
@@ -150,7 +163,7 @@ const App = () => {
             <Settings />
           </Route>
           <Route path="/invoice">
-            <Invoice />
+            <Payment />
           </Route>
           <Route path="/search">
             <Search />
