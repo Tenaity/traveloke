@@ -132,17 +132,6 @@ const Navbar = () => {
               {user ? (
                 <>
                   <Bill />
-                  <Link to="/invoice">
-                    <Button
-                      variant="ghost"
-                      transform="auto"
-                      _hover={{
-                        color: "green.500",
-                      }}
-                    >
-                      Thanh toán
-                    </Button>
-                  </Link>
                   <Menu>
                     <MenuButton>
                       <Button variant="ghost" color="orange.500">

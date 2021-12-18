@@ -7,9 +7,11 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
+import { useToast } from "@chakra-ui/react";
 import { FaTrashAlt } from "react-icons/fa";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Alert, AlertIcon } from "@chakra-ui/react";
 function BillingRow(props) {
   const bgColor = useColorModeValue("#F8F9FA", "gray.800");
   const { checkIn, checkOut, additionalFee, service, total, billId } = props;
@@ -18,9 +20,9 @@ function BillingRow(props) {
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
 
-  const onHandleDelete = async (e) => {
+  const toast = useToast();
+  const onHandleDelete = async () => {
     try {
-      e.preventDefault();
       const option = {
         method: "delete",
         url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}/${billId}`,
@@ -33,6 +35,14 @@ function BillingRow(props) {
     } catch (error) {
       console.log(error);
     }
+    toast({
+      render: () => (
+        <Alert status="success" variant="left-accent">
+          <AlertIcon />
+          Xoá hoá đơn thành công!
+        </Alert>
+      ),
+    });
   };
 
   return (

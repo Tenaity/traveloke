@@ -1,5 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
-import axios from "axios";
+import React, { useContext } from "react";
 import AppContext from "./AppContext";
 import {
   Drawer,
@@ -16,34 +15,9 @@ import {
 } from "@chakra-ui/react";
 import useSWR from "swr";
 import BillingRow from "./BillingRow";
-import { Link } from "react-router-dom";
 const Bill = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
-  const billingData = [
-    {
-      name: "Oliver Liam",
-      email: "oliver@burrito.com",
-      phone: "0846001503",
-      service: "Car",
-      price: "10$",
-    },
-    {
-      name: "Lucas Harper",
-      email: "lucas@stone-tech.com",
-      phone: "0846001503",
-      service: "Hotel",
-      price: "10$",
-    },
-    {
-      name: "Ethan James",
-      email: "ethan@fiber.com",
-      phone: "0846001503",
-      service: "Restaurant",
-      price: "10$",
-    },
-  ];
-
   const { state } = useContext(AppContext);
   const userId = state.user.userId;
 
@@ -59,7 +33,8 @@ const Bill = () => {
 
   const { data: bills = [] } = useSWR(
     `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
-    fetcher
+    fetcher,
+    { refreshInterval: 1000 }
   );
 
   console.log("aaaa", bills);
