@@ -45,17 +45,17 @@ import { useFeedback } from "../hooks/useFeedback";
 import ReactDatePicker from "react-datepicker";
 import "../components/DateTimePicker/date-time-picker.css";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
-export const HotelData = (id) => {
-  const { data: hotel } = useSWR(
-    `https://pbl6-travelapp.herokuapp.com/hotel/${id}`,
-    fetcher
-  );
-  console.log("hotel", hotel);
-};
+// export const HotelData = (id) => {
+//   const { data: hotel } = useSWR(
+//     `https://pbl6-travelapp.herokuapp.com/hotel/${id}`,
+//     fetcher
+//   );
+//   console.log("hotel", hotel);
+// };
 const HotelDetail = () => {
   const { state, dispatch } = useContext(AppContext);
   const user = state.user;
-
+  const [errorMessage, setErrorMessage] = useState("");
   let { id } = useParams();
   const { data: room } = useSWR(
     `https://pbl6-travelapp.herokuapp.com/room/${id}`,
@@ -88,18 +88,39 @@ const HotelDetail = () => {
   const [userSubmit, setUserSubmit] = useState({
     checkIn: "",
     checkOut: "",
-    userId: "",
+    guest: "",
+    service: "hotel",
+    additionalFee: "200000",
+    hotel: "",
+    status: "false",
+    room: "",
   });
-
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
+  // setUserSubmit({
+  //   ...userSubmit,
+  //   checkIn: startDate,
+  //   checkOut: endDate,
+  //   guest: token,
+  //   hotel: room.idHotel,
+  //   room: room._id,
+  //   total: room.price,
+  // });
   const onSubmitHandle = async (e) => {
-    const token = localStorage.getItem("token");
-    setUserSubmit({
-      ...userSubmit,
-      checkIn: startDate,
-      checkOut: endDate,
-      userId: token,
-    });
-    e.preventDefault();
+    try {
+      e.preventDefault();
+      const option = {
+        method: "post",
+        url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
+        data: userSubmit,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      await axios(option);
+    } catch (err) {
+      setErrorMessage(err.response.data.message);
+    }
     toast({
       render: () => (
         <Alert status="success" variant="left-accent">
@@ -240,134 +261,6 @@ const HotelDetail = () => {
                 </Stack>
               </Box>
             </SimpleGrid>
-          </Box>
-          <Box my="10">
-            <Heading>Đánh giá khách sạn</Heading>
-            <Box my="10" alignItems="center">
-              <Tabs
-                align="center"
-                isManual
-                variant="enclosed"
-                colorScheme={"green"}
-              >
-                <TabList>
-                  <Tab>Tất cả</Tab>
-                  <Tab>5 sao</Tab>
-                  <Tab>4 sao</Tab>
-                  <Tab>3 sao</Tab>
-                  <Tab>2 sao</Tab>
-                  <Tab>1 sao</Tab>
-                </TabList>
-                <TabPanels>
-                  <TabPanel>
-                    {listFeedback.map((value, index) => {
-                      return (
-                        <FeedBack
-                          vote={value.vote}
-                          comment={value.comment}
-                          key={index}
-                        />
-                      );
-                    })}
-                    <NewFeedBack
-                      handleEnter={handleEnter}
-                      handleUserInput={handleUserInput}
-                      inputValue={inputValue}
-                    />
-                  </TabPanel>
-                  <TabPanel>
-                    {listFeedback.map((value, index) => {
-                      if (value.vote === 5) {
-                        return (
-                          <FeedBack
-                            vote={value.vote}
-                            comment={value.comment}
-                            key={index}
-                          />
-                        );
-                      }
-                    })}
-                    <NewFeedBack
-                      handleEnter={handleEnter}
-                      handleUserInput={handleUserInput}
-                      inputValue={inputValue}
-                    />
-                  </TabPanel>
-                  <TabPanel>
-                    {listFeedback.map((value, index) => {
-                      if (value.vote === 4) {
-                        return (
-                          <FeedBack
-                            vote={value.vote}
-                            comment={value.comment}
-                            key={index}
-                          />
-                        );
-                      }
-                    })}
-                    <NewFeedBack
-                      handleEnter={handleEnter}
-                      handleUserInput={handleUserInput}
-                      inputValue={inputValue}
-                    />
-                  </TabPanel>
-                  <TabPanel>
-                    {listFeedback.map((value, index) => {
-                      if (value.vote === 3) {
-                        return (
-                          <FeedBack
-                            vote={value.vote}
-                            comment={value.comment}
-                            key={index}
-                          />
-                        );
-                      }
-                    })}
-                    <NewFeedBack
-                      handleEnter={handleEnter}
-                      handleUserInput={handleUserInput}
-                      inputValue={inputValue}
-                    />
-                  </TabPanel>
-                  <TabPanel>
-                    {listFeedback.map((value, index) => {
-                      if (value.vote === 2) {
-                        return (
-                          <FeedBack
-                            vote={value.vote}
-                            comment={value.comment}
-                            key={index}
-                          />
-                        );
-                      }
-                    })}
-                    <NewFeedBack
-                      handleEnter={handleEnter}
-                      handleUserInput={handleUserInput}
-                      inputValue={inputValue}
-                    />
-                  </TabPanel>
-                  <TabPanel>
-                    {listFeedback.map((value, index) => {
-                      if (value.vote === 1) {
-                        return (
-                          <FeedBack
-                            vote={value.vote}
-                            comment={value.comment}
-                            key={index}
-                          />
-                        );
-                      }
-                    })}
-                    <NewFeedBack
-                      handleEnter={handleEnter}
-                      handleUserInput={handleUserInput}
-                      inputValue={inputValue}
-                    />
-                  </TabPanel>
-                </TabPanels>
-              </Tabs>
-            </Box>
           </Box>
           <Box my="10">
             <Heading>Phòng liên quan</Heading>

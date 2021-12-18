@@ -17,10 +17,12 @@ import React, { useRef } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { PayPalButton } from "react-paypal-button-v2";
+import useSWR from "swr";
 
 class ComponentToPrint extends React.Component {
   render() {
     const { textColor } = this.props;
+    const { data } = this.props;
 
     return (
       <Box
@@ -126,97 +128,78 @@ class ComponentToPrint extends React.Component {
                       fontWeight="normal"
                       ps="0px"
                     >
-                      Item
+                      Dịch vụ
                     </Th>
                     <Th color="gray.400" fontSize="sm" fontWeight="normal">
-                      Quantity
+                      Ngày đặt
                     </Th>
                     <Th color="gray.400" fontSize="sm" fontWeight="normal">
-                      Rate
+                      Phụ phí
                     </Th>
                     <Th color="gray.400" fontSize="sm" fontWeight="normal">
-                      Amount
+                      Thành tiền
                     </Th>
                   </Tr>
                 </Thead>
                 <Tbody>
-                  <Tr>
-                    <Td ps="0px" minW={{ sm: "300px" }}>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        Hotel
-                      </Text>
-                    </Td>
-                    <Td>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        1
-                      </Text>
-                    </Td>
-                    <Td minW="125px" boxSizing="border-box">
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        $ 10.00
-                      </Text>
-                    </Td>
-                    <Td>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        $ 10.00
-                      </Text>
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td ps="0px" minW={{ sm: "300px" }}>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        Car
-                      </Text>
-                    </Td>
-                    <Td>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        1
-                      </Text>
-                    </Td>
-                    <Td minW="125px" boxSizing="border-box">
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        $ 10.00
-                      </Text>
-                    </Td>
-                    <Td>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        $ 10.00
-                      </Text>
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td ps="0px" minW={{ sm: "300px" }}>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        Restaurant
-                      </Text>
-                    </Td>
-                    <Td>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        1
-                      </Text>
-                    </Td>
-                    <Td minW="125px" boxSizing="border-box">
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        $ 10.00
-                      </Text>
-                    </Td>
-                    <Td>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        $ 10.00
-                      </Text>
-                    </Td>
-                  </Tr>
+                  {data &&
+                    data.map((item) => {
+                      let dateCheckIn = new Date(item.checkIn);
+                      return (
+                        <Tr>
+                          <Td ps="0px" minW={{ sm: "300px" }}>
+                            <Text
+                              color="gray.500"
+                              fontWeight="normal"
+                              fontSize="md"
+                            >
+                              {item.service}
+                            </Text>
+                          </Td>
+                          <Td>
+                            <Text
+                              color="gray.500"
+                              fontWeight="normal"
+                              fontSize="md"
+                            >
+                              {`${dateCheckIn.getDate()}/${
+                                dateCheckIn.getMonth() + 1
+                              }/${dateCheckIn.getFullYear()}`}
+                            </Text>
+                          </Td>
+                          <Td minW="125px" boxSizing="border-box">
+                            <Text
+                              color="gray.500"
+                              fontWeight="normal"
+                              fontSize="md"
+                            >
+                              {item.additionalFee}
+                            </Text>
+                          </Td>
+                          <Td>
+                            <Text
+                              color="gray.500"
+                              fontWeight="normal"
+                              fontSize="md"
+                            >
+                              {item.total}
+                            </Text>
+                          </Td>
+                        </Tr>
+                      );
+                    })}
+
                   <Tr>
                     <Td ps="0px" minW={{ sm: "300px" }}></Td>
                     <Td></Td>
                     <Td>
                       <Text color={textColor} fontWeight="bold" fontSize="xl">
-                        Total
+                        Tổng
                       </Text>
                     </Td>
                     <Td>
                       <Text color={textColor} fontWeight="bold" fontSize="xl">
-                        $ 30.00
+                        3000000
                       </Text>
                     </Td>
                   </Tr>
@@ -247,12 +230,31 @@ function Invoice() {
   const textColor = useColorModeValue("gray.700", "white");
 
   const componentRef = useRef();
+  const userId = localStorage.getItem("useId");
+  const fetcher = (url) => {
+    const token = localStorage.getItem("token");
+    return fetch(url, {
+      method: "get",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((response) => response.json());
+  };
+
+  const { data: bills } = useSWR(
+    `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
+    fetcher
+  );
 
   return (
     <>
       <Navbar />
       <Flex direction="column" pt={{ sm: "100px", lg: "50px" }}>
-        <ComponentToPrint ref={componentRef} textColor={textColor} />
+        <ComponentToPrint
+          data={bills}
+          ref={componentRef}
+          textColor={textColor}
+        />
       </Flex>
       <Footer />
     </>
