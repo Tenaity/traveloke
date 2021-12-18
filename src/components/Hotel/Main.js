@@ -1,55 +1,23 @@
-import axios from "axios";
-import React, { useContext } from "react";
-import AppContext from "../AppContext";
+import React from "react";
 import {
   Box,
   SimpleGrid,
   Heading,
   Text,
   Flex,
-  Stack,
-  InputGroup,
-  InputLeftElement,
   Button,
   Avatar,
 } from "@chakra-ui/react";
-import { useToast } from "@chakra-ui/react";
-import { Alert, AlertIcon } from "@chakra-ui/react";
-import { Image, Badge } from "@chakra-ui/react";
-import { StarIcon } from "@chakra-ui/icons";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import BreadcrumbMain from "../BreadcrumbMain";
-import {
-  IoBusinessOutline,
-  IoCalendarOutline,
-  IoReceiptOutline,
-  IoTvOutline,
-  IoWifiOutline,
-} from "react-icons/io5";
-import { BiArea } from "react-icons/bi";
-import { FaToiletPaper, FaTemperatureHigh } from "react-icons/fa";
-import {
-  GiWashingMachine,
-  GiSnowflake1,
-  GiTooth,
-  GiTowel,
-  GiMedicinePills,
-} from "react-icons/gi";
-import Footer from "../Footer";
-import DateTimePicker from "../DateTimePicker/DateTimePicker";
+import { GiSnowflake1 } from "react-icons/gi";
 import useSWR from "swr";
-import Navbar from "../Navbar";
 import { useParams } from "react-router-dom";
 import FeedBack from "../FeedBack";
 import NewFeedBack from "../NewFeedBack";
-import CarouselBeauty from "../CarouselBeauty";
 import { useFeedback } from "../../hooks/useFeedback";
-import CardHotel from "../BookHotel/CardHotel";
 import CardRoom from "../BookHotel/CardRoom";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const Main = () => {
-  const { state, dispatch } = useContext(AppContext);
-
   let { id } = useParams();
   const { data = {} } = useSWR(
     `https://pbl6-travelapp.herokuapp.com/hotel/${id}/`,
@@ -59,28 +27,11 @@ const Main = () => {
     `https://pbl6-travelapp.herokuapp.com/room/${id}/all`,
     fetcher
   );
-  console.log("abc", data);
-  console.log(data.city);
-  console.log("rooms", rooms);
-  const property = {
-    imageUrl: "https://bit.ly/2Z4KKcF",
-    imageAlt: "Rear view of modern home with pool",
-    beds: 3,
-    baths: 2,
-    title: "Modern home in city center in the heart of historic Los Angeles",
-    formattedPrice: "$1,900.00",
-    reviewCount: 34,
-    rating: 4,
-  };
-  const path = window.location.pathname.slice(1);
-  const service = path.slice(0, path.indexOf("/"));
 
   const { handleEnter, inputValue, handleUserInput, listFeedback } =
     useFeedback();
   const countFeedback = data.feedbacks ? data.feedbacks.length : 0;
   console.log(countFeedback);
-
-  const toast = useToast();
 
   return (
     <>

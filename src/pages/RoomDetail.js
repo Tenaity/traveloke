@@ -35,7 +35,6 @@ import {
   GiMedicinePills,
 } from "react-icons/gi";
 import Footer from "../components/Footer";
-import DateTimePicker from "../components/DateTimePicker/DateTimePicker";
 import useSWR from "swr";
 import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
@@ -46,6 +45,13 @@ import { useFeedback } from "../hooks/useFeedback";
 import ReactDatePicker from "react-datepicker";
 import "../components/DateTimePicker/date-time-picker.css";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
+export const HotelData = (id) => {
+  const { data: hotel } = useSWR(
+    `https://pbl6-travelapp.herokuapp.com/hotel/${id}`,
+    fetcher
+  );
+  console.log("hotel", hotel);
+};
 const HotelDetail = () => {
   const { state, dispatch } = useContext(AppContext);
   const user = state.user;
@@ -55,6 +61,9 @@ const HotelDetail = () => {
     `https://pbl6-travelapp.herokuapp.com/room/${id}`,
     fetcher
   );
+  // {
+  //   room && <HotelData id={room.idHotel} />;
+  // }
   console.log("room detailllll", room);
   const property = {
     imageUrl: "https://bit.ly/2Z4KKcF",
@@ -66,8 +75,6 @@ const HotelDetail = () => {
     reviewCount: 34,
     rating: 4,
   };
-  const path = window.location.pathname.slice(1);
-  const service = path.slice(0, path.indexOf("/"));
 
   const { handleEnter, inputValue, handleUserInput, listFeedback } =
     useFeedback();
@@ -78,7 +85,6 @@ const HotelDetail = () => {
   const [endDate, setEndDate] = useState(new Date());
   console.log(startDate);
   console.log(endDate);
-  const [errorMessage, setErrorMessage] = useState("");
   const [userSubmit, setUserSubmit] = useState({
     checkIn: "",
     checkOut: "",
@@ -103,27 +109,6 @@ const HotelDetail = () => {
       ),
     });
     console.log("data input", userSubmit);
-    // try {
-    //   const token = localStorage.getItem("token");
-    //   setUserSubmit({
-    //     ...userSubmit,
-    //     checkIn: startDate,
-    //     checkOut: endDate,
-    //     userId: token,
-    //   });
-    //   e.preventDefault();
-    //   const option = {
-    //     method: "post",
-    //     url: "https://pbl6-travelapp.herokuapp.com/auth/login",
-    //     data: userSubmit,
-    //     headers: {
-    //       Authorization: `Bearer ${token}`,
-    //     },
-    //   };
-    //   const response = await axios(option);
-    // } catch (err) {
-    //   setErrorMessage(err.response.data.message);
-    // }
   };
 
   return (

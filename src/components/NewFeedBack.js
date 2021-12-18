@@ -31,7 +31,7 @@ const NewFeedBack = (props) => {
         onKeyDown={(e) => handleEnter(e)}
         onChange={(e) => handleUserInput(e)}
       />
-      <Button
+      {/* <Button
         bg="transparent"
         onClick={() => {
           user &&
@@ -46,7 +46,7 @@ const NewFeedBack = (props) => {
         }}
       >
         <IoArrowRedoSharp />
-      </Button>
+      </Button> */}
     </Flex>
   );
 };

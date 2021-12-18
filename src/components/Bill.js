@@ -12,6 +12,7 @@ import {
   Button,
   useDisclosure,
   Flex,
+  Text,
 } from "@chakra-ui/react";
 import useSWR from "swr";
 import BillingRow from "./BillingRow";
@@ -89,7 +90,7 @@ const Bill = () => {
 
           <DrawerBody>
             <Flex direction="column" w="100%">
-              {bills &&
+              {bills ? (
                 bills.map((row, index) => {
                   return (
                     <BillingRow
@@ -97,10 +98,14 @@ const Bill = () => {
                       checkOut={row.checkOut}
                       checkIn={row.checkIn}
                       service={row.service}
+                      billId={row.id}
                       total={row.total}
                     />
                   );
-                })}
+                })
+              ) : (
+                <Text>Không có bill</Text>
+              )}
             </Flex>
           </DrawerBody>
 
