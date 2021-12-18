@@ -58,7 +58,7 @@ const CardHotel = ({ hotel }) => {
                 .map((_, i) => (
                   <StarIcon
                     key={i}
-                    color={i < hotel.rating ? "teal.500" : "gray.300"}
+                    color={i < hotel.vote ? "teal.500" : "gray.300"}
                   />
                 ))}
               <Box as="span" ml="2" color="gray.600" fontSize="sm">

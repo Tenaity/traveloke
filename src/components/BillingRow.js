@@ -9,18 +9,18 @@ import {
 import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import axios from "axios";
-import useSWR from "swr";
+import { Link } from "react-router-dom";
 function BillingRow(props) {
-  const textColor = useColorModeValue("gray.700", "white");
   const bgColor = useColorModeValue("#F8F9FA", "gray.800");
-  const nameColor = useColorModeValue("gray.500", "white");
   const { checkIn, checkOut, additionalFee, service, total, billId } = props;
   let dateCheckIn = new Date(checkIn);
   let dateCheckOut = new Date(checkOut);
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
-  const deleteBill = async () => {
+
+  const onHandleDelete = async (e) => {
     try {
+      e.preventDefault();
       const option = {
         method: "delete",
         url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}/${billId}`,
@@ -29,74 +29,59 @@ function BillingRow(props) {
         },
       };
       const response = await axios(option);
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
   };
-  // const fetcher = (url) => {
-  //   return fetch(url, {
-  //     method: "delete",
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   }).then((response) => response.json());
-  // };
-  // function deleteBill(params) {
-  //   // eslint-disable-next-line react-hooks/rules-of-hooks
-  //   useSWR(
-  //     `https://pbl6-travelapp.herokuapp.com/bill/${userId}/${billId}`,
-  //     fetcher
-  //   );
-  // }
 
   return (
     <Box p="24px" bg={bgColor} mb="22px" borderRadius="12px">
       <Flex justify="space-between" w="100%">
-        <Flex direction="column" maxWidth="70%">
-          {/* <Text color={nameColor} fontSize="md" fontWeight="bold" mb="10px">
-            {name}
-          </Text> */}
-          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            Service:
-            <Text as="span" color="gray.500" ml="1">
-              {service}
+        <Link to={"/invoice/" + `${billId}`}>
+          <Flex direction="column" maxWidth="70%">
+            <Text color="gray.400" fontSize="sm" fontWeight="semibold">
+              Service:
+              <Text as="span" color="gray.500" ml="1">
+                {service}
+              </Text>
             </Text>
-          </Text>
-          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            BillId:
-            <Text as="span" color="gray.500" ml="1">
-              {billId}
+            <Text color="gray.400" fontSize="sm" fontWeight="semibold">
+              BillId:
+              <Text as="span" color="gray.500" ml="1">
+                {billId}
+              </Text>
             </Text>
-          </Text>
-          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            Check In:
-            <Text as="span" color="gray.500" ml="1">
-              {`${dateCheckIn.getDate()}/${
-                dateCheckIn.getMonth() + 1
-              }/${dateCheckIn.getFullYear()}`}
+            <Text color="gray.400" fontSize="sm" fontWeight="semibold">
+              Check In:
+              <Text as="span" color="gray.500" ml="1">
+                {`${dateCheckIn.getDate()}/${
+                  dateCheckIn.getMonth() + 1
+                }/${dateCheckIn.getFullYear()}`}
+              </Text>
             </Text>
-          </Text>
-          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            CheckOut:
-            <Text as="span" color="gray.500" ml="1">
-              {`${dateCheckOut.getDate()}/${
-                dateCheckOut.getMonth() + 1
-              }/${dateCheckOut.getFullYear()}`}
+            <Text color="gray.400" fontSize="sm" fontWeight="semibold">
+              CheckOut:
+              <Text as="span" color="gray.500" ml="1">
+                {`${dateCheckOut.getDate()}/${
+                  dateCheckOut.getMonth() + 1
+                }/${dateCheckOut.getFullYear()}`}
+              </Text>
             </Text>
-          </Text>
-          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            Additional Fee:
-            <Text as="span" color="gray.500" ml="1">
-              {additionalFee}
+            <Text color="gray.400" fontSize="sm" fontWeight="semibold">
+              Additional Fee:
+              <Text as="span" color="gray.500" ml="1">
+                {additionalFee}
+              </Text>
             </Text>
-          </Text>
-          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            Price:
-            <Text as="span" color="gray.500" ml="1">
-              {total}
+            <Text color="gray.400" fontSize="sm" fontWeight="semibold">
+              Price:
+              <Text as="span" color="gray.500" ml="1">
+                {total}
+              </Text>
             </Text>
-          </Text>
-        </Flex>
+          </Flex>
+        </Link>
         <Flex
           direction={{ sm: "column", md: "row" }}
           align="flex-start"
@@ -107,7 +92,7 @@ function BillingRow(props) {
             bg="transparent"
             mb={{ sm: "10px", md: "0px" }}
             me={{ md: "12px" }}
-            onClick={deleteBill}
+            onClick={onHandleDelete}
           >
             <Flex color="red.500" cursor="pointer" align="center" p="12px">
               <Icon as={FaTrashAlt} me="4px" />
@@ -116,14 +101,6 @@ function BillingRow(props) {
               </Text>
             </Flex>
           </Button>
-          {/* <Button p="0px" bg="transparent">
-            <Flex color={textColor} cursor="pointer" align="center" p="12px">
-              <Icon as={FaPencilAlt} me="4px" />
-              <Text fontSize="sm" fontWeight="semibold">
-                EDIT
-              </Text>
-            </Flex>
-          </Button> */}
         </Flex>
       </Flex>
     </Box>
