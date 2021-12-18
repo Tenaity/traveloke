@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   HStack,
   Box,
@@ -8,6 +8,7 @@ import {
   Avatar,
   Text,
   Image,
+  useToast,
 } from "@chakra-ui/react";
 import {
   Menu,
@@ -23,11 +24,23 @@ import { useHistory } from "react-router";
 import Bill from "./Bill";
 import Search from "./Search";
 import gogo from "../assets/img/logo2.png";
+import useSWR from "swr";
+import { Alert, AlertIcon } from "@chakra-ui/react";
 const Navbar = () => {
   const { state, dispatch } = useContext(AppContext);
+  const [inputChange, setInputChange] = useState("");
+  const onChangeHandle = (e) => {
+    setInputChange(e.target.value);
+  };
   const user = state.user;
   const history = useHistory();
-  console.log(user);
+  const toast = useToast();
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const { data: searchItem } = useSWR(
+    `https://pbl6-travelapp.herokuapp.com/hotel?city=${inputChange}`,
+    fetcher
+  );
+  console.log("SearchItem", searchItem);
   const signOut = () => {
     const token = localStorage.getItem("token");
     const option = {
@@ -36,6 +49,14 @@ const Navbar = () => {
       data: { refreshToken: { token } },
     };
     axios(option);
+    toast({
+      render: () => (
+        <Alert status="success" variant="left-accent">
+          <AlertIcon />
+          Đăng xuất thành công!
+        </Alert>
+      ),
+    });
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     dispatch({ type: "CURRENT_USER", payload: null });
@@ -67,7 +88,7 @@ const Navbar = () => {
                 </Link>
               </Heading>
               <Box mt="2">
-                <Search />
+                <Search searchItem={searchItem} onChange={onChangeHandle} />
               </Box>
             </HStack>
           </Flex>

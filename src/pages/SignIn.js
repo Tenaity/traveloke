@@ -14,6 +14,7 @@ import {
   InputRightElement,
   useDisclosure,
   Center,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useRef, useState, useContext } from "react";
 import Testimonial from "../components/loginComponent/Testimonial";
@@ -22,6 +23,7 @@ import axios from "axios";
 import AppContext from "../components/AppContext";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import { Alert, AlertIcon } from "@chakra-ui/react";
 const SignIn = () => {
   const { dispatch } = useContext(AppContext);
   const history = useHistory();
@@ -29,7 +31,7 @@ const SignIn = () => {
   const [userInput, setUserInput] = useState({ email: "", password: "" });
   const { isOpen, onToggle } = useDisclosure();
   const inputRef = useRef(null);
-
+  const toast = useToast();
   const onChangeHandle = (e) => {
     setUserInput({ ...userInput, [e.target.name]: e.target.value });
   };
@@ -53,6 +55,14 @@ const SignIn = () => {
     } catch (err) {
       setErrorMessage(err.response.data.message);
     }
+    toast({
+      render: () => (
+        <Alert status="success" variant="left-accent">
+          <AlertIcon />
+          Đăng nhập thành công!
+        </Alert>
+      ),
+    });
   };
 
   const onClickReveal = () => {

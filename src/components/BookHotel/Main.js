@@ -18,19 +18,11 @@ const Main = () => {
         <BreadcrumbMain urls={["Trang chủ", "Phòng khách sạn"]} />
         <Box w="6xl">
           <Box my="7">
-            <Heading size="lg">2033 homestay tại Hà Nội</Heading>
+            <Heading size="lg">{data.length} hotel tại trang chủ</Heading>
           </Box>
           <Flex my="10" justifyContent="space-between" alignItems="center">
             <Flex alignItems="center">
               <HStack spacing="5">
-                <Flex alignItems="center">
-                  <Box mr="5">Giường</Box>
-                  <Select>
-                    <option value="option1">1</option>
-                    <option value="option2">2</option>
-                    <option value="option3">3</option>
-                  </Select>
-                </Flex>
                 <Flex alignItems="center">
                   <Box mr="5">Giá</Box>
                   <Select>

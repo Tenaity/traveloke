@@ -13,12 +13,7 @@ import {
 } from "@chakra-ui/react";
 import SearchItem from "./SearchItem";
 import { Search2Icon, SearchIcon } from "@chakra-ui/icons";
-export default function SearchModal({
-  //   isOpen,
-  //   onClose = () => {},
-  changeInput,
-  loading,
-}) {
+export default function SearchModal({ loading, onChange, searchItem = [] }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box>
@@ -44,14 +39,14 @@ export default function SearchModal({
                   )
                 }
               />
-              <Input colorScheme="brand" type="search" onChange={changeInput} />
+              <Input colorScheme="brand" type="search" onChange={onChange} />
             </InputGroup>
           </ModalHeader>
           <ModalBody>
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
+            {searchItem &&
+              searchItem.map((item) => {
+                return <SearchItem item={item} />;
+              })}
           </ModalBody>
         </ModalContent>
       </Modal>
