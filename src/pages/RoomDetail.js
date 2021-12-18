@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useState, useContext } from "react";
 import AppContext from "../components/AppContext";
 import {
   Box,
@@ -14,8 +14,6 @@ import {
 } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import { Alert, AlertIcon } from "@chakra-ui/react";
-import { Image, Badge } from "@chakra-ui/react";
-import { StarIcon } from "@chakra-ui/icons";
 import BreadcrumbMain from "../components/BreadcrumbMain";
 import {
   IoBusinessOutline,
@@ -34,7 +32,7 @@ import {
   GiMedicinePills,
 } from "react-icons/gi";
 import Footer from "../components/Footer";
-import useSWR, { useSWRConfig } from "swr";
+import useSWR from "swr";
 import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
 import CarouselBeauty from "../components/CarouselBeauty";
@@ -42,9 +40,6 @@ import ReactDatePicker from "react-datepicker";
 import "../components/DateTimePicker/date-time-picker.css";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const HotelDetail = () => {
-  const { state, dispatch } = useContext(AppContext);
-  const user = state.user;
-  const [errorMessage, setErrorMessage] = useState("");
   let { id } = useParams();
   const { data: room } = useSWR(
     `https://pbl6-travelapp.herokuapp.com/room/${id}`,
@@ -52,105 +47,73 @@ const HotelDetail = () => {
   );
 
   console.log("room detailllll", room);
-  const property = {
-    imageUrl: "https://bit.ly/2Z4KKcF",
-    imageAlt: "Rear view of modern home with pool",
-    beds: 3,
-    baths: 2,
-    title: "Modern home in city center in the heart of historic Los Angeles",
-    formattedPrice: "$1,900.00",
-    reviewCount: 34,
-    rating: 4,
-  };
-
   const toast = useToast();
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  console.log(startDate);
-  console.log(endDate);
-
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
-
-  // const fetcherBill = () => {
-  //   return fetch(`https://pbl6-travelapp.herokuapp.com/bill/${userId}`, {
-  //     method: "post",
-  //     data: {
-  //       checkIn: startDate,
-  //       checkOut: endDate,
-  //       service: "hotel",
-  //       additionalFee: "200000",
-  //       status: "false",
-  //       guest: token,
-  //       hotel: room.idHotel,
-  //       room: room._id,
-  //       total: room.price,
-  //     },
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   }).then((response) => response.json());
-  // };
+  const { state } = useContext(AppContext);
+  const user = state?.user?.userName;
+  console.log("context", state);
   const onSubmitHandle = async (e) => {
-    console.log("xxxxxxxx", {
-      checkIn: startDate,
-      checkOut: endDate,
-      service: "hotel",
-      additionalFee: 200000,
-      status: "false",
-      guest: userId,
-      hotel: room.idHotel,
-      room: room._id,
-      total: room.price,
-    });
-    try {
-      e.preventDefault();
-      const option = {
-        method: "post",
-        url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
-        data: {
-          checkIn: startDate,
-          checkOut: endDate,
-          service: "hotel",
-          additionalFee: 200000,
-          status: "false",
-          guest: userId,
-          hotel: room.idHotel,
-          room: room._id,
-          total: room.price,
-        },
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const response = await axios(option);
-
-      console.log(response);
-    } catch (err) {
-      setErrorMessage(err.response.data.message);
+    if (user) {
+      try {
+        e.preventDefault();
+        const option = {
+          method: "post",
+          url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
+          data: {
+            checkIn: startDate,
+            checkOut: endDate,
+            service: "hotel",
+            additionalFee: 200000,
+            status: "false",
+            guest: userId,
+            hotel: room.idHotel,
+            room: room._id,
+            total: room.price,
+          },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        const response = await axios(option);
+        console.log(response);
+      } catch (err) {
+        console.log(err);
+      }
+      toast({
+        render: () => (
+          <Alert status="success" variant="left-accent">
+            <AlertIcon />
+            Đặt phòng thành công!
+          </Alert>
+        ),
+      });
+    } else {
+      toast({
+        render: () => (
+          <Alert status="error" variant="left-accent">
+            <AlertIcon />
+            Bạn cần đăng nhập để đặt phòng!
+          </Alert>
+        ),
+      });
     }
-    toast({
-      render: () => (
-        <Alert status="success" variant="left-accent">
-          <AlertIcon />
-          Đặt phòng thành công!
-        </Alert>
-      ),
-    });
   };
 
   return (
     <>
       <Navbar />
       <Box py="5">
-        <Box w="6xl" mx="auto">
+        <Box w="6xl" mx="auto" mb="10">
           <BreadcrumbMain
             urls={["Trang chủ", "Phòng khách sạn", "Đặt phòng"]}
           />
           <Box>
             <SimpleGrid mt="7" columns={{ base: 1, md: 2 }}>
-              <CarouselBeauty />
+              {room?.images && <CarouselBeauty images={room?.images} />}{" "}
               <Box ml="10">
                 <Heading mb="4">Chi tiết đặt phòng</Heading>
                 <Flex alignItems="center" mb="4">
@@ -248,7 +211,7 @@ const HotelDetail = () => {
                       Giá :
                     </Heading>
                     <Heading size="lg" color="green.500">
-                      {room ? room.price : 100}
+                      {room ? room.price : 100} $
                     </Heading>
                   </Flex>
 
