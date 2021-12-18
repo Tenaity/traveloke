@@ -3,17 +3,6 @@ import { Box, Flex, Image, Badge } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 const CardHotel = ({ hotel }) => {
-  const property = {
-    imageUrl: hotel.images[0],
-    imageAlt: "Rear view of modern home with pool",
-    rooms: hotel.totalRooms,
-    available: hotel.availableRooms,
-    title: hotel.name,
-    formattedPrice: "$1,900.00",
-    reviewCount: hotel.feedbacks?.length || 0,
-    rating: hotel.vote,
-  };
-
   return (
     <Link to={`/hotel/${hotel.id}`}>
       <Flex>
@@ -25,8 +14,8 @@ const CardHotel = ({ hotel }) => {
           _hover={{ shadow: "xl" }}
         >
           <Image
-            src={property.imageUrl}
-            alt={property.imageAlt}
+            src={hotel.images[0]}
+            alt={hotel.imageAlt}
             roundedTop="lg"
             objectFit="cover"
             h="220px"
@@ -45,7 +34,7 @@ const CardHotel = ({ hotel }) => {
                 textTransform="uppercase"
                 ml="2"
               >
-                {property.available} available
+                {hotel.availableRooms} available
               </Box>
             </Box>
 
@@ -56,15 +45,12 @@ const CardHotel = ({ hotel }) => {
               lineHeight="tight"
               isTruncated
             >
-              {property.title}
+              {hotel.name}
             </Box>
 
-            {/* <Box>
-              {property.formattedPrice}
-              <Box as="span" color="gray.600" fontSize="sm">
-                / wk
-              </Box>
-            </Box> */}
+            <Box>
+              {hotel.priceFrom}$ - {hotel.priceTo}$
+            </Box>
 
             <Box d="flex" mt="2" alignItems="center">
               {Array(5)
@@ -72,11 +58,11 @@ const CardHotel = ({ hotel }) => {
                 .map((_, i) => (
                   <StarIcon
                     key={i}
-                    color={i < property.rating ? "teal.500" : "gray.300"}
+                    color={i < hotel.rating ? "teal.500" : "gray.300"}
                   />
                 ))}
               <Box as="span" ml="2" color="gray.600" fontSize="sm">
-                {property.reviewCount} reviews
+                {hotel.feedbacks.length} reviews
               </Box>
             </Box>
           </Box>

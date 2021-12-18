@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, SimpleGrid, Heading, Flex, HStack } from "@chakra-ui/layout";
 import { Select } from "@chakra-ui/react";
 import CardHotel from "./CardHotel";
@@ -7,10 +7,21 @@ import PaginationMain from "./PaginationMain";
 import useSWR from "swr";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const Main = () => {
+  const [priceFrom, setPriceFrom] = useState("100");
+  const [priceTo, setPriceTo] = useState("1100");
+  const onChangeHandle = (e) => {
+    setPriceFrom(e.target.value.split(",")[0]);
+    setPriceTo(e.target.value.split(",")[1] || priceFrom);
+  };
   const { data = [] } = useSWR(
     "https://pbl6-travelapp.herokuapp.com/hotel",
     fetcher
   );
+  const { data: filterHotelByPrice } = useSWR(
+    `https://pbl6-travelapp.herokuapp.com/hotel?priceFrom=${priceFrom}&priceTo=${priceTo}`,
+    fetcher
+  );
+  console.log("filter", filterHotelByPrice);
   console.log("list hotel", data);
   return (
     <>
@@ -25,20 +36,12 @@ const Main = () => {
               <HStack spacing="5">
                 <Flex alignItems="center">
                   <Box mr="5">Giá</Box>
-                  <Select>
-                    <option value="option1">0$-25$</option>
-                    <option value="option2">25$-50$</option>
-                    <option value="option3">50$+</option>
-                  </Select>
-                </Flex>
-                <Flex alignItems="center">
-                  <Box mr="5">Sao</Box>
-                  <Select>
-                    <option value="option1">1</option>
-                    <option value="option2">2</option>
-                    <option value="option3">3</option>
-                    <option value="option3">4</option>
-                    <option value="option3">5</option>
+                  <Select name="filterHotelByPrice" onChange={onChangeHandle}>
+                    <option value="100,200">100$-200$</option>
+                    <option value="200,400">200$-400$</option>
+                    <option value="400,500">400$-500$</option>
+                    <option value="500,1000">500$-1000$</option>
+                    <option value="1000"> {"> "}1000$</option>
                   </Select>
                 </Flex>
               </HStack>
@@ -57,9 +60,13 @@ const Main = () => {
 
         <Box mx="auto">
           <SimpleGrid columns={[2, null, 4]} spacing="40px">
-            {data?.map((hotel) => (
-              <CardHotel key={hotel.id} hotel={hotel} />
-            ))}
+            {filterHotelByPrice
+              ? filterHotelByPrice?.map((hotel) => (
+                  <CardHotel key={hotel.id} hotel={hotel} />
+                ))
+              : data?.map((hotel) => (
+                  <CardHotel key={hotel.id} hotel={hotel} />
+                ))}
           </SimpleGrid>
         </Box>
       </Box>
