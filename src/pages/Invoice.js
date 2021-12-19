@@ -51,75 +51,201 @@ const ComponentToPrint = (props) => {
         <Box>
           <Table mb="30px">
             <Thead>
-              <Tr>
-                <Th fontSize="sm" fontWeight="normal">
-                  Dịch vụ
-                </Th>
-                <Th fontSize="sm" fontWeight="normal">
-                  Mã hoá đơn
-                </Th>
-                <Th fontSize="sm" fontWeight="normal">
-                  Tình trạng
-                </Th>
-                <Th fontSize="sm" fontWeight="normal">
-                  Ngày đặt
-                </Th>
-                <Th fontSize="sm" fontWeight="normal">
-                  Ngày trả
-                </Th>
-                <Th fontSize="sm" fontWeight="normal">
-                  Phụ phí
-                </Th>
-                <Th fontSize="sm" fontWeight="normal">
-                  Thành tiền
-                </Th>
-              </Tr>
+              {data.service === "hotel" && (
+                <Tr>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Dịch vụ
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Tên khách sạn
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Mã hoá đơn
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Tình trạng
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Ngày đặt
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Ngày trả
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Thành tiền
+                  </Th>
+                </Tr>
+              )}
+              {data.service === "restaurant" && (
+                <Tr>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Dịch vụ
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Tên nhà hàng
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Mã hoá đơn
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Tình trạng
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Ngày đặt
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Thành tiền
+                  </Th>
+                </Tr>
+              )}
+              {data.service === "selfVehicle" && (
+                <Tr>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Dịch vụ
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Dịch vụ cho thuê
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Mã hoá đơn
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Tình trạng
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Ngày đặt
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Ngày trả
+                  </Th>
+                  <Th fontSize="sm" fontWeight="normal">
+                    Thành tiền
+                  </Th>
+                </Tr>
+              )}
             </Thead>
             <Tbody>
-              {data && (
-                <>
-                  <Tr>
-                    <Td>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        {data.service}
-                      </Text>
-                    </Td>
-                    <Td>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        {data.id}
-                      </Text>
-                    </Td>
-                    <Td>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        {data.status ? "Đã thanh toán" : "Chưa thanh toán"}
-                      </Text>
-                    </Td>
-                    <Td>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        {`${dateCheckIn.getDate()}/${
-                          dateCheckIn.getMonth() + 1
-                        }/${dateCheckIn.getFullYear()}`}
-                      </Text>
-                    </Td>
-                    <Td>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        {`${dateCheckOut.getDate()}/${
-                          dateCheckOut.getMonth() + 1
-                        }/${dateCheckOut.getFullYear()}`}
-                      </Text>
-                    </Td>
-                    <Td minW="125px" boxSizing="border-box">
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        {data.additionalFee}
-                      </Text>
-                    </Td>
-                    <Td>
-                      <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        {data.total}
-                      </Text>
-                    </Td>
-                  </Tr>
-                </>
+              {data.service === "hotel" && (
+                <Tr>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      Đặt phòng khách sạn
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {data.name}
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {data.id}
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {data.status ? "Đã thanh toán" : "Chưa thanh toán"}
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {`${dateCheckIn.getDate()}/${
+                        dateCheckIn.getMonth() + 1
+                      }/${dateCheckIn.getFullYear()}`}
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {`${dateCheckOut.getDate()}/${
+                        dateCheckOut.getMonth() + 1
+                      }/${dateCheckOut.getFullYear()}`}
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {data.total}$
+                    </Text>
+                  </Td>
+                </Tr>
+              )}
+              {data.service === "restaurant" && (
+                <Tr>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      Đặt bàn nhà hàng
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {data.name}
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {data.id}
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {data.status ? "Đã thanh toán" : "Chưa thanh toán"}
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {`${dateCheckIn.getDate()}/${
+                        dateCheckIn.getMonth() + 1
+                      }/${dateCheckIn.getFullYear()}`}
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {data.total}$
+                    </Text>
+                  </Td>
+                </Tr>
+              )}
+              {data.service === "selfVehicle" && (
+                <Tr>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      Thuê xe tự lái
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {data.name}
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {data.id}
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {data.status ? "Đã thanh toán" : "Chưa thanh toán"}
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {`${dateCheckIn.getDate()}/${
+                        dateCheckIn.getMonth() + 1
+                      }/${dateCheckIn.getFullYear()}`}
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {`${dateCheckOut.getDate()}/${
+                        dateCheckOut.getMonth() + 1
+                      }/${dateCheckOut.getFullYear()}`}
+                    </Text>
+                  </Td>
+                  <Td>
+                    <Text color="gray.500" fontWeight="normal" fontSize="md">
+                      {data.total}$
+                    </Text>
+                  </Td>
+                </Tr>
               )}
             </Tbody>
           </Table>
@@ -141,7 +267,7 @@ const ComponentToPrint = (props) => {
                     </Alert>
                   ),
                 });
-                // history.push("/");
+                history.push("/");
                 return axios({
                   method: "patch",
                   url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}/${data.id}`,

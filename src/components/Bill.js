@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import AppContext from "./AppContext";
 import {
   Drawer,
@@ -11,8 +11,6 @@ import {
   Button,
   useDisclosure,
   Flex,
-  Text,
-  Box,
   Heading,
 } from "@chakra-ui/react";
 import useSWR from "swr";
@@ -24,7 +22,6 @@ const Bill = () => {
   const { state } = useContext(AppContext);
   const userId = state.user.userId;
   const token = localStorage.getItem("token");
-  console.log("token vu", token);
 
   const fetcher = (url) => {
     return fetch(url, {
@@ -40,25 +37,25 @@ const Bill = () => {
     fetcher,
     { refreshInterval: 1000 }
   );
+  const billFilter = bills?.filter((item) => item.status === false);
+  console.log("billFilter", billFilter);
+  // const onSubmitHandle = async (e) => {
+  //   try {
+  //     e.preventDefault();
+  //     const option = {
+  //       method: "get",
+  //       url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     };
+  //     const response = await axios(option);
+  //     console.log("axios", response.data);
+  //   } catch (err) {
+  //     console.log("loi");
+  //   }
+  // };
 
-  const onSubmitHandle = async (e) => {
-    try {
-      e.preventDefault();
-      const option = {
-        method: "get",
-        url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const response = await axios(option);
-      console.log("axios", response.data);
-    } catch (err) {
-      console.log("loi");
-    }
-  };
-
-  console.log("aaaa", bills);
   return (
     <>
       <Button
@@ -85,19 +82,20 @@ const Bill = () => {
           <DrawerHeader>Bill Information</DrawerHeader>
 
           <DrawerBody>
-            <Button onClick={onSubmitHandle}>aaaaa</Button>
+            {/* <Button onClick={onSubmitHandle}>aaaaa</Button> */}
             <Flex direction="column" w="100%">
-              {bills ? (
-                bills.map((row, index) => {
+              {billFilter ? (
+                billFilter.map((row, index) => {
                   return (
                     <BillingRow
-                      nameHotel={row?.nameHotel}
+                      name={row?.name}
                       additionalFee={row.additionalFee}
                       checkOut={row.checkOut}
                       checkIn={row.checkIn}
                       service={row.service}
                       billId={row.id}
                       total={row.total}
+                      status={row.status}
                     />
                   );
                 })

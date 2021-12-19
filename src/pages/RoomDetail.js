@@ -74,6 +74,7 @@ const HotelDetail = () => {
               hotel: room.idHotel.id,
               room: room._id,
               total: room.price,
+              name: room.idHotel.name,
             },
             headers: {
               Authorization: `Bearer ${token}`,
