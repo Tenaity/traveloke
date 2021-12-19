@@ -51,21 +51,21 @@ function BillingRow(props) {
     <Box p="24px" bg={bgColor} mb="22px" borderRadius="12px">
       <Flex justify="space-between" w="100%">
         <Link to={"/invoice/" + `${billId}`}>
-          <Flex direction="column" maxWidth="70%">
+          <Flex direction="column" maxWidth="100%">
             <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-              Service:
+              Dịch vụ:
               <Text as="span" color="gray.500" ml="1">
                 {service}
               </Text>
             </Text>
             <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-              BillId:
+              Mã hoá đơn:
               <Text as="span" color="gray.500" ml="1">
                 {billId}
               </Text>
             </Text>
             <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-              Check In:
+              Đặt phòng:
               <Text as="span" color="gray.500" ml="1">
                 {`${dateCheckIn.getDate()}/${
                   dateCheckIn.getMonth() + 1
@@ -73,7 +73,7 @@ function BillingRow(props) {
               </Text>
             </Text>
             <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-              CheckOut:
+              Trả phòng:
               <Text as="span" color="gray.500" ml="1">
                 {`${dateCheckOut.getDate()}/${
                   dateCheckOut.getMonth() + 1
@@ -81,24 +81,20 @@ function BillingRow(props) {
               </Text>
             </Text>
             <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-              Additional Fee:
+              Phụ phí:
               <Text as="span" color="gray.500" ml="1">
                 {additionalFee}
               </Text>
             </Text>
             <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-              Price:
+              Thành tiền:
               <Text as="span" color="gray.500" ml="1">
                 {total}
               </Text>
             </Text>
           </Flex>
         </Link>
-        <Flex
-          direction={{ sm: "column", md: "row" }}
-          align="flex-start"
-          p={{ md: "24px" }}
-        >
+        <Flex direction={{ sm: "column", md: "row" }} align="flex-start">
           <Button
             p="0px"
             bg="transparent"

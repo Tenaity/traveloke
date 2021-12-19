@@ -30,7 +30,7 @@ const ComponentToPrint = (props) => {
   const history = useHistory();
   return (
     <Box
-      w={{ sm: "330px", md: "500px", lg: "900px" }}
+      w="7xl"
       justifySelf="center"
       alignSelf="center"
       mb="10"
@@ -44,22 +44,28 @@ const ComponentToPrint = (props) => {
       </Box>
       <Box>
         <Box>
-          <Table mb="85px">
+          <Table mb="30px">
             <Thead>
               <Tr>
-                <Th color="gray.400" fontSize="sm" fontWeight="normal" ps="0px">
+                <Th fontSize="sm" fontWeight="normal">
                   Dịch vụ
                 </Th>
-                <Th color="gray.400" fontSize="sm" fontWeight="normal">
+                <Th fontSize="sm" fontWeight="normal">
+                  Mã hoá đơn
+                </Th>
+                <Th fontSize="sm" fontWeight="normal">
+                  Tình trạng
+                </Th>
+                <Th fontSize="sm" fontWeight="normal">
                   Ngày đặt
                 </Th>
-                <Th color="gray.400" fontSize="sm" fontWeight="normal">
+                <Th fontSize="sm" fontWeight="normal">
                   Ngày trả
                 </Th>
-                <Th color="gray.400" fontSize="sm" fontWeight="normal">
+                <Th fontSize="sm" fontWeight="normal">
                   Phụ phí
                 </Th>
-                <Th color="gray.400" fontSize="sm" fontWeight="normal">
+                <Th fontSize="sm" fontWeight="normal">
                   Thành tiền
                 </Th>
               </Tr>
@@ -68,9 +74,19 @@ const ComponentToPrint = (props) => {
               {data && (
                 <>
                   <Tr>
-                    <Td ps="0px" minW={{ sm: "300px" }}>
+                    <Td>
                       <Text color="gray.500" fontWeight="normal" fontSize="md">
                         {data.service}
+                      </Text>
+                    </Td>
+                    <Td>
+                      <Text color="gray.500" fontWeight="normal" fontSize="md">
+                        {data.id}
+                      </Text>
+                    </Td>
+                    <Td>
+                      <Text color="gray.500" fontWeight="normal" fontSize="md">
+                        {!data.status ? "Chưa thanh toán" : "Đã thanh toán"}
                       </Text>
                     </Td>
                     <Td>
@@ -102,25 +118,28 @@ const ComponentToPrint = (props) => {
               )}
             </Tbody>
           </Table>
-          <PayPalButton
-            options={{
-              clientId:
-                "AditNkLJT4JHknvoPaV4m12tWAGIk0dZ-gsAHX5gsXi4KfqlFeFS57W9E20nQaPKOy-W_bQJWoyBpQEr",
-              currency: "USD",
-            }}
-            amount={data?.total}
-            onSuccess={(details, data) => {
-              toast({
-                render: () => (
-                  <Alert status="success" variant="left-accent">
-                    <AlertIcon />
-                    Đặt phòng thành công!
-                  </Alert>
-                ),
-              });
-              history.push("/");
-            }}
-          />
+          <Box pl="200px">
+            <PayPalButton
+              style={{ layout: "vertical" }}
+              options={{
+                clientId:
+                  "AditNkLJT4JHknvoPaV4m12tWAGIk0dZ-gsAHX5gsXi4KfqlFeFS57W9E20nQaPKOy-W_bQJWoyBpQEr",
+                currency: "USD",
+              }}
+              amount={data?.total}
+              onSuccess={(details, data) => {
+                toast({
+                  render: () => (
+                    <Alert status="success" variant="left-accent">
+                      <AlertIcon />
+                      Đặt phòng thành công!
+                    </Alert>
+                  ),
+                });
+                history.push("/");
+              }}
+            />
+          </Box>
         </Box>
       </Box>
     </Box>
@@ -146,14 +165,15 @@ function Invoice() {
 
   const { data: bill } = useSWR(
     `https://pbl6-travelapp.herokuapp.com/bill/${userId}/${id}`,
-    fetcher
+    fetcher,
+    { refreshInterval: 500 }
   );
   console.log("billlllllxxx", bill);
 
   return (
     <>
       <Navbar />
-      <Flex direction="column" pt={{ sm: "100px", lg: "50px" }}>
+      <Flex direction="column" pt="10">
         <ComponentToPrint
           data={bill}
           ref={componentRef}

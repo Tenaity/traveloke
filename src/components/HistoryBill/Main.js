@@ -13,7 +13,7 @@ import {
 const Main = () => {
   return (
     <Box maxW="6xl" mx="auto">
-      <Heading>day la history bill</Heading>
+      <Heading>Lịch sử thanh toán</Heading>
       <Table size="md">
         <Thead>
           <Tr>

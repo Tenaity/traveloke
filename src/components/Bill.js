@@ -12,6 +12,8 @@ import {
   useDisclosure,
   Flex,
   Text,
+  Box,
+  Heading,
 } from "@chakra-ui/react";
 import useSWR from "swr";
 import BillingRow from "./BillingRow";
@@ -31,10 +33,10 @@ const Bill = () => {
     }).then((response) => response.json());
   };
 
-  const { data: bills = [] } = useSWR(
+  const { data: bills } = useSWR(
     `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
     fetcher,
-    { refreshInterval: 1000 }
+    { refreshInterval: 500 }
   );
 
   console.log("aaaa", bills);
@@ -79,7 +81,11 @@ const Bill = () => {
                   );
                 })
               ) : (
-                <Text>Không có bill</Text>
+                <>
+                  <Flex alignItems="center" justifyContent="center">
+                    <Heading>Không có bill</Heading>
+                  </Flex>
+                </>
               )}
             </Flex>
           </DrawerBody>
