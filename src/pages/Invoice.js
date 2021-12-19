@@ -166,7 +166,7 @@ function Invoice() {
   const { data: bill } = useSWR(
     `https://pbl6-travelapp.herokuapp.com/bill/${userId}/${id}`,
     fetcher,
-    { refreshInterval: 500 }
+    { refreshInterval: 1000 }
   );
   console.log("billlllllxxx", bill);
 

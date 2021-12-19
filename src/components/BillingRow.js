@@ -14,7 +14,15 @@ import { Link } from "react-router-dom";
 import { Alert, AlertIcon } from "@chakra-ui/react";
 function BillingRow(props) {
   const bgColor = useColorModeValue("#F8F9FA", "gray.800");
-  const { checkIn, checkOut, additionalFee, service, total, billId } = props;
+  const {
+    checkIn,
+    checkOut,
+    additionalFee,
+    service,
+    total,
+    billId,
+    nameHotel,
+  } = props;
   let dateCheckIn = new Date(checkIn);
   let dateCheckOut = new Date(checkOut);
   const token = localStorage.getItem("token");
@@ -62,6 +70,12 @@ function BillingRow(props) {
               Mã hoá đơn:
               <Text as="span" color="gray.500" ml="1">
                 {billId}
+              </Text>
+            </Text>
+            <Text color="gray.400" fontSize="sm" fontWeight="semibold">
+              Tên khách sạn:
+              <Text as="span" color="gray.500" ml="1">
+                {nameHotel || ""}
               </Text>
             </Text>
             <Text color="gray.400" fontSize="sm" fontWeight="semibold">

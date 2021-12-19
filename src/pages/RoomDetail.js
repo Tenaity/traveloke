@@ -68,7 +68,7 @@ const HotelDetail = () => {
               checkIn: startDate,
               checkOut: endDate,
               service: "hotel",
-              additionalFee: 200000,
+              additionalFee: 20,
               status: "false",
               guest: userId,
               hotel: room.idHotel.id,
@@ -128,10 +128,10 @@ const HotelDetail = () => {
             <SimpleGrid mt="7" columns={{ base: 1, md: 2 }}>
               {room?.images && <CarouselBeauty images={room?.images} />}{" "}
               <Box ml="10">
-                <Heading mb="4">Chi tiết đặt phòng</Heading>
+                <Heading mb="4">{room?.idHotel.name}</Heading>
                 <Flex alignItems="center" mb="4">
                   <IoBusinessOutline />
-                  <Text ml="5px">Cầu Giấy, Hà Nội, Việt Nam</Text>
+                  <Text ml="5px">{room?.idHotel.address}</Text>
                 </Flex>
                 <Flex alignItems="center" mb="4">
                   <BiArea />

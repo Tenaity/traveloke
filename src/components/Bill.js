@@ -36,7 +36,7 @@ const Bill = () => {
   const { data: bills } = useSWR(
     `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
     fetcher,
-    { refreshInterval: 500 }
+    { refreshInterval: 1000 }
   );
 
   console.log("aaaa", bills);
@@ -71,6 +71,7 @@ const Bill = () => {
                 bills.map((row, index) => {
                   return (
                     <BillingRow
+                      nameHotel={row?.nameHotel}
                       additionalFee={row.additionalFee}
                       checkOut={row.checkOut}
                       checkIn={row.checkIn}
