@@ -132,7 +132,7 @@ const ComponentToPrint = (props) => {
                 currency: "USD",
               }}
               amount={data?.total}
-              onSuccess={(details, data) => {
+              onSuccess={() => {
                 toast({
                   render: () => (
                     <Alert status="success" variant="left-accent">
@@ -145,9 +145,9 @@ const ComponentToPrint = (props) => {
                 return axios({
                   method: "patch",
                   url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}/${data.id}`,
-                  body: JSON.stringify({
+                  data: {
                     status: true,
-                  }),
+                  },
                   headers: {
                     Authorization: `Bearer ${token}`,
                   },
@@ -169,7 +169,7 @@ function Invoice() {
   const token = localStorage.getItem("token");
   console.log("origin", userId);
   let { id } = useParams();
-  console.log("BillIDDDD", id);
+  console.log("BillIDDDD", token);
   const fetcher = (url) => {
     return fetch(url, {
       method: "get",
