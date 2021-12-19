@@ -31,18 +31,20 @@ function BillingRow(props) {
         },
       };
       const response = await axios(option);
+      if (response.status === 204) {
+        toast({
+          render: () => (
+            <Alert status="success" variant="left-accent">
+              <AlertIcon />
+              Xoá hoá đơn thành công!
+            </Alert>
+          ),
+        });
+      }
       console.log(response);
     } catch (error) {
       console.log(error);
     }
-    toast({
-      render: () => (
-        <Alert status="success" variant="left-accent">
-          <AlertIcon />
-          Xoá hoá đơn thành công!
-        </Alert>
-      ),
-    });
   };
 
   return (

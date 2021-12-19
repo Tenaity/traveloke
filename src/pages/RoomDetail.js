@@ -49,8 +49,8 @@ const HotelDetail = () => {
   console.log("room detailllll", room);
   const toast = useToast();
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
   const { state } = useContext(AppContext);
@@ -58,50 +58,52 @@ const HotelDetail = () => {
   console.log("context", state);
   const onSubmitHandle = async (e) => {
     if (user) {
-      console.log("dataInput", {
-        checkIn: startDate,
-        checkOut: endDate,
-        service: "hotel",
-        additionalFee: 200000,
-        status: "false",
-        guest: userId,
-        hotel: room.idHotel.id,
-        room: room._id,
-        total: room.price,
-      });
-      try {
-        e.preventDefault();
-        const option = {
-          method: "post",
-          url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
-          data: {
-            checkIn: startDate,
-            checkOut: endDate,
-            service: "hotel",
-            additionalFee: 200000,
-            status: "false",
-            guest: userId,
-            hotel: room.idHotel.id,
-            room: room._id,
-            total: room.price,
-          },
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
-        const response = await axios(option);
-        console.log(response);
-      } catch (err) {
-        console.log(err);
+      if (startDate && endDate) {
+        try {
+          e.preventDefault();
+          const option = {
+            method: "post",
+            url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
+            data: {
+              checkIn: startDate,
+              checkOut: endDate,
+              service: "hotel",
+              additionalFee: 200000,
+              status: "false",
+              guest: userId,
+              hotel: room.idHotel.id,
+              room: room._id,
+              total: room.price,
+            },
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          };
+          const response = await axios(option);
+          if (response.status === 201) {
+            toast({
+              render: () => (
+                <Alert status="success" variant="left-accent">
+                  <AlertIcon />
+                  Đặt phòng thành công!
+                </Alert>
+              ),
+            });
+          }
+          console.log(response);
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+        toast({
+          render: () => (
+            <Alert status="error" variant="left-accent">
+              <AlertIcon />
+              Bạn cần nhập đủ thông tin để đặt phòng!
+            </Alert>
+          ),
+        });
       }
-      toast({
-        render: () => (
-          <Alert status="success" variant="left-accent">
-            <AlertIcon />
-            Đặt phòng thành công!
-          </Alert>
-        ),
-      });
     } else {
       toast({
         render: () => (
@@ -180,7 +182,7 @@ const HotelDetail = () => {
                 <Stack>
                   <Box d="flex">
                     <Box mr="25px">
-                      <Text mb="4">Nhận phòng:</Text>
+                      <Text mb="4">Đặt phòng:</Text>
                       <InputGroup>
                         <InputLeftElement
                           pointerEvents="none"
@@ -190,7 +192,7 @@ const HotelDetail = () => {
                           selected={startDate}
                           onChange={(date) => setStartDate(date)}
                           isClearable
-                          placeholderText="I have been cleared!"
+                          placeholderText="Chọn ngày đặt phòng"
                         />
                       </InputGroup>
                     </Box>
@@ -205,7 +207,7 @@ const HotelDetail = () => {
                           selected={endDate}
                           onChange={(date) => setEndDate(date)}
                           isClearable
-                          placeholderText="I have been cleared!"
+                          placeholderText="Chọn ngày trả phòng"
                         />
                       </InputGroup>
                     </Box>
