@@ -115,28 +115,6 @@ const ComponentToPrint = (props) => {
               )}
             </Tbody>
           </Table>
-          <Box pl="200px">
-            <PayPalButton
-              style={{ layout: "vertical" }}
-              options={{
-                clientId:
-                  "AditNkLJT4JHknvoPaV4m12tWAGIk0dZ-gsAHX5gsXi4KfqlFeFS57W9E20nQaPKOy-W_bQJWoyBpQEr",
-                currency: "USD",
-              }}
-              amount={data?.total}
-              onSuccess={(details, data) => {
-                toast({
-                  render: () => (
-                    <Alert status="success" variant="left-accent">
-                      <AlertIcon />
-                      Đặt phòng thành công!
-                    </Alert>
-                  ),
-                });
-                history.push("/");
-              }}
-            />
-          </Box>
         </Box>
       </Box>
     </Box>

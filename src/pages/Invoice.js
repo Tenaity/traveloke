@@ -22,8 +22,13 @@ import { useParams } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { Alert, AlertIcon } from "@chakra-ui/react";
 import { useHistory } from "react-router";
+import axios from "axios";
 const ComponentToPrint = (props) => {
   const { data = [] } = props;
+  const { userId } = props;
+  const { token } = props;
+  console.log("useriddddd", userId);
+  console.log("tokennnn", token);
   let dateCheckIn = new Date(data.checkIn);
   let dateCheckOut = new Date(data.checkOut);
   const toast = useToast();
@@ -86,7 +91,7 @@ const ComponentToPrint = (props) => {
                     </Td>
                     <Td>
                       <Text color="gray.500" fontWeight="normal" fontSize="md">
-                        {!data.status ? "Chưa thanh toán" : "Đã thanh toán"}
+                        {data.status ? "Đã thanh toán" : "Chưa thanh toán"}
                       </Text>
                     </Td>
                     <Td>
@@ -132,11 +137,21 @@ const ComponentToPrint = (props) => {
                   render: () => (
                     <Alert status="success" variant="left-accent">
                       <AlertIcon />
-                      Đặt phòng thành công!
+                      Thanh toán thành công!
                     </Alert>
                   ),
                 });
-                history.push("/");
+                // history.push("/");
+                return axios({
+                  method: "patch",
+                  url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}/${data.id}`,
+                  body: JSON.stringify({
+                    status: true,
+                  }),
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                });
               }}
             />
           </Box>
@@ -150,11 +165,12 @@ function Invoice() {
   const textColor = useColorModeValue("gray.700", "white");
 
   const componentRef = useRef();
-  const userId = localStorage.getItem("useId");
+  const userId = localStorage.getItem("userId");
+  const token = localStorage.getItem("token");
+  console.log("origin", userId);
   let { id } = useParams();
   console.log("BillIDDDD", id);
   const fetcher = (url) => {
-    const token = localStorage.getItem("token");
     return fetch(url, {
       method: "get",
       headers: {
@@ -164,7 +180,7 @@ function Invoice() {
   };
 
   const { data: bill } = useSWR(
-    `https://pbl6-travelapp.herokuapp.com/bill/${userId}/${id}`,
+    [`https://pbl6-travelapp.herokuapp.com/bill/${userId}/${id}`, token],
     fetcher,
     { refreshInterval: 1000 }
   );
@@ -176,8 +192,10 @@ function Invoice() {
       <Flex direction="column" pt="10">
         <ComponentToPrint
           data={bill}
+          userId={userId}
           ref={componentRef}
           textColor={textColor}
+          token={token}
         />
       </Flex>
       <Footer />

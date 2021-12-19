@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AppContext from "./AppContext";
 import {
   Drawer,
@@ -17,14 +17,16 @@ import {
 } from "@chakra-ui/react";
 import useSWR from "swr";
 import BillingRow from "./BillingRow";
+import axios from "axios";
 const Bill = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const { state } = useContext(AppContext);
   const userId = state.user.userId;
+  const token = localStorage.getItem("token");
+  console.log("token vu", token);
 
   const fetcher = (url) => {
-    const token = localStorage.getItem("token");
     return fetch(url, {
       method: "get",
       headers: {
@@ -34,10 +36,27 @@ const Bill = () => {
   };
 
   const { data: bills } = useSWR(
-    `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
+    [`https://pbl6-travelapp.herokuapp.com/bill/${userId}`, token],
     fetcher,
     { refreshInterval: 1000 }
   );
+
+  const onSubmitHandle = async (e) => {
+    try {
+      e.preventDefault();
+      const option = {
+        method: "get",
+        url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios(option);
+      console.log("axios", response.data);
+    } catch (err) {
+      console.log("loi");
+    }
+  };
 
   console.log("aaaa", bills);
   return (
@@ -66,6 +85,7 @@ const Bill = () => {
           <DrawerHeader>Bill Information</DrawerHeader>
 
           <DrawerBody>
+            <Button onClick={onSubmitHandle}>aaaaa</Button>
             <Flex direction="column" w="100%">
               {bills ? (
                 bills.map((row, index) => {
