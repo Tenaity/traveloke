@@ -58,6 +58,17 @@ const HotelDetail = () => {
   console.log("context", state);
   const onSubmitHandle = async (e) => {
     if (user) {
+      console.log("dataInput", {
+        checkIn: startDate,
+        checkOut: endDate,
+        service: "hotel",
+        additionalFee: 200000,
+        status: "false",
+        guest: userId,
+        hotel: room.idHotel.id,
+        room: room._id,
+        total: room.price,
+      });
       try {
         e.preventDefault();
         const option = {
@@ -70,7 +81,7 @@ const HotelDetail = () => {
             additionalFee: 200000,
             status: "false",
             guest: userId,
-            hotel: room.idHotel,
+            hotel: room.idHotel.id,
             room: room._id,
             total: room.price,
           },

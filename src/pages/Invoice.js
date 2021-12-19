@@ -21,11 +21,13 @@ import useSWR from "swr";
 import { useParams } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { Alert, AlertIcon } from "@chakra-ui/react";
+import { useHistory } from "react-router";
 const ComponentToPrint = (props) => {
   const { data = [] } = props;
   let dateCheckIn = new Date(data.checkIn);
   let dateCheckOut = new Date(data.checkOut);
   const toast = useToast();
+  const history = useHistory();
   return (
     <Box
       w={{ sm: "330px", md: "500px", lg: "900px" }}
@@ -116,6 +118,7 @@ const ComponentToPrint = (props) => {
                   </Alert>
                 ),
               });
+              history.push("/");
             }}
           />
         </Box>
