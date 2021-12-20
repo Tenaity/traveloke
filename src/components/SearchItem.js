@@ -31,7 +31,7 @@ const SearchItem = ({ item }) => {
               Loại dịch vụ
             </Heading>
             <Text fontSize="xs" display="inline-block">
-              {item?.type}
+              {item?.typeService}
             </Text>
             <LinkOverlay>
               <Heading size="xs" variant="gradient-brand">

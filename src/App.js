@@ -175,6 +175,9 @@ const App = () => {
           <Route exact path="/">
             <Home />
           </Route>
+          <Route path="*">
+            <Home />
+          </Route>
         </Switch>
       </AppContext.Provider>
     </ChakraProvider>
