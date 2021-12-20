@@ -3,19 +3,22 @@ import { Box, Flex, Image, Badge } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 const CardRestaurant = ({ res }) => {
+
   const property = {
     imageUrl: res.imageCover,
     imageAlt: "Restaurant",
-    price: res.price,
-    cuisines: res.cuisines,
+    priceFrom: res.priceFrom,
+    priceTo: res.priceTo,
+    type: res.type,
     title: res.name,
-    formattedPrice: "$1,900.00",
     reviewCount: res.feedbacks?.length || 0,
     rating: res.vote,
+    city: res.city,
+    id: res._id,
   };
 
   return (
-    <Link to={`/restaurant/${res.id}`}>
+    <Link to={`/restaurant/${property.id}`}>
       <Flex>
         <Box
           w="md"
@@ -36,7 +39,7 @@ const CardRestaurant = ({ res }) => {
           <Box p="5">
             <Box d="flex" alignItems="baseline">
               <Badge rounded="full" colorScheme="teal">
-                {res.city}
+                {property.city}
               </Badge>
               <Box
                 color="gray.500"
@@ -46,7 +49,7 @@ const CardRestaurant = ({ res }) => {
                 textTransform="uppercase"
                 ml="2"
               >
-                {property.price} &bull; {property.cuisines}
+                {property.priceFrom}-{property.priceTo} &bull; {property.type}
               </Box>
             </Box>
 

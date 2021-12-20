@@ -5,7 +5,8 @@ import { StarIcon } from "@chakra-ui/icons";
 const property = {
   rating: 5,
 };
-const RestaurantFeedBack = () => {
+const RestaurantFeedBack = (props) => {
+  const { vote, comment } = props
   return (
     <Box align="start" my="2">
       <Flex mb="30px">
@@ -27,7 +28,7 @@ const RestaurantFeedBack = () => {
               .map((_, i) => (
                 <StarIcon
                   key={i}
-                  color={i < property.rating ? "green.500" : "gray.300"}
+                  color={i < vote ? "green.500" : "gray.300"}
                 />
               ))}
           </Box>
@@ -38,7 +39,7 @@ const RestaurantFeedBack = () => {
             mt="6px"
             mb="14px"
           >
-            Nhà hàng sang trọng, đồ ăn ngon!
+            {comment}
           </Text>
           <Flex>
             <Flex align="center" color="gray.500" me="21px">

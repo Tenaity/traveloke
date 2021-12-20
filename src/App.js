@@ -127,7 +127,8 @@ const App = () => {
       console.log(response);
       if (response) {
         const userName = response.data.name;
-        dispatch({ type: "CURRENT_USER", payload: { userName } });
+        const userId = response.data.id;
+        dispatch({ type: "CURRENT_USER", payload: { userName, userId } });
       }
     } catch (error) {
       console.log(error);

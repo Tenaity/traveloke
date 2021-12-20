@@ -1,17 +1,38 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { Box, SimpleGrid, Heading, Flex, HStack } from "@chakra-ui/layout";
 import { Select } from "@chakra-ui/react";
 import CardRestaurant from "./CardRestaurant";
 import BreadcrumbMain from "../BreadcrumbMain";
 import PaginationMain from "./PaginationMain";
-import useSWR from "swr";
-import { dummyData } from "./DummyData";
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const Main = () => {
-  const { data = [] } = useSWR(
-    "https://pbl6-travelapp.herokuapp.com/hotel",
-    fetcher
-  );
+  const [priceFrom, setPriceFrom] = useState("300000");
+  const [priceTo, setPriceTo] = useState("30000000");
+  const [sortBy, setSortBy] = useState("vote");
+  const onChangeHandle = (e) => {
+    setPriceFrom(e.target.value.split(",")[0]);
+    setPriceTo(e.target.value.split(",")[1] || priceFrom);
+  };
+  const onChangeHandleSort = (e) => {
+    setSortBy(e.target.value);
+  };
+  const [listRestaurant, setListRestaurant] = useState([]);
+  const fetchRestaurants = async () => {
+    try {
+      const option = {
+        method: "get",
+        url: `https://pbl6-travelapp.herokuapp.com/restaurant`,
+      };
+      const response = await axios(option);
+      setListRestaurant(response.data);
+      console.log("res", response);
+    } catch (err) {
+      console.log(err.response.data.message);
+    }
+  };
+  useEffect(() => {
+    fetchRestaurants();
+  }, [priceFrom, priceTo, sortBy]);
   return (
     <>
       <Box d="flex" flexWrap="wrap" maxW="6xl" mx="auto" mt="5">
@@ -33,10 +54,10 @@ const Main = () => {
                 </Flex>
                 <Flex alignItems="center">
                   <Box mr="5">Giá</Box>
-                  <Select>
-                    <option value="option1">1$-5$</option>
-                    <option value="option2">5$-10$</option>
-                    <option value="option3">10$+</option>
+                  <Select onChange={onChangeHandle}>
+                    <option value="100000,1000000">1$-5$</option>
+                    <option value="1000000,2000000">5$-10$</option>
+                    <option value="300000">10$+</option>
                   </Select>
                 </Flex>
                 <Flex alignItems="center">
@@ -54,9 +75,10 @@ const Main = () => {
             <Flex alignItems="center">
               <Box mr="10">Sắp xếp</Box>
               <Box>
-                <Select>
-                  <option value="option1">Nổi bật</option>
-                  <option value="option1">Giá</option>
+                <Select onChange={onChangeHandleSort}>
+                  <option value="vote">Nổi bật</option>
+                  <option value="price-asc">Giá tăng</option>
+                  <option value="price-desc">Giá giảm</option>
                 </Select>
               </Box>
             </Flex>
@@ -65,7 +87,7 @@ const Main = () => {
 
         <Box mx="auto">
           <SimpleGrid columns={[2, null, 4]} spacing="40px">
-            {dummyData?.map((res) => (
+            {listRestaurant?.map((res) => (
               <CardRestaurant key={res.id} res={res} />
             ))}
           </SimpleGrid>
