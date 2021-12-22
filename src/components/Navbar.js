@@ -117,7 +117,7 @@ const Navbar = () => {
                   Đặt bàn nhà hàng
                 </Button>
               </Link>
-              <Link to="/car">
+              <Link to="/selfVehicle">
                 <Button
                   variant="ghost"
                   transform="auto"

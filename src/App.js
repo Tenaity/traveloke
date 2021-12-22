@@ -20,7 +20,7 @@ import Invoice from "./pages/Invoice";
 import SearchResult from "./pages/SearchResult";
 import HotelDetail from "./pages/HotelDetail";
 import HistoryBill from "./pages/HistoryBill";
-
+import VehicleDetail from "./pages/VehicleDetail";
 const theme = extendTheme();
 function Hotel() {
   let { path } = useRouteMatch();
@@ -83,6 +83,19 @@ function Car() {
     </Fragment>
   );
 }
+function Vehicle() {
+  let { path } = useRouteMatch();
+  console.log(path);
+  return (
+    <Fragment>
+      <Switch>
+        <Route exact path={`${path}/:id`}>
+          <VehicleDetail />
+        </Route>
+      </Switch>
+    </Fragment>
+  );
+}
 function Payment() {
   let { path } = useRouteMatch();
   console.log(path);
@@ -96,6 +109,7 @@ function Payment() {
     </Fragment>
   );
 }
+
 function Search() {
   let { path } = useRouteMatch();
   console.log(path);
@@ -142,7 +156,10 @@ const App = () => {
     <ChakraProvider theme={theme}>
       <AppContext.Provider value={{ state, dispatch }}>
         <Switch>
-          <Route path="/car">
+          <Route path="/vehicle">
+            <Vehicle />
+          </Route>
+          <Route path="/selfVehicle">
             <Car />
           </Route>
           <Route path="/restaurant">

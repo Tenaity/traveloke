@@ -1,5 +1,6 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import AppContext from "../../components/AppContext";
 import {
     Box,
     SimpleGrid,
@@ -32,6 +33,9 @@ import RestaurantFeedBack from "../../components/RestaurantFeedBack";
 import ResCarouselBeauty from "../../components/ResCarouselBeauty";
 import NewFeedBack from "../../components/NewFeedBack";
 import { useFeedback } from "../../hooks/useFeedback";
+import { useToast } from "@chakra-ui/react";
+import { Alert, AlertIcon } from "@chakra-ui/react";
+import ReactDatePicker from "react-datepicker";
 
 const Main = () => {
     let { id } = useParams();
@@ -50,7 +54,7 @@ const Main = () => {
         try {
             const option = {
                 method: "get",
-                url: `https://pbl6-travelapp.herokuapp.com/restaurant/${id}`,
+                url: `https://pbl6-travelapp.herokuapp.com/restaurant/${id}/detail`,
             };
             const response = await axios(option);
             setRestaurant(response.data);
@@ -64,6 +68,73 @@ const Main = () => {
     }, []);
     console.log("restaurant", restaurant)
     const { handleEnter, inputValue, handleUserInput, listFeedback } = useFeedback();
+    const toast = useToast();
+
+    const [startDate, setStartDate] = useState("");
+    const [chair, setChair] = useState(1);
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
+    const { state } = useContext(AppContext);
+    const user = state?.user?.userName;
+    const onSubmitHandle = async (e) => {
+        if (user) {
+            if (startDate) {
+                try {
+                    e.preventDefault();
+                    const option = {
+                        method: "post",
+                        url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
+                        data: {
+                            checkIn: startDate,
+                            service: "restaurant",
+                            additionalFee: 20,
+                            status: "false",
+                            guest: userId,
+                            restaurant: restaurant.id,
+                            chairs: Number(chair),
+                            total: 3000,
+                            name: restaurant.name,
+                        },
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    };
+                    const response = await axios(option);
+                    if (response.status === 201) {
+                        toast({
+                            render: () => (
+                                <Alert status="success" variant="left-accent">
+                                    <AlertIcon />
+                                    Đặt bàn thành công!
+                                </Alert>
+                            ),
+                        });
+                    }
+                    console.log(response);
+                } catch (err) {
+                    console.log(err);
+                }
+            } else {
+                toast({
+                    render: () => (
+                        <Alert status="error" variant="left-accent">
+                            <AlertIcon />
+                            Bạn cần nhập đủ thông tin để đặt bàn!
+                        </Alert>
+                    ),
+                });
+            }
+        } else {
+            toast({
+                render: () => (
+                    <Alert status="error" variant="left-accent">
+                        <AlertIcon />
+                        Bạn cần đăng nhập để đặt bàn!
+                    </Alert>
+                ),
+            });
+        }
+    };
     return (
         <>
             <Box py="5">
@@ -118,12 +189,17 @@ const Main = () => {
                                                     pointerEvents="none"
                                                     children={<IoCalendarOutline />}
                                                 />
-                                                <DateTimePicker />
+                                                <ReactDatePicker
+                                                    selected={startDate}
+                                                    onChange={(date) => setStartDate(date)}
+                                                    isClearable
+                                                    placeholderText="Chọn ngày đặt phòng"
+                                                />
                                             </InputGroup>
                                         </Box>
                                         <Box mr="25px">
                                             <Text mb="4">Số người:</Text>
-                                            <NumberButton />
+                                            <NumberButton onChange={(p) => setChair(p)} />
                                         </Box>
                                     </Box>
 
@@ -142,6 +218,7 @@ const Main = () => {
                                                 bg: "green.300",
                                             }}
                                             _focus={{ boxShadow: "none" }}
+                                            onClick={onSubmitHandle}
                                         >
                                             Đặt bàn
                                         </Button>

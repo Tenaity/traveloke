@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Flex, Box, Image, Stack } from "@chakra-ui/react";
-import productPage1 from "../assets/img/res/res1_2.jpg";
-import productPage2 from "../assets/img/res/res1_3.jpg";
-import productPage3 from "../assets/img/res/res1_4.jpg";
-import productPage4 from "../assets/img/res/res1_5.jpg";
-import productPage5 from "../assets/img/res/res1_6.jpg";
+
 const ResCarouselBeauty = (props) => {
   const { listImage, imageCover } = props;
 
