@@ -31,6 +31,7 @@ export const useFeedback = () => {
   useEffect(() => {
     fetchFeedback();
   }, []);
+  console.log("id", state)
   const handleEnter = async (event) => {
     if (event.keyCode === 13) {
       setInputValue("");
@@ -44,7 +45,7 @@ export const useFeedback = () => {
           },
           data: {
             service: "hotel",
-            vote: "4",
+            vote: 4,
             comment: event.target.value,
             idUser: userId,
             idHotel: id,
@@ -58,7 +59,7 @@ export const useFeedback = () => {
           },
           data: {
             service: "restaurant",
-            vote: "4",
+            vote: 4,
             comment: event.target.value,
             idUser: userId,
             idRestaurant: id,
@@ -66,13 +67,13 @@ export const useFeedback = () => {
         };
         const carOption = {
           method: "post",
-          url: `https://pbl6-travelapp.herokuapp.com/feedback/selfvehicle/${id}`,
+          url: `https://pbl6-travelapp.herokuapp.com/feedback/selfVehicle/${id}`,
           headers: {
             Authorization: `Bearer ${token}`,
           },
           data: {
-            service: "selfvehicle",
-            vote: "4",
+            service: "selfVehicle",
+            vote: 4,
             comment: event.target.value,
             idUser: userId,
             idSelfVehicle: id,

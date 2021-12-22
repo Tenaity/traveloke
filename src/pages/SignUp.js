@@ -56,8 +56,9 @@ const SignUp = () => {
       const response = await axios(option);
       const { user, tokens } = response.data;
       const userName = user.name;
+      const userId = user.id;
       localStorage.setItem("token", tokens.access.token);
-      dispatch({ type: "CURRENT_USER", payload: { userName } });
+      dispatch({ type: "CURRENT_USER", payload: { userName, userId } });
       history.push("/");
     } catch (err) {
       setErrorMessage(err.response.data.message);

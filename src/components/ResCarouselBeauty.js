@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Flex, Box, Image, Stack } from "@chakra-ui/react";
-import productPage1 from "../assets/img/res/res1_2.jpg";
-import productPage2 from "../assets/img/res/res1_3.jpg";
-import productPage3 from "../assets/img/res/res1_4.jpg";
-import productPage4 from "../assets/img/res/res1_5.jpg";
-import productPage5 from "../assets/img/res/res1_6.jpg";
-const ResCarouselBeauty = () => {
-  const [currentImage, setCurrentImage] = useState(productPage1);
+
+const ResCarouselBeauty = (props) => {
+  const { listImage, imageCover } = props;
+
+  const [currentImage, setCurrentImage] = useState();
+  useEffect(() => {
+    setCurrentImage(imageCover)
+  }, [imageCover])
   return (
     <Flex
       direction="column"
@@ -27,71 +28,27 @@ const ResCarouselBeauty = () => {
         mx="auto"
         mb={{ sm: "24px", lg: "0px" }}
       >
-        <Box
-          w={{ sm: "36px", md: "90px", lg: "60px" }}
-          h={{ sm: "36px", md: "90px", lg: "60px" }}
-        >
-          <Image
-            src={productPage1}
-            w="100%"
-            h="100%"
-            borderRadius="15px"
-            cursor="pointer"
-            onClick={(e) => setCurrentImage(e.target.src)}
-          />
-        </Box>
-        <Box
-          w={{ sm: "36px", md: "90px", lg: "60px" }}
-          h={{ sm: "36px", md: "90px", lg: "60px" }}
-        >
-          <Image
-            src={productPage2}
-            w="100%"
-            h="100%"
-            borderRadius="15px"
-            cursor="pointer"
-            onClick={(e) => setCurrentImage(e.target.src)}
-          />
-        </Box>
-        <Box
-          w={{ sm: "36px", md: "90px", lg: "60px" }}
-          h={{ sm: "36px", md: "90px", lg: "60px" }}
-        >
-          <Image
-            src={productPage3}
-            w="100%"
-            h="100%"
-            borderRadius="15px"
-            cursor="pointer"
-            onClick={(e) => setCurrentImage(e.target.src)}
-          />
-        </Box>
-        <Box
-          w={{ sm: "36px", md: "90px", lg: "60px" }}
-          h={{ sm: "36px", md: "90px", lg: "60px" }}
-        >
-          <Image
-            src={productPage4}
-            w="100%"
-            h="100%"
-            borderRadius="15px"
-            cursor="pointer"
-            onClick={(e) => setCurrentImage(e.target.src)}
-          />
-        </Box>
-        <Box
-          w={{ sm: "36px", md: "90px", lg: "60px" }}
-          h={{ sm: "36px", md: "90px", lg: "60px" }}
-        >
-          <Image
-            src={productPage5}
-            w="100%"
-            h="100%"
-            borderRadius="15px"
-            cursor="pointer"
-            onClick={(e) => setCurrentImage(e.target.src)}
-          />
-        </Box>
+        {listImage && listImage.map((i, index) => {
+          console.log("key", index)
+          return (
+            <Box
+              key={index}
+              w={{ sm: "36px", md: "90px", lg: "60px" }}
+              h={{ sm: "36px", md: "90px", lg: "60px" }}
+            >
+              <Image
+                src={i}
+                w="100%"
+                h="100%"
+                borderRadius="15px"
+                cursor="pointer"
+                onClick={(e) => setCurrentImage(e.target.src)}
+              />
+            </Box>
+          )
+        })}
+
+
       </Stack>
     </Flex>
   );
