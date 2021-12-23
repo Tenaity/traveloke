@@ -39,7 +39,7 @@ const Main = () => {
         <BreadcrumbMain urls={["Trang chủ", "Nhà Hàng"]} />
         <Box w="6xl">
           <Box my="7">
-            <Heading size="lg">420 Nhà hàng tại Hà Nội</Heading>
+            <Heading size="lg">{listRestaurant.length} Nhà hàng</Heading>
           </Box>
           <Flex my="10" justifyContent="space-between" alignItems="center">
             <Flex alignItems="center">

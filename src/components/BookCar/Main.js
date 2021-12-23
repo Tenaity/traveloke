@@ -20,7 +20,7 @@ const Main = () => {
       setListCar(response.data);
       console.log("res", response);
     } catch (err) {
-      console.log(err.response.data.message);
+      console.log(err.response?.data?.message);
     }
   };
   useEffect(() => {
@@ -32,7 +32,7 @@ const Main = () => {
         <BreadcrumbMain urls={["Trang chủ", "Xe Tự Lái"]} />
         <Box w="6xl">
           <Box my="7">
-            <Heading size="lg">802 Xe tự lái tại Hà Nội</Heading>
+            <Heading size="lg">{listCar.length} Dịch vụ cho thuê xe tự lái</Heading>
           </Box>
           <Flex my="10" justifyContent="space-between" alignItems="center">
             <Flex alignItems="center">

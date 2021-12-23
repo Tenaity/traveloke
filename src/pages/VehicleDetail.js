@@ -128,7 +128,7 @@ const VehicleDetail = () => {
           <BreadcrumbMain urls={["Trang chủ", "Xe tự lái", "Đặt xe"]} />
           <Box>
             <SimpleGrid mt="7" columns={{ base: 1, md: 2 }}>
-              <CarCarouselBeauty imageCover={vehicle?.imageCover} listImage={vehicle?.images} />
+              <CarCarouselBeauty imageCover={vehicle?.images?.[0]} listImage={vehicle?.images} />
               <Box ml="10">
                 <Heading mb="10">{vehicle?.idSelfVehicle.name}</Heading>
                 <Flex alignItems="center" mb="4">
