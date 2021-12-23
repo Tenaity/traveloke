@@ -55,45 +55,61 @@ const HotelDetail = () => {
   const userId = localStorage.getItem("userId");
   const { state } = useContext(AppContext);
   const user = state?.user?.userName;
+  const oneDay = 24 * 60 * 60 * 1000;
+  const totalDays =
+    startDate &&
+    endDate &&
+    Math.round(Math.abs((startDate - endDate) / oneDay)) + 1;
   console.log("context", state);
   const onSubmitHandle = async (e) => {
     if (user) {
       if (startDate && endDate) {
-        try {
-          e.preventDefault();
-          const option = {
-            method: "post",
-            url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
-            data: {
-              checkIn: startDate,
-              checkOut: endDate,
-              service: "hotel",
-              additionalFee: 20,
-              status: "false",
-              guest: userId,
-              hotel: room.idHotel.id,
-              room: room._id,
-              total: room.price,
-              name: room.idHotel.name,
-            },
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          };
-          const response = await axios(option);
-          if (response.status === 201) {
-            toast({
-              render: () => (
-                <Alert status="success" variant="left-accent">
-                  <AlertIcon />
-                  Đặt phòng thành công!
-                </Alert>
-              ),
-            });
+        if (startDate > endDate) {
+          toast({
+            render: () => (
+              <Alert status="error" variant="left-accent">
+                <AlertIcon />
+                Vui lòng chọn lại thời gian đặt phòng!
+              </Alert>
+            ),
+          });
+        } else {
+          try {
+            e.preventDefault();
+            const option = {
+              method: "post",
+              url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
+              data: {
+                checkIn: startDate,
+                checkOut: endDate,
+                service: "hotel",
+                additionalFee: 20,
+                status: "false",
+                guest: userId,
+                hotel: room.idHotel.id,
+                room: room._id,
+                total: room.price,
+                name: room.idHotel.name,
+              },
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            };
+            const response = await axios(option);
+            if (response.status === 201) {
+              toast({
+                render: () => (
+                  <Alert status="success" variant="left-accent">
+                    <AlertIcon />
+                    Đặt phòng thành công!
+                  </Alert>
+                ),
+              });
+            }
+            console.log(response);
+          } catch (err) {
+            console.log(err);
           }
-          console.log(response);
-        } catch (err) {
-          console.log(err);
         }
       } else {
         toast({
@@ -225,7 +241,7 @@ const HotelDetail = () => {
                       Giá :
                     </Heading>
                     <Heading size="lg" color="green.500">
-                      {room ? room.price : 100} $
+                      {totalDays ? room?.price * totalDays : room?.price} $
                     </Heading>
                   </Flex>
 
