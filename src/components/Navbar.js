@@ -81,7 +81,7 @@ const Navbar = () => {
           justifyContent="space-between"
         >
           <Flex>
-            <HStack spacing="5">
+            <HStack spacing="2">
               <Heading as="a">
                 <Link to="/">
                   <Image src={gogo} h="50px" maxW="120px" />
@@ -94,7 +94,7 @@ const Navbar = () => {
           </Flex>
 
           <Box>
-            <HStack spacing="2">
+            <HStack>
               <Link to="/hotel">
                 <Button
                   variant="ghost"
@@ -128,14 +128,13 @@ const Navbar = () => {
                   Thuê xe tự lái
                 </Button>
               </Link>
-
               {user ? (
                 <>
                   <Bill />
                   <Menu>
                     <MenuButton>
                       <Button variant="ghost" color="orange.500">
-                        <Avatar src="" w="50px" h="50px" me="15px" />
+                        <Avatar src="" w="50px" h="50px" me="20px" />
                         <Text>{user.userName}</Text>
                       </Button>
                     </MenuButton>

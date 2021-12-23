@@ -17,9 +17,7 @@ const BreadcrumbMain = ({ urls = [] }) => {
         console.log(3);
         return (
           <BreadcrumbItem key={index}>
-            <BreadcrumbLink>
-              <Link to="/">{item}</Link>
-            </BreadcrumbLink>
+            <BreadcrumbLink>{item}</BreadcrumbLink>
           </BreadcrumbItem>
         );
       })}

@@ -37,24 +37,25 @@ const Bill = () => {
     fetcher,
     { refreshInterval: 1000 }
   );
+  console.log(bills);
   const billFilter = bills?.filter((item) => item.status === false);
   console.log("billFilter", billFilter);
-  // const onSubmitHandle = async (e) => {
-  //   try {
-  //     e.preventDefault();
-  //     const option = {
-  //       method: "get",
-  //       url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     };
-  //     const response = await axios(option);
-  //     console.log("axios", response.data);
-  //   } catch (err) {
-  //     console.log("loi");
-  //   }
-  // };
+  const onSubmitHandle = async (e) => {
+    try {
+      e.preventDefault();
+      const option = {
+        method: "get",
+        url: `https://pbl6-travelapp.herokuapp.com/bill/${userId}`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios(option);
+      console.log("axios", response.data);
+    } catch (err) {
+      console.log("loi");
+    }
+  };
 
   return (
     <>
@@ -82,7 +83,7 @@ const Bill = () => {
           <DrawerHeader>Bill Information</DrawerHeader>
 
           <DrawerBody>
-            {/* <Button onClick={onSubmitHandle}>aaaaa</Button> */}
+            <Button onClick={onSubmitHandle}>aaaaa</Button>
             <Flex direction="column" w="100%">
               {billFilter ? (
                 billFilter.map((row, index) => {
