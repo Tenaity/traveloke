@@ -16,7 +16,7 @@ const CardVehicle = ({ vehicle }) => {
                     _hover={{ shadow: "xl" }}
                 >
                     <Image
-                        src={vehicle.imageCover}
+                        src={vehicle.images[0]}
                         alt={"imageVehicle"}
                         roundedTop="lg"
                         objectFit="cover"

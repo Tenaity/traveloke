@@ -135,6 +135,9 @@ const Main = () => {
             });
         }
     };
+    console.log('@z', restaurant?.images);
+    console.log('@zzz', restaurant?.images?.[0]);
+
     return (
         <>
             <Box py="5">
@@ -142,7 +145,7 @@ const Main = () => {
                     <BreadcrumbMain urls={["Trang chủ", "Nhà hàng", "Đặt bàn"]} />
                     <Box>
                         <SimpleGrid mt="7" columns={{ base: 1, md: 2 }}>
-                            <ResCarouselBeauty listImage={restaurant.images} imageCover={restaurant.imageCover} />
+                            <ResCarouselBeauty listImage={restaurant.images} imageCover={restaurant.images?.[0]} />
                             <Box ml="10">
                                 <Heading mb="10">{restaurant.name}</Heading>
                                 <Flex alignItems="baseline" mb="4">

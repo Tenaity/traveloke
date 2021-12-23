@@ -15,7 +15,7 @@ const CardCar = (props) => {
           _hover={{ shadow: "xl" }}
         >
           <Image
-            src={car.imageCover}
+            src={car.images[0]}
             alt={"carImage"}
             roundedTop="lg"
             objectFit="cover"
@@ -66,7 +66,7 @@ const CardCar = (props) => {
                   />
                 ))}
               <Box as="span" ml="2" color="gray.600" fontSize="sm">
-                {car.feedBacks.length} reviews
+                {car.feedBacks?.length} reviews
               </Box>
             </Box>
           </Box>

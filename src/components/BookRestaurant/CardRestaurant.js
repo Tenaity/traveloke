@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const CardRestaurant = ({ res }) => {
 
   const property = {
-    imageUrl: res.imageCover,
+    imageUrl: res.images[0],
     imageAlt: "Restaurant",
     priceFrom: res.priceFrom,
     priceTo: res.priceTo,
