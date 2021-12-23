@@ -20,13 +20,15 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const Main = () => {
   let { id } = useParams();
   const { data = {} } = useSWR(
-    `https://pbl6-travelapp.herokuapp.com/hotel/${id}/`,
+    `https://pbl6-travelapp.herokuapp.com/hotel/${id}/detail`,
     fetcher
   );
   const { data: rooms } = useSWR(
     `https://pbl6-travelapp.herokuapp.com/room/${id}/all`,
     fetcher
   );
+
+  console.log("hotel detail", data);
 
   const { handleEnter, inputValue, handleUserInput, listFeedback } =
     useFeedback();
