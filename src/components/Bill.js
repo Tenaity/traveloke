@@ -85,7 +85,12 @@ const Bill = () => {
           <DrawerBody>
             {/* <Button onClick={onSubmitHandle}>aaaaa</Button> */}
             <Flex direction="column" w="100%">
-              {billFilter ? (
+              {billFilter.length === 0 && (
+                <Flex alignItems="center" justifyContent="center">
+                  <Heading size="sm">Không có hoá đơn phù hợp!</Heading>
+                </Flex>
+              )}
+              {billFilter &&
                 billFilter.map((row, index) => {
                   return (
                     <BillingRow
@@ -99,14 +104,7 @@ const Bill = () => {
                       status={row.status}
                     />
                   );
-                })
-              ) : (
-                <>
-                  <Flex alignItems="center" justifyContent="center">
-                    <Heading>Không có bill</Heading>
-                  </Flex>
-                </>
-              )}
+                })}
             </Flex>
           </DrawerBody>
 

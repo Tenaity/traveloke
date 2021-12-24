@@ -151,6 +151,11 @@ const ComponentToPrint = (props) => {
             </Tbody>
           </Table>
         </Box>
+        {data.length === 0 && (
+          <Flex alignItems="center" justifyContent="center">
+            <Heading size="sm">Không có hoá đơn phù hợp!</Heading>
+          </Flex>
+        )}
       </Box>
     </Box>
   );
@@ -171,12 +176,14 @@ const Main = () => {
     }).then((response) => response.json());
   };
 
-  const { data: bills } = useSWR(
+  const { data: bills = [] } = useSWR(
     [`https://pbl6-travelapp.herokuapp.com/bill/${userId}`, token],
     fetcher,
     { refreshInterval: 1000 }
   );
-  const data = bills?.filter((item) => item.status === true);
+
+  const data =
+    bills.length === 0 ? bills.filter((item) => item.status === true) : [];
   console.log("history", data);
   return (
     <>
