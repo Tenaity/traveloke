@@ -3,7 +3,6 @@ import { Box, Flex, Image, Badge } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 const CardRestaurant = ({ res }) => {
-
   const property = {
     imageUrl: res.images[0],
     imageAlt: "Restaurant",
@@ -49,7 +48,7 @@ const CardRestaurant = ({ res }) => {
                 textTransform="uppercase"
                 ml="2"
               >
-                {property.priceFrom}-{property.priceTo} &bull; {property.type}
+                {property.priceFrom}$-{property.priceTo}$ &bull; {property.type}
               </Box>
             </Box>
 
