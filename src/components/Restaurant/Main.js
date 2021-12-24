@@ -135,8 +135,6 @@ const Main = () => {
             });
         }
     };
-    console.log('@z', restaurant?.images);
-    console.log('@zzz', restaurant?.images?.[0]);
 
     return (
         <>
