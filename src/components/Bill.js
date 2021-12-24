@@ -80,7 +80,7 @@ const Bill = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Bill Information</DrawerHeader>
+          <DrawerHeader>Các hoá đơn chưa thanh toán</DrawerHeader>
 
           <DrawerBody>
             <Button onClick={onSubmitHandle}>aaaaa</Button>

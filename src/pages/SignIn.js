@@ -45,6 +45,7 @@ const SignIn = () => {
         data: userInput,
       };
       const response = await axios(option);
+      console.log("user", response.data);
       const { user, tokens } = response.data;
       const userName = user.name;
       const userId = user.id;

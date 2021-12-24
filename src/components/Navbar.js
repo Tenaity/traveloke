@@ -139,18 +139,16 @@ const Navbar = () => {
                       </Button>
                     </MenuButton>
                     <MenuList>
-                      <MenuItem>
-                        <Link to="/settings">Tài khoản</Link>
-                      </MenuItem>
-                      <MenuItem>
-                        <Link to="/historybills">Lịch sử thanh toán</Link>
-                      </MenuItem>
+                      <Link to="/settings">
+                        <MenuItem>Tài khoản</MenuItem>
+                      </Link>
+                      <Link to="/historybills">
+                        <MenuItem>Lịch sử thanh toán</MenuItem>
+                      </Link>
                       <MenuDivider />
-                      <MenuItem>
+                      <MenuItem onClick={signOut}>
                         {" "}
-                        <Text _focus={{ boxShadow: "none" }} onClick={signOut}>
-                          Đăng xuất
-                        </Text>
+                        <Text _focus={{ boxShadow: "none" }}>Đăng xuất</Text>
                       </MenuItem>
                     </MenuList>
                   </Menu>

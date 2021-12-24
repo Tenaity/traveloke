@@ -32,13 +32,18 @@ const Main = () => {
         <BreadcrumbMain urls={["Trang chủ", "Xe Tự Lái"]} />
         <Box w="6xl">
           <Box my="7">
-            <Heading size="lg">{listCar.length} Dịch vụ cho thuê xe tự lái</Heading>
+            <Heading size="lg">
+              {listCar.length} Dịch vụ cho thuê xe tự lái
+            </Heading>
           </Box>
           <Flex my="10" justifyContent="space-between" alignItems="center">
             <Flex alignItems="center">
               <HStack spacing="5">
                 <Flex alignItems="center">
-                  <Box mr="5" width="115px" > Chỗ ngồi </Box>
+                  <Box mr="5" width="115px">
+                    {" "}
+                    Chỗ ngồi{" "}
+                  </Box>
                   <Select>
                     <option value="option1">04</option>
                     <option value="option2">06</option>
@@ -85,7 +90,7 @@ const Main = () => {
           </SimpleGrid>
         </Box>
       </Box>
-      <PaginationMain />
+      {/* <PaginationMain /> */}
     </>
   );
 };

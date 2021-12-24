@@ -98,12 +98,6 @@ function BillingRow(props) {
                   </Text>
                 </Text>
                 <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-                  Phụ phí:
-                  <Text as="span" color="gray.500" ml="1">
-                    {additionalFee}
-                  </Text>
-                </Text>
-                <Text color="gray.400" fontSize="sm" fontWeight="semibold">
                   Thành tiền:
                   <Text as="span" color="gray.500" ml="1">
                     {total}$
@@ -128,7 +122,7 @@ function BillingRow(props) {
                 <Flex color="red.500" cursor="pointer" align="center" p="12px">
                   <Icon as={FaTrashAlt} me="4px" />
                   <Text fontSize="sm" fontWeight="semibold">
-                    DELETE
+                    Xoá
                   </Text>
                 </Flex>
               </Button>
@@ -192,7 +186,7 @@ function BillingRow(props) {
                 <Flex color="red.500" cursor="pointer" align="center" p="12px">
                   <Icon as={FaTrashAlt} me="4px" />
                   <Text fontSize="sm" fontWeight="semibold">
-                    DELETE
+                    Xoá
                   </Text>
                 </Flex>
               </Button>
@@ -264,7 +258,7 @@ function BillingRow(props) {
                 <Flex color="red.500" cursor="pointer" align="center" p="12px">
                   <Icon as={FaTrashAlt} me="4px" />
                   <Text fontSize="sm" fontWeight="semibold">
-                    DELETE
+                    Xoá
                   </Text>
                 </Flex>
               </Button>

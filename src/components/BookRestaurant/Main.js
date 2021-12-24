@@ -93,7 +93,7 @@ const Main = () => {
           </SimpleGrid>
         </Box>
       </Box>
-      <PaginationMain />
+      {/* <PaginationMain /> */}
     </>
   );
 };
