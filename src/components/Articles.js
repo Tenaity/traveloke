@@ -50,7 +50,7 @@ const Blog = (props) => {
             color={mode("gray.600", "gray.400")}
           >
             <Text>
-              By{" "}
+              Tác giả{" "}
               <Box as="a" textDecor="underline" href={author.href}>
                 {author.name}
               </Box>
@@ -62,7 +62,7 @@ const Blog = (props) => {
                 me="2"
                 opacity={0.4}
               />
-              3 min read
+              3 phút đọc
             </Link>
           </Flex>
         </Flex>
@@ -75,41 +75,37 @@ const Articles = () => {
   return (
     <Box as="section" w="100vw">
       <Box maxW={{ base: "xl", md: "7xl" }} mx="auto" mt="24">
-        <Heading size="xl" mb="8" fontWeight="extrabold">
+        <Heading size="xl" mb="8">
           Xem những bài blog mới nhất trên GoGo
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing="12" mb="10">
           <Blog
-            category="Fashion"
+            category="Du lịch"
             media="https://images.unsplash.com/photo-1505944270255-72b8c68c6a70?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFjaWFsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-            title="7 Steps to Get Professional Facial Results At Home"
+            title="7 địa điểm du lịch rẻ nhất Việt Nam"
             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
             href="#"
-            author={{ name: "Segun Adebayo", href: "#" }}
+            author={{ name: "Võ Văn Mười", href: "#" }}
           />
           <Blog
-            category="Valentine"
+            category="Ẩm thực"
             media="https://images.unsplash.com/photo-1516401266446-6432a8a07d41?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzR8fHZhbGVudGluZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-            title="The Best Excuses To Spend A Cozy Valentine’s Day In"
-            description="As much as I love an over-the-top, romantic Valentine’s date, part of me is looking"
+            title="Làm sao ăn nhiều mà không béo"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
             href="#"
-            author={{ name: "Segun Adebayo", href: "#" }}
+            author={{ name: "Võ Văn Mười", href: "#" }}
           />
           <Blog
-            category="My Style"
+            category="Phượt"
             media="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Nnx8c2hvcHBpbmd8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-            title="Top 5 Best-Sellers, Most-Loved & Favorite Buys of 2020"
-            description="HAAAAPPY 2021! It’s the first Monday of the year and I have never been so ready for"
+            title="10 điều thú vị về Quảng Trị"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
             href="#"
-            author={{ name: "Segun Adebayo", href: "#" }}
+            author={{ name: "Võ Văn Mười", href: "#" }}
           />
         </SimpleGrid>
-        <Link
-          fontSize="xl"
-          fontWeight="bold"
-          color={mode("green.600", "green.400")}
-        >
-          <span>View all articles</span>
+        <Link fontSize="xl" color={mode("green.600", "green.400")}>
+          <span>Xem tất cả các bài viết</span>
           <Box as={BsArrowRight} display="inline-block" ms="2" />
         </Link>
       </Box>

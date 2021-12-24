@@ -79,13 +79,7 @@ const FeatureEndow = () => {
               <Box as="b" color={mode("green.500", "green.300")}>
                 Có thể bạn chưa biết
               </Box>
-              <Heading
-                mt="4"
-                mb="5"
-                size="xl"
-                fontWeight="extrabold"
-                lineHeight="1.2"
-              >
+              <Heading mt="4" mb="5" size="xl" lineHeight="1.2">
                 Chỉ dành riêng cho thành viên GoGo
               </Heading>
               <Text fontSize="lg" color={mode("gray.600", "gray.400")}>

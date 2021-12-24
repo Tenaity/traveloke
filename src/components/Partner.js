@@ -94,7 +94,7 @@ const Partner = () => {
   return (
     <Box as="section" py="16" w="100vw">
       <Box maxW={{ base: "xl", md: "7xl" }} mx="auto">
-        <Heading align="center" fontWeight="extrabold" maxW="md" mx="auto">
+        <Heading align="center" maxW="md" mx="auto">
           Đối tác trên toàn thế giới
         </Heading>
         <SimpleGrid

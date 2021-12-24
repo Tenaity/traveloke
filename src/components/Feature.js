@@ -67,7 +67,6 @@ const Feature = () => {
                 size="2xl"
                 letterSpacing="tight"
                 color={mode("gray.900", "white")}
-                fontWeight="extrabold"
               >
                 Tại sao nên đặt chỗ với
                 <Box as="span" px="3" color={mode("green.600", "green.400")}>
