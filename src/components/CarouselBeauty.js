@@ -33,7 +33,7 @@ const CarouselBeauty = ({ images = [] }) => {
                 h={{ sm: "36px", md: "90px", lg: "60px" }}
               >
                 <Image
-                  src={images[0]}
+                  src={item}
                   w="100%"
                   h="100%"
                   borderRadius="15px"
