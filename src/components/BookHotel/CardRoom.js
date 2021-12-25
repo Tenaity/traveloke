@@ -4,7 +4,7 @@ import { StarIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 const CardRoom = ({ room }) => {
   const property = {
-    imageUrl: room.images[1],
+    imageUrl: room.images[0],
     imageAlt: "Rear view of modern home with pool",
     rooms: room.totalRooms,
     available: room.available,

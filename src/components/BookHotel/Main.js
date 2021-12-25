@@ -3,25 +3,39 @@ import { Box, SimpleGrid, Heading, Flex, HStack } from "@chakra-ui/layout";
 import { Select } from "@chakra-ui/react";
 import CardHotel from "./CardHotel";
 import BreadcrumbMain from "../BreadcrumbMain";
-import PaginationMain from "./PaginationMain";
 import useSWR from "swr";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const Main = () => {
-  const [priceFrom, setPriceFrom] = useState("100");
-  const [priceTo, setPriceTo] = useState("1100");
-  const [sortby, setSortBy] = useState("vote");
+  const [priceFrom, setPriceFrom] = useState("");
+  const [priceTo, setPriceTo] = useState("");
+  const [sortby, setSortBy] = useState("");
   const onChangeHandle = (e) => {
     setPriceFrom(e.target.value.split(",")[0]);
-    setPriceTo(e.target.value.split(",")[1] || priceFrom);
+    setPriceTo(e.target.value.split(",")[1]);
+    console.log("priceFrom", priceFrom);
+    console.log("priceTo", priceTo);
+    setSortBy("");
   };
   const onChangeHandleSort = (e) => {
     setSortBy(e.target.value);
+    setPriceFrom("");
+    setPriceTo("");
   };
 
   const { data: hotel } = useSWR(
-    `https://pbl6-travelapp.herokuapp.com/hotel?priceFrom=${priceFrom}&priceTo=${priceTo}&sort=${sortby}`,
+    `https://pbl6-travelapp.herokuapp.com/hotel`,
     fetcher
   );
+
+  const { data: hotelFillter } = useSWR(
+    `https://pbl6-travelapp.herokuapp.com/hotel?priceFrom=${priceFrom}&priceTo=${priceTo}`,
+    fetcher
+  );
+  const { data: hotelSort } = useSWR(
+    ` https://pbl6-travelapp.herokuapp.com/hotel?sort=${sortby}`,
+    fetcher
+  );
+
   return (
     <>
       <Box d="flex" flexWrap="wrap" maxW="6xl" mx="auto" mt="5">
@@ -36,6 +50,7 @@ const Main = () => {
                 <Flex alignItems="center">
                   <Box mr="5">Giá</Box>
                   <Select onChange={onChangeHandle}>
+                    <option value="">Tất cả</option>
                     <option value="100,200">100$-200$</option>
                     <option value="200,400">200$-400$</option>
                     <option value="400,500">400$-500$</option>
@@ -60,13 +75,23 @@ const Main = () => {
 
         <Box mx="auto">
           <SimpleGrid columns={[2, null, 4]} spacing="40px">
-            {hotel?.map((hotel) => (
-              <CardHotel key={hotel.id} hotel={hotel} />
-            ))}
+            {hotelFillter
+              ? hotelFillter.map((hotel) => (
+                  <CardHotel key={hotel.id} hotel={hotel} />
+                ))
+              : hotel.map((hotel) => (
+                  <CardHotel key={hotel.id} hotel={hotel} />
+                ))}
+            {hotelSort
+              ? hotelSort.map((hotel) => (
+                  <CardHotel key={hotel.id} hotel={hotel} />
+                ))
+              : hotel.map((hotel) => (
+                  <CardHotel key={hotel.id} hotel={hotel} />
+                ))}
           </SimpleGrid>
         </Box>
       </Box>
-      {/* <PaginationMain /> */}
     </>
   );
 };
