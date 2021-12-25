@@ -3,6 +3,9 @@ import { Box, Flex, Image, Badge } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 const CardHotel = ({ hotel }) => {
+  const image =
+    hotel.images[0] ||
+    "https://vnpi-hcm.vn/wp-content/uploads/2018/01/no-image-800x600.png";
   return (
     <Link to={`/hotel/${hotel.id}`}>
       <Flex>
@@ -14,7 +17,7 @@ const CardHotel = ({ hotel }) => {
           _hover={{ shadow: "xl" }}
         >
           <Image
-            src={hotel.images[0]}
+            src={image}
             alt={hotel.imageAlt}
             roundedTop="lg"
             objectFit="cover"

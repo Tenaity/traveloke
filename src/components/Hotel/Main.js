@@ -9,7 +9,13 @@ import {
   Avatar,
 } from "@chakra-ui/react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import { GiSnowflake1 } from "react-icons/gi";
+import { GiMoneyStack } from "react-icons/gi";
+import {
+  IoHomeOutline,
+  IoBusinessOutline,
+  IoPhonePortraitOutline,
+} from "react-icons/io5";
+import { VscFeedback } from "react-icons/vsc";
 import useSWR from "swr";
 import { useParams } from "react-router-dom";
 import FeedBack from "../FeedBack";
@@ -36,7 +42,7 @@ const Main = () => {
     <>
       <Box w="6xl" mx="auto" mt="10">
         <SimpleGrid spacing="10" columns={{ base: 3 }}>
-          <Box bg="green.300" borderRadius="10">
+          <Box bg="gray.600" borderRadius="10" textColor="white">
             <Flex mt="20px">
               <Avatar size="lg" ml="3" />
               <Box ml="3">
@@ -56,37 +62,37 @@ const Main = () => {
           <Flex h="40" alignItems="center">
             <Box>
               <Flex alignItems="center" mb="4">
-                <GiSnowflake1 />
+                <IoBusinessOutline />
                 <Text ml="5px">Số phòng:</Text>
                 <Text ml="5px">{data.totalRooms}</Text>
               </Flex>
               <Flex alignItems="center" mb="4">
-                <GiSnowflake1 />
+                <IoHomeOutline />
                 <Text ml="5px">Số phòng trống: </Text>
                 <Text ml="5px">{data.availableRooms}</Text>
               </Flex>
               <Flex alignItems="center" mb="4">
-                <GiSnowflake1 />
+                <GiMoneyStack />
                 <Text ml="5px">Giá phòng: </Text>
-                <Text ml="5px">{data.priceFrom} - </Text>
-                <Text ml="5px">{data.priceTo}</Text>
+                <Text ml="5px">{data.priceFrom}$ - </Text>
+                <Text ml="5px">{data.priceTo}$</Text>
               </Flex>
             </Box>
           </Flex>
           <Flex h="40" alignItems="center">
             <Box>
               <Flex alignItems="center" mb="4">
-                <GiSnowflake1 />
+                <VscFeedback />
                 <Text ml="5px">Đánh giá:</Text>
                 <Text ml="5px">{countFeedback}</Text>
               </Flex>
               <Flex alignItems="center" mb="4">
-                <GiSnowflake1 />
+                <IoBusinessOutline />
                 <Text ml="5px">Thành phố: </Text>
                 <Text ml="5px">{data.city}</Text>
               </Flex>
               <Flex alignItems="center" mb="4">
-                <GiSnowflake1 />
+                <IoPhonePortraitOutline />
                 <Text ml="5px">Số điện thoại: </Text>
                 <Text ml="5px">{data.phone}</Text>
               </Flex>

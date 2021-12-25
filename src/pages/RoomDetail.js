@@ -53,6 +53,8 @@ const HotelDetail = () => {
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
   const { state } = useContext(AppContext);
+  const nowDate = new Date();
+  console.log(nowDate);
   const user = state?.user?.userName;
   const oneDay = 24 * 60 * 60 * 1000;
   const totalDays =
@@ -62,7 +64,7 @@ const HotelDetail = () => {
   const onSubmitHandle = async (e) => {
     if (user) {
       if (startDate && endDate) {
-        if (startDate > endDate) {
+        if (startDate > endDate || startDate < nowDate || endDate < nowDate) {
           toast({
             render: () => (
               <Alert status="error" variant="left-accent">
