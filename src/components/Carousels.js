@@ -32,9 +32,7 @@ const Carousels = () => {
     {
       img: "/images/luxstay/luxstayDaNang.png",
     },
-    {
-      img: "/images/luxstay/luxstaySaiGon.png",
-    },
+
     {
       img: "/images/luxstay/luxstayHoiAn.png",
     },
