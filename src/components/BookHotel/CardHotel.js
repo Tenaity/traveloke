@@ -31,10 +31,9 @@ const CardHotel = ({ hotel }) => {
                 fontWeight="semibold"
                 letterSpacing="wide"
                 fontSize="xs"
-                textTransform="uppercase"
                 ml="2"
               >
-                {hotel.availableRooms} available
+                {hotel.availableRooms} phòng còn trống
               </Box>
             </Box>
 
@@ -62,7 +61,7 @@ const CardHotel = ({ hotel }) => {
                   />
                 ))}
               <Box as="span" ml="2" color="gray.600" fontSize="sm">
-                {hotel.feedbacks.length} reviews
+                {hotel.feedbacks.length} đánh giá
               </Box>
             </Box>
           </Box>

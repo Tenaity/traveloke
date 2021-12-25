@@ -45,7 +45,7 @@ const CardRoom = ({ room }) => {
                 textTransform="uppercase"
                 ml="2"
               >
-                {room.type} available
+                {room.type}
               </Box>
             </Box>
 
@@ -62,7 +62,7 @@ const CardRoom = ({ room }) => {
             <Box>
               {room.price}
               <Box as="span" color="gray.600" fontSize="sm">
-                / day
+                / ngày
               </Box>
             </Box>
           </Box>
