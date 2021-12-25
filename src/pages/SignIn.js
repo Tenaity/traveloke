@@ -51,18 +51,28 @@ const SignIn = () => {
       localStorage.setItem("token", tokens.access.token);
       localStorage.setItem("userId", userId);
       dispatch({ type: "CURRENT_USER", payload: { userName, userId } });
+      if (response.status === 200) {
+        toast({
+          render: () => (
+            <Alert status="success" variant="left-accent">
+              <AlertIcon />
+              Đăng nhập thành công!
+            </Alert>
+          ),
+        });
+      }
       history.push("/");
     } catch (err) {
+      toast({
+        render: () => (
+          <Alert status="error" variant="left-accent">
+            <AlertIcon />
+            Kiểm tra lại tài khoản!
+          </Alert>
+        ),
+      });
       setErrorMessage(err.response.data.message);
     }
-    toast({
-      render: () => (
-        <Alert status="success" variant="left-accent">
-          <AlertIcon />
-          Đăng nhập thành công!
-        </Alert>
-      ),
-    });
   };
 
   const onClickReveal = () => {

@@ -8,6 +8,7 @@ import {
   Text,
   Center,
   Select,
+  useToast,
 } from "@chakra-ui/react";
 import * as React from "react";
 // import { FaFacebook, FaGoogle } from "react-icons/fa";
@@ -22,6 +23,8 @@ import {
   InputGroup,
   InputRightElement,
   useDisclosure,
+  Alert,
+  AlertIcon,
 } from "@chakra-ui/react";
 import { useRef, useState, useContext } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
@@ -31,6 +34,7 @@ import { useHistory } from "react-router";
 const SignUp = () => {
   const { dispatch } = useContext(AppContext);
   const history = useHistory();
+  const toast = useToast();
   const [errorMessage, setErrorMessage] = useState("");
   const [userInput, setUserInput] = useState({
     name: "",
@@ -59,8 +63,26 @@ const SignUp = () => {
       const userId = user.id;
       localStorage.setItem("token", tokens.access.token);
       dispatch({ type: "CURRENT_USER", payload: { userName, userId } });
+      if (response.status === 200) {
+        toast({
+          render: () => (
+            <Alert status="success" variant="left-accent">
+              <AlertIcon />
+              Đăng kí thành công thành công!
+            </Alert>
+          ),
+        });
+      }
       history.push("/");
     } catch (err) {
+      toast({
+        render: () => (
+          <Alert status="error" variant="left-accent">
+            <AlertIcon />
+            Kiểm tra lại thông tin đăng ký!
+          </Alert>
+        ),
+      });
       setErrorMessage(err.response.data.message);
     }
   };
