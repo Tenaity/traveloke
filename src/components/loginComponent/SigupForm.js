@@ -4,9 +4,8 @@ import PasswordField from "./PasswordField";
 import { useForm } from "react-hook-form";
 const SigupForm = () => {
   const { handleSubmit, register } = useForm();
-  const onSubmit = (values) => console.log(values);
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form>
       <Stack spacing="4">
         <FormControl id="email">
           <FormLabel mb={1}>Email</FormLabel>

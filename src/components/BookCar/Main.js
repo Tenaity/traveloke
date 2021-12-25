@@ -18,7 +18,6 @@ const Main = () => {
       };
       const response = await axios(option);
       setListCar(response.data);
-      console.log("res", response);
     } catch (err) {
       console.log(err.response?.data?.message);
     }

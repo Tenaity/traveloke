@@ -44,9 +44,10 @@ const VehicleDetail = () => {
   const userName = state?.user?.userName;
   const userId = state?.user?.userId;
   const oneDay = 24 * 60 * 60 * 1000;
-  const totalDays = startDate && endDate && Math.round(Math.abs((startDate - endDate) / oneDay)) + 1;
-
-  console.log("zz", endDate);
+  const totalDays =
+    startDate &&
+    endDate &&
+    Math.round(Math.abs((startDate - endDate) / oneDay)) + 1;
 
   const onSubmitHandle = async (e) => {
     if (userName) {
@@ -93,7 +94,6 @@ const VehicleDetail = () => {
                 ),
               });
             }
-            console.log(response);
           } catch (err) {
             console.log(err);
           }
@@ -128,7 +128,10 @@ const VehicleDetail = () => {
           <BreadcrumbMain urls={["Trang chủ", "Xe tự lái", "Đặt xe"]} />
           <Box>
             <SimpleGrid mt="7" columns={{ base: 1, md: 2 }}>
-              <CarCarouselBeauty imageCover={vehicle?.images?.[0]} listImage={vehicle?.images} />
+              <CarCarouselBeauty
+                imageCover={vehicle?.images?.[0]}
+                listImage={vehicle?.images}
+              />
               <Box ml="10">
                 <Heading mb="10">{vehicle?.idSelfVehicle.name}</Heading>
                 <Flex alignItems="center" mb="4">
@@ -210,7 +213,8 @@ const VehicleDetail = () => {
                       Giá :
                     </Heading>
                     <Heading size="lg" color="green.500">
-                      {totalDays ? vehicle?.price * totalDays : vehicle?.price} $
+                      {totalDays ? vehicle?.price * totalDays : vehicle?.price}{" "}
+                      $
                     </Heading>
                   </Flex>
                   <Box>

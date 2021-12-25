@@ -27,8 +27,6 @@ const ComponentToPrint = (props) => {
   const { data = [] } = props;
   const { userId } = props;
   const { token } = props;
-  console.log("useriddddd", userId);
-  console.log("tokennnn", token);
   let dateCheckIn = new Date(data.checkIn);
   let dateCheckOut = new Date(data.checkOut);
   const toast = useToast();
@@ -293,9 +291,7 @@ function Invoice() {
   const componentRef = useRef();
   const userId = localStorage.getItem("userId");
   const token = localStorage.getItem("token");
-  console.log("origin", userId);
   let { id } = useParams();
-  console.log("BillIDDDD", token);
   const fetcher = (url) => {
     return fetch(url, {
       method: "get",
@@ -310,7 +306,6 @@ function Invoice() {
     fetcher,
     { refreshInterval: 1000 }
   );
-  console.log("billlllllxxx", bill);
 
   return (
     <>

@@ -71,20 +71,9 @@ const AccountSettings = () => {
     setEmail(data.email);
     setIdentityNumber(data.identityNumber);
     setGender(data.gender);
-    console.log("aaa", response.data);
   }, []);
   const onSubmitHandle = async (e) => {
-    console.log("dataaa", {
-      name: name,
-      phone: phone,
-      avt: avt,
-      birth: birth,
-      identityNumber: identityNumber,
-      gender: gender,
-      email: email,
-    });
     if (user) {
-      console.log(token);
       try {
         e.preventDefault();
         const option = {
@@ -104,7 +93,6 @@ const AccountSettings = () => {
           },
         };
         const response = await axios(option);
-        console.log(response);
         if (response.status === 200) {
           toast({
             render: () => (

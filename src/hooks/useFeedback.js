@@ -23,7 +23,6 @@ export const useFeedback = () => {
       };
       const response = await axios(option);
       setListFeedback(response.data);
-      console.log("res", response);
     } catch (err) {
       console.log(err.response.data.message);
     }
@@ -31,7 +30,6 @@ export const useFeedback = () => {
   useEffect(() => {
     fetchFeedback();
   }, []);
-  console.log("id", state)
   const handleEnter = async (event) => {
     if (event.keyCode === 13) {
       setInputValue("");
@@ -82,16 +80,13 @@ export const useFeedback = () => {
         if (service === "hotel") {
           const response = await axios(hotelOption);
           fetchFeedback();
-          console.log("res", response);
         } else {
           if (service === "restaurant") {
             const response = await axios(resOption);
             fetchFeedback();
-            console.log("res", response);
           } else {
             const response = await axios(carOption);
             fetchFeedback();
-            console.log("res", response);
           }
         }
       } catch (err) {

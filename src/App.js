@@ -24,7 +24,6 @@ import VehicleDetail from "./pages/VehicleDetail";
 const theme = extendTheme();
 function Hotel() {
   let { path } = useRouteMatch();
-  console.log(path);
   return (
     <Fragment>
       <Switch>
@@ -40,7 +39,6 @@ function Hotel() {
 }
 function Room() {
   let { path } = useRouteMatch();
-  console.log(path);
   return (
     <Fragment>
       <Switch>
@@ -53,7 +51,6 @@ function Room() {
 }
 function Restaurant() {
   let { path } = useRouteMatch();
-  console.log(path);
   return (
     <Fragment>
       <Switch>
@@ -69,7 +66,6 @@ function Restaurant() {
 }
 function Car() {
   let { path } = useRouteMatch();
-  console.log(path);
   return (
     <Fragment>
       <Switch>
@@ -85,7 +81,6 @@ function Car() {
 }
 function Vehicle() {
   let { path } = useRouteMatch();
-  console.log(path);
   return (
     <Fragment>
       <Switch>
@@ -98,7 +93,6 @@ function Vehicle() {
 }
 function Payment() {
   let { path } = useRouteMatch();
-  console.log(path);
   return (
     <Fragment>
       <Switch>
@@ -112,7 +106,6 @@ function Payment() {
 
 function Search() {
   let { path } = useRouteMatch();
-  console.log(path);
   return (
     <Fragment>
       <Switch>
@@ -138,7 +131,6 @@ const App = () => {
         },
       };
       const response = await axios(option);
-      console.log(response);
       if (response) {
         const userName = response.data.name;
         const userId = response.data.id;

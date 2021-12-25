@@ -16,9 +16,6 @@ import React, { useRef } from "react";
 import useSWR from "swr";
 const ComponentToPrint = (props) => {
   const { data = [] } = props;
-  console.log(data);
-  // let dateCheckIn = new Date(data.checkIn);
-  // let dateCheckOut = new Date(data.checkOut);
   return (
     <Box
       w="7xl"
@@ -165,7 +162,7 @@ const Main = () => {
   const textColor = useColorModeValue("gray.700", "white");
 
   const componentRef = useRef();
-  const userId = localStorage.getItem("useId");
+  const userId = localStorage.getItem("userId");
   const token = localStorage.getItem("token");
   const fetcher = (url) => {
     return fetch(url, {
@@ -181,10 +178,7 @@ const Main = () => {
     fetcher,
     { refreshInterval: 1000 }
   );
-
-  const data =
-    bills.length === 0 ? bills.filter((item) => item.status === true) : [];
-  console.log("history", data);
+  const data = bills.filter((item) => item.status === true) || [];
   return (
     <>
       <Flex direction="column" pt="10">

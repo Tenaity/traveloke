@@ -25,7 +25,6 @@ const Main = () => {
       };
       const response = await axios(option);
       setListRestaurant(response.data);
-      console.log("res", response);
     } catch (err) {
       console.log(err.response.data.message);
     }

@@ -27,12 +27,9 @@ const Main = () => {
     `https://pbl6-travelapp.herokuapp.com/detailVehicle/${id}/all`,
     fetcher
   );
-  console.log("list", data);
-  console.log("car", cars);
   const { handleEnter, inputValue, handleUserInput, listFeedback } =
     useFeedback();
   const countFeedback = data.feedbacks ? data.feedbacks.length : 0;
-  console.log(countFeedback);
 
   return (
     <>

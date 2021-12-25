@@ -46,7 +46,6 @@ const HotelDetail = () => {
     fetcher
   );
 
-  console.log("room detailllll", room);
   const toast = useToast();
 
   const [startDate, setStartDate] = useState("");
@@ -60,7 +59,6 @@ const HotelDetail = () => {
     startDate &&
     endDate &&
     Math.round(Math.abs((startDate - endDate) / oneDay)) + 1;
-  console.log("context", state);
   const onSubmitHandle = async (e) => {
     if (user) {
       if (startDate && endDate) {
@@ -88,7 +86,7 @@ const HotelDetail = () => {
                 guest: userId,
                 hotel: room.idHotel.id,
                 room: room._id,
-                total: room.price,
+                total: room.price * totalDays,
                 name: room.idHotel.name,
               },
               headers: {
@@ -106,7 +104,6 @@ const HotelDetail = () => {
                 ),
               });
             }
-            console.log(response);
           } catch (err) {
             console.log(err);
           }

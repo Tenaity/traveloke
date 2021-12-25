@@ -58,7 +58,6 @@ const Main = () => {
       };
       const response = await axios(option);
       setRestaurant(response.data);
-      console.log("res", response);
     } catch (err) {
       console.log(err.response.data.message);
     }
@@ -66,7 +65,6 @@ const Main = () => {
   useEffect(() => {
     fetchRestaurant();
   }, []);
-  console.log("restaurant", restaurant);
   const { handleEnter, inputValue, handleUserInput, listFeedback } =
     useFeedback();
   const toast = useToast();
@@ -111,7 +109,6 @@ const Main = () => {
               ),
             });
           }
-          console.log(response);
         } catch (err) {
           console.log(err);
         }

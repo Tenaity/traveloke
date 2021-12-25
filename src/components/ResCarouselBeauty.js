@@ -6,8 +6,8 @@ const ResCarouselBeauty = (props) => {
 
   const [currentImage, setCurrentImage] = useState();
   useEffect(() => {
-    setCurrentImage(imageCover)
-  }, [imageCover])
+    setCurrentImage(imageCover);
+  }, [imageCover]);
   return (
     <Flex
       direction="column"
@@ -28,27 +28,25 @@ const ResCarouselBeauty = (props) => {
         mx="auto"
         mb={{ sm: "24px", lg: "0px" }}
       >
-        {listImage && listImage.map((i, index) => {
-          console.log("key", index)
-          return (
-            <Box
-              key={index}
-              w={{ sm: "36px", md: "90px", lg: "60px" }}
-              h={{ sm: "36px", md: "90px", lg: "60px" }}
-            >
-              <Image
-                src={i}
-                w="100%"
-                h="100%"
-                borderRadius="15px"
-                cursor="pointer"
-                onClick={(e) => setCurrentImage(e.target.src)}
-              />
-            </Box>
-          )
-        })}
-
-
+        {listImage &&
+          listImage.map((i, index) => {
+            return (
+              <Box
+                key={index}
+                w={{ sm: "36px", md: "90px", lg: "60px" }}
+                h={{ sm: "36px", md: "90px", lg: "60px" }}
+              >
+                <Image
+                  src={i}
+                  w="100%"
+                  h="100%"
+                  borderRadius="15px"
+                  cursor="pointer"
+                  onClick={(e) => setCurrentImage(e.target.src)}
+                />
+              </Box>
+            );
+          })}
       </Stack>
     </Flex>
   );
