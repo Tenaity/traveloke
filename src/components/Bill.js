@@ -38,7 +38,7 @@ const Bill = () => {
     { refreshInterval: 1000 }
   );
   console.log(bills);
-  const billFilter = bills?.filter((item) => item.status === false);
+  const billFilter = bills?.filter((item) => item.status === false) || [];
   console.log("billFilter", billFilter);
   // const onSubmitHandle = async (e) => {
   //   try {
@@ -85,13 +85,13 @@ const Bill = () => {
           <DrawerBody>
             {/* <Button onClick={onSubmitHandle}>aaaaa</Button> */}
             <Flex direction="column" w="100%">
-              {billFilter.length === 0 && (
+              {billFilter?.length === 0 && (
                 <Flex alignItems="center" justifyContent="center">
                   <Heading size="sm">Không có hoá đơn phù hợp!</Heading>
                 </Flex>
               )}
               {billFilter &&
-                billFilter.map((row, index) => {
+                billFilter?.map((row, index) => {
                   return (
                     <BillingRow
                       name={row?.name}
