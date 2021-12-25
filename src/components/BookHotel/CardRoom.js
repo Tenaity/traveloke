@@ -35,17 +35,16 @@ const CardRoom = ({ room }) => {
           <Box p="5">
             <Box d="flex" alignItems="baseline">
               <Badge rounded="full" colorScheme="teal">
-                new
+                Giảm giá
               </Badge>
               <Box
                 color="gray.500"
                 fontWeight="semibold"
                 letterSpacing="wide"
                 fontSize="xs"
-                textTransform="uppercase"
                 ml="2"
               >
-                {room.type}
+                Loại phòng {room.type}
               </Box>
             </Box>
 
@@ -62,7 +61,7 @@ const CardRoom = ({ room }) => {
             <Box>
               {room.price}
               <Box as="span" color="gray.600" fontSize="sm">
-                / ngày
+                $/ ngày
               </Box>
             </Box>
           </Box>
