@@ -12,8 +12,6 @@ const Main = () => {
   const onChangeHandle = (e) => {
     setPriceFrom(e.target.value.split(",")[0]);
     setPriceTo(e.target.value.split(",")[1]);
-    console.log("priceFrom", priceFrom);
-    console.log("priceTo", priceTo);
     setSortBy("");
   };
   const onChangeHandleSort = (e) => {
@@ -35,7 +33,9 @@ const Main = () => {
     ` https://pbl6-travelapp.herokuapp.com/hotel?sort=${sortby}`,
     fetcher
   );
-
+  console.log("hotel", hotel);
+  console.log("hotelFilter", hotelFillter);
+  console.log("hotelSort", hotelSort);
   return (
     <>
       <Box d="flex" flexWrap="wrap" maxW="6xl" mx="auto" mt="5">
@@ -76,17 +76,17 @@ const Main = () => {
         <Box mx="auto">
           <SimpleGrid columns={[2, null, 4]} spacing="40px">
             {hotelFillter
-              ? hotelFillter.map((hotel) => (
+              ? hotelFillter?.map((hotel) => (
                   <CardHotel key={hotel.id} hotel={hotel} />
                 ))
-              : hotel.map((hotel) => (
+              : hotel?.map((hotel) => (
                   <CardHotel key={hotel.id} hotel={hotel} />
                 ))}
             {hotelSort
-              ? hotelSort.map((hotel) => (
+              ? hotelSort?.map((hotel) => (
                   <CardHotel key={hotel.id} hotel={hotel} />
                 ))
-              : hotel.map((hotel) => (
+              : hotel?.map((hotel) => (
                   <CardHotel key={hotel.id} hotel={hotel} />
                 ))}
           </SimpleGrid>
